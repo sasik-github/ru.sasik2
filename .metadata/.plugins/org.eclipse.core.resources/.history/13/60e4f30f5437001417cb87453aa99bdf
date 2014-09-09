@@ -1,7 +1,0 @@
-package ru.sasik.service.simple;
-
-import ru.sasik.api.AgendaService;
-
-public class SimpleAgendaService implements AgendaService{
-
-}

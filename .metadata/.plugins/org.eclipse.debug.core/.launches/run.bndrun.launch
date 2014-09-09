@@ -2,6 +2,6 @@
 <launchConfiguration type="bndtools.launch">
 <booleanAttribute key="clean" value="true"/>
 <booleanAttribute key="dynamicBundles" value="true"/>
-<stringAttribute key="launchTarget" value="ru.sasik.client.console/run.bndrun"/>
-<stringAttribute key="org.eclipse.jdt.launching.PROJECT_ATTR" value="ru.sasik.client.console"/>
+<stringAttribute key="launchTarget" value="ru.sasik.impls/run.bndrun"/>
+<stringAttribute key="org.eclipse.jdt.launching.PROJECT_ATTR" value="ru.sasik.impls"/>
 </launchConfiguration>

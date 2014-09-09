@@ -12,6 +12,7 @@ public class SimpleAgendaService implements AgendaService {
 	public void start() {
 		conferences.add(new Conference("JavaOne", "SF"));
 		conferences.add(new Conference("Devaxx", "Antwerp"));
+		conferences.add(new Conference("dsfasd", "Antwerp"));
 	}
 	
 	@Override

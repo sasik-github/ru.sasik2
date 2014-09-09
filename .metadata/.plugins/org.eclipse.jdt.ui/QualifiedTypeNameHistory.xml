@@ -1,10 +1,17 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <qualifiedTypeNameHistroy>
-<fullyQualifiedTypeName name="java.util.concurrent.CopyOnWriteArrayList"/>
-<fullyQualifiedTypeName name="ru.sasik.service.simple.SimpleAgendaService"/>
-<fullyQualifiedTypeName name="java.util.List"/>
-<fullyQualifiedTypeName name="ru.sasik.api.Conference"/>
+<fullyQualifiedTypeName name="ru.sasik.impls.ExampleComponent"/>
+<fullyQualifiedTypeName name="java.lang.Object"/>
+<fullyQualifiedTypeName name="ru.sasik.api.Greeting"/>
+<fullyQualifiedTypeName name="aQute.bnd.annotation.component.Reference"/>
+<fullyQualifiedTypeName name="aQute.bnd.annotation.component.Component"/>
+<fullyQualifiedTypeName name="org.apache.felix.service.command.CommandProcessor"/>
+<fullyQualifiedTypeName name="ru.sasik.api.GUIRunnerI"/>
+<fullyQualifiedTypeName name="ru.sasik.impls.GUIRunner"/>
+<fullyQualifiedTypeName name="java.lang.Runnable"/>
 <fullyQualifiedTypeName name="org.apache.felix.dm.DependencyActivatorBase"/>
-<fullyQualifiedTypeName name="ru.sasik.client.console.ConsloleClient"/>
-<fullyQualifiedTypeName name="ru.sasik.api.AgendaService"/>
+<fullyQualifiedTypeName name="ru.sasik.gui.IGUI"/>
+<fullyQualifiedTypeName name="ru.sasik.gui.simple.GUI"/>
+<fullyQualifiedTypeName name="java.awt.Window"/>
+<fullyQualifiedTypeName name="javax.swing.JFrame"/>
 </qualifiedTypeNameHistroy>

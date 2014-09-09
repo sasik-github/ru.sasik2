@@ -1,0 +1,5 @@
+package ru.sasik.api;
+
+public interface GUIRunner {
+	
+}

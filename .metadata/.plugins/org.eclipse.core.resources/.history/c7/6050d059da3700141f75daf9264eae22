@@ -1,0 +1,25 @@
+package ru.sasik.gui.simple;
+//http://darkraha.com/rus/java/swing/swing00.php
+
+import javax.swing.JFrame;
+
+import ru.sasik.gui.IGUI;
+
+public class GUI implements IGUI{
+	
+	@Override
+	public void startGUI() {
+		// TODO Auto-generated method stub
+		JFrame f = new JFrame("ru.sasik.gui");
+		f.setLocationRelativeTo(null);
+		f.setDefaultCloseOperation(EXIT_ON_CLOSE);
+		f.setSize(300, 300);
+		f.setVisible(true);
+		
+	}
+	
+	public void start() {
+		startGUI();
+	}
+
+}

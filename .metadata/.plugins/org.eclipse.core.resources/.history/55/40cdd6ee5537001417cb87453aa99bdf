@@ -1,7 +1,0 @@
-Bundle-Version: 0.0.0.${tstamp}
--buildpath:  \
-	ru.sasik.api;version=latest,\
-	org.apache.felix.dependencymanager,\
-	org.apache.felix.framework
-Private-Package:  \
-	ru.sasik.service.simple

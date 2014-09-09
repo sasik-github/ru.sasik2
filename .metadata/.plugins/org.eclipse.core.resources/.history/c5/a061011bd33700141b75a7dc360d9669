@@ -1,0 +1,27 @@
+package ru.sasik.gui.simple;
+
+
+import javax.swing.JFrame;
+
+import ru.sasik.gui.IGUI;
+
+public class GUI implements IGUI{
+	
+	
+	@SuppressWarnings("deprecation")
+	@Override
+	public void startGUI() {
+		// TODO Auto-generated method stub
+		JFrame f = new JFrame("LALALA");
+		f.setLocation(400, 400);
+		
+		f.setSize(300, 300);
+		f.show();
+		
+	}
+	
+	public void start() {
+		startGUI();
+	}
+
+}

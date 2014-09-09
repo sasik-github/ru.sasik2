@@ -1,5 +1,0 @@
-package ru.sasik.client.console;
-
-public class ConsloleClient {
-	private volatile
-}
