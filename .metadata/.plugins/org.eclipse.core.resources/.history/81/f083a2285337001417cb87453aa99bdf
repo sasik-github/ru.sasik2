@@ -1,0 +1,6 @@
+package ru.sasik.api;
+
+public class Conference {
+	private String name;
+	private String location;
+}

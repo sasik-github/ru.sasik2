@@ -1,0 +1,5 @@
+INDEX VERSION 1.126+/home/sasik/EclipseWorkspace/.metadata/.plugins/org.eclipse.jdt.core
+2408198095.index
+3425408841.index
+1055774369.index
+1454726822.index

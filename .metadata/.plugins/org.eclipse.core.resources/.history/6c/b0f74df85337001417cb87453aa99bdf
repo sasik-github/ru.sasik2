@@ -1,0 +1,5 @@
+package ru.sasik.service.simple;
+
+public class SimpleAgendaService {
+
+}

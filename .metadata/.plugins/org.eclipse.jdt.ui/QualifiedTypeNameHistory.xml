@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<qualifiedTypeNameHistroy>
+<fullyQualifiedTypeName name="java.util.concurrent.CopyOnWriteArrayList"/>
+<fullyQualifiedTypeName name="ru.sasik.service.simple.SimpleAgendaService"/>
+<fullyQualifiedTypeName name="java.util.List"/>
+<fullyQualifiedTypeName name="ru.sasik.api.Conference"/>
+<fullyQualifiedTypeName name="org.apache.felix.dm.DependencyActivatorBase"/>
+<fullyQualifiedTypeName name="ru.sasik.client.console.ConsloleClient"/>
+<fullyQualifiedTypeName name="ru.sasik.api.AgendaService"/>
+</qualifiedTypeNameHistroy>

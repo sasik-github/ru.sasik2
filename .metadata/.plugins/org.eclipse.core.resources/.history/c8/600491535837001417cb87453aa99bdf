@@ -1,0 +1,5 @@
+Bundle-Version: 0.0.0.${tstamp}
+-buildpath:  \
+	org.apache.felix.dependencymanager,\
+	ru.sasik.api;version=latest,\
+	osgi.core

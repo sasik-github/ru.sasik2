@@ -1,0 +1,19 @@
+package ru.sasik.client.console;
+
+import org.apache.felix.dm.DependencyActivatorBase;
+import org.apache.felix.dm.DependencyManager;
+import org.osgi.framework.BundleContext;
+
+public class Activator extends DependencyActivatorBase{
+
+	@Override
+	public void init(BundleContext context, DependencyManager manager)
+			throws Exception {
+		// TODO Auto-generated method stub
+		manager.add(createComponent()
+				.setInterface(Object.class, null)
+		);
+		
+	}
+
+}

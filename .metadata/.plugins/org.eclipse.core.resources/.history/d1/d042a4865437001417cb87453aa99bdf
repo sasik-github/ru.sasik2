@@ -1,0 +1,22 @@
+package ru.sasik.service.simple;
+
+import java.util.List;
+
+import ru.sasik.api.AgendaService;
+import ru.sasik.api.Conference;
+
+public class SimpleAgendaService implements AgendaService {
+	
+	@Override
+	public List<Conference> listConferences() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public void addConference() {
+		// TODO Auto-generated method stub
+		
+	}
+
+}

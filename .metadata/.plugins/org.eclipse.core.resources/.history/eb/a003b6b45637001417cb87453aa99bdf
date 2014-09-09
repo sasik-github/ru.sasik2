@@ -1,0 +1,12 @@
+package ru.sasik.client.console;
+
+import ru.sasik.api.AgendaService;
+
+public class ConsloleClient {
+	
+	private volatile AgendaService agendaService;
+	
+	public void start() {
+		
+	}
+}
