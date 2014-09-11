@@ -1,0 +1,36 @@
+package ru.sasik.gui.simple;
+
+import org.apache.felix.dm.DependencyActivatorBase;
+import org.apache.felix.dm.DependencyManager;
+import org.osgi.framework.BundleContext;
+
+import ru.sasik.gui.IGUI;
+
+public class Activator extends DependencyActivatorBase{
+
+	@Override
+	public void init(BundleContext context, DependencyManager manager)
+			throws Exception {
+		// TODO Auto-generated method stub
+		manager.add(createComponent()
+				.setInterface(IGUI.class.getName(), null)
+				.setImplementation(GUI.class)
+		);
+		
+	}
+
+	@Override
+	public void start(BundleContext context) throws Exception {
+		// TODO Auto-generated method stub
+		super.start(context);
+	}
+
+	@Override
+	public void stop(BundleContext context) throws Exception {
+		// TODO Auto-generated method stub
+		super.stop(context);
+	}
+	
+	
+
+}

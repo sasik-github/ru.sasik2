@@ -1,0 +1,38 @@
+package ru.sasik.gui.simple;
+
+import javax.swing.Action;
+import javax.swing.JButton;
+import javax.swing.JToolBar;
+
+import org.apache.felix.dm.tracker.ServiceTracker;
+import org.osgi.framework.BundleContext;
+import org.osgi.framework.ServiceReference;
+
+public class ToolbarActionTracker extends ServiceTracker{
+	
+	private final JToolBar toolBar;
+
+	public ToolbarActionTracker(BundleContext context, JToolBar toolBar) {
+		super(context, Action.class.getName(), null);
+		this.toolBar = toolBar;
+	}
+
+	@Override
+	public Object addingService(ServiceReference reference) {
+		Action action = (Action) context.getService(reference);
+		
+		JButton button = new JButton(action);
+		
+		
+		return super.addingService(reference);
+	}
+
+	@Override
+	public void removedService(ServiceReference reference, Object service) {
+		// TODO Auto-generated method stub
+		super.removedService(reference, service);
+	}
+	
+	
+
+}

@@ -5,4 +5,4 @@ Bundle-Version: 0.0.0.${tstamp}
 	osgi.core
 Private-Package:  \
 	ru.sasik.gui.simple
-Bundle-Activator: ru.sasik.gui.simple.Activator
+Bundle-Activator: ru.sasik.gui.simple.GUIActivator

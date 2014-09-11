@@ -1,0 +1,7 @@
+package ru.sasik.gui.simple;
+
+import org.apache.felix.dm.tracker.ServiceTracker;
+
+public class ToolbarActionTracker extends ServiceTracker{
+
+}

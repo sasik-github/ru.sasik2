@@ -1,0 +1,16 @@
+package ru.sasik.gui.simple;
+
+import org.apache.felix.dm.tracker.ServiceTracker;
+import org.apache.felix.dm.tracker.ServiceTrackerCustomizer;
+import org.osgi.framework.BundleContext;
+import org.osgi.framework.Filter;
+
+public class ToolbarActionTracker extends ServiceTracker{
+
+	public ToolbarActionTracker(BundleContext context, Filter filter,
+			ServiceTrackerCustomizer customizer) {
+		super(context, filter, null);
+		// TODO Auto-generated constructor stub
+	}
+
+}
