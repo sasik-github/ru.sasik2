@@ -1,0 +1,7 @@
+package ru.sasik.action;
+
+import org.osgi.framework.BundleActivator;
+
+public class Activator implements BundleActivator{
+
+}

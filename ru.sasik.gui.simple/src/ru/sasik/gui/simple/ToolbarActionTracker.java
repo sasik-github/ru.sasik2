@@ -15,6 +15,7 @@ public class ToolbarActionTracker extends ServiceTracker{
 	public ToolbarActionTracker(BundleContext context, JToolBar toolBar) {
 		super(context, Action.class.getName(), null);
 		this.toolBar = toolBar;
+		System.out.println("Toolbar Action Tracker is activated...");
 	}
 
 	@Override
@@ -27,18 +28,19 @@ public class ToolbarActionTracker extends ServiceTracker{
 		}
 		toolBar.add(button);
 		toolBar.revalidate();
+		System.out.println("Toolbar Action Tracker is added a action " + action);
 		return button;
 	}
 
 	@Override
 	public void removedService(ServiceReference reference, Object service) {
-		// TODO Auto-generated method stub
 		JButton button = (JButton) service;
 		
 		toolBar.remove(button);
 		toolBar.revalidate();
 		toolBar.repaint();
 		context.ungetService(reference);
+		System.out.println("Toolbar Action Tracker is removed a action " + button);
 		super.removedService(reference, service);
 	}
 	

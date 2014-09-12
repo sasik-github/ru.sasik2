@@ -1,0 +1,21 @@
+package ru.sasik.action;
+
+import java.awt.event.ActionEvent;
+
+import javax.swing.AbstractAction;
+
+public class HelloAction extends AbstractAction {
+
+	
+	
+	public HelloAction() {
+		super();
+	}
+
+	@Override
+	public void actionPerformed(ActionEvent arg0) {
+		// TODO Auto-generated method stub
+
+	}
+
+}

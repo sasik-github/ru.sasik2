@@ -1,7 +1,0 @@
-package ru.sasik.gui.simple;
-
-import ru.sasik.gui.IGUI;
-
-public class GUI implements IGUI{
-
-}

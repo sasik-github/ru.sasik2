@@ -44,6 +44,8 @@ public class GUIActivator extends DependencyActivatorBase {
 		toolBar = new JToolBar();
 		
 		actionTracker = new ToolbarActionTracker(context, toolBar);
+		actionTracker.open();
+		
 		createFrameContent();
 	}
 
@@ -63,14 +65,15 @@ public class GUIActivator extends DependencyActivatorBase {
 			} catch (Exception e2) {
 				// TODO: handle exception
 				System.out.println("Button error");
+			} finally {
+//				System.out.println(e.);
+				System.out.println(e.getSource());
+				if (e.getActionCommand().compareTo("Close") == 0) {
+					System.out.println("Close operation");
+					System.exit(0);
+				}
 			}
-			
-//			System.out.println(e.);
-			System.out.println(e.getSource());
-			if (e.getActionCommand().compareTo("Close") == 0) {
-				System.out.println("Close operation");
-				System.exit(0);
-			}
+		
 			
 		}
 		

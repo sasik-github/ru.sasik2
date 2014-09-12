@@ -10,7 +10,8 @@
 	osgi.identity;filter:='(osgi.identity=org.apache.felix.gogo.command)',\
 	osgi.identity;filter:='(osgi.identity=ru.sasik.client.console)',\
 	osgi.identity;filter:='(osgi.identity=ru.sasik.service.simple)',\
-	osgi.identity;filter:='(osgi.identity=ru.sasik.gui.simple)'
+	osgi.identity;filter:='(osgi.identity=ru.sasik.gui.simple)',\
+	osgi.identity;filter:='(osgi.identity=ru.sasik.action)'
 -resolve: auto
 -runbundles:  \
 	org.apache.felix.configadmin;version='[1.8.0,1.8.1)',\
@@ -19,6 +20,7 @@
 	org.apache.felix.gogo.runtime;version='[0.10.0,0.10.1)',\
 	org.apache.felix.gogo.shell;version='[0.10.0,0.10.1)',\
 	osgi.residential;version='[4.3.0,4.3.1)',\
+	ru.sasik.action;version=latest,\
 	ru.sasik.api;version=latest,\
 	ru.sasik.client.console;version=latest,\
 	ru.sasik.gui;version=latest,\
