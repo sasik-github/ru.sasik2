@@ -1,5 +1,0 @@
-Bundle-Version: 0.0.0.${tstamp}
--buildpath:  \
-	ru.sasik.gui;version=latest
-Private-Package:  \
-	ru.sasik.gui.simple
