@@ -22,6 +22,8 @@ import ru.sasik.gui.IGUI;
 
 public class GUIActivator extends DependencyActivatorBase {
 	
+	private static final String FRAME_TITLE  = "ru.sasik.gui";
+	
 	private JFrame frame;
 	private JToolBar toolBar;
 	
@@ -40,7 +42,10 @@ public class GUIActivator extends DependencyActivatorBase {
 
 	@Override
 	public void start(BundleContext context) throws Exception {
-		frame = new JFrame("ru.sasik.gui");
+		
+		FileChooserDialog fcd = new FileChooserDialog();
+		fcd.setVisible(true);
+		frame = new JFrame(FRAME_TITLE);
 		toolBar = new JToolBar();
 		
 		actionTracker = new ToolbarActionTracker(context, toolBar);
@@ -100,7 +105,7 @@ public class GUIActivator extends DependencyActivatorBase {
 		itm.addActionListener(actionListener);
 		menu.add(itm);
 		
-		itm = new JMenuItem("Save");
+		itm = new JMenuItem("Сохранить");
 		itm.addActionListener(actionListener);
 		menu.add(itm);
 		
