@@ -6,12 +6,15 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.File;
 
+import javax.swing.BorderFactory;
 import javax.swing.JButton;
 import javax.swing.JFileChooser;
 import javax.swing.JFrame;
 import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
+import javax.swing.JScrollPane;
+import javax.swing.JTextArea;
 import javax.swing.JToolBar;
 
 import org.apache.felix.dm.DependencyActivatorBase;
@@ -25,7 +28,12 @@ public class GUIActivator extends DependencyActivatorBase {
 	private static final String FRAME_TITLE  = "ru.sasik.gui";
 	
 	private JFrame frame;
+	
 	private JToolBar toolBar;
+	
+	private JTextArea area;
+	
+	private ActionListener actionListener;
 	
 	private ToolbarActionTracker actionTracker;
 
@@ -43,13 +51,18 @@ public class GUIActivator extends DependencyActivatorBase {
 	@Override
 	public void start(BundleContext context) throws Exception {
 		
-		FileChooserDialog fcd = new FileChooserDialog();
-		fcd.setVisible(true);
+//		FileChooserDialog fcd = new FileChooserDialog();
+//		fcd.setVisible(true);
 		frame = new JFrame(FRAME_TITLE);
 		toolBar = new JToolBar();
-		
+		area = new JTextArea();
+		actionListener = new MyActionListener();
 		actionTracker = new ToolbarActionTracker(context, toolBar);
 		actionTracker.open();
+		
+		createMenuContent();
+		
+		createWorkspaceContent();
 		
 		createFrameContent();
 	}
@@ -84,16 +97,7 @@ public class GUIActivator extends DependencyActivatorBase {
 		
 	}
 	
-	public void createFrameContent() {
-		File home = new File(System.getProperty("user.home"));
-		
-		Container contentPane = frame.getContentPane();
-		contentPane.setLayout(new BorderLayout());
-		
-		JButton btn = new JButton("d");
-		ActionListener actionListener = new MyActionListener();
-		
-		
+	public void createMenuContent() {
 //		MENU
 		JMenuBar menubar = new JMenuBar();
 		JMenu menu = new JMenu("File");
@@ -102,8 +106,9 @@ public class GUIActivator extends DependencyActivatorBase {
 		menu.add(itm);
 		
 		itm = new JMenuItem("Open");
-		itm.addActionListener(actionListener);
+//		itm.addActionListener(actionListener);
 		menu.add(itm);
+		itm.addActionListener(new FileChooserAction(area, frame));
 		
 		itm = new JMenuItem("Сохранить");
 		itm.addActionListener(actionListener);
@@ -123,12 +128,19 @@ public class GUIActivator extends DependencyActivatorBase {
 		menu.add(itm);
 		
 		menubar.add(menu);
-		
-		
-		
-		
-		
 //		END MENU
+	}
+	
+	public void createWorkspaceContent() {
+		area.setBorder(BorderFactory.createEmptyBorder());
+		JScrollPane pane = new JScrollPane();
+		pane.getViewport().add(area);
+		
+		frame.add(pane);
+	}
+	
+	public void createFrameContent() {
+		JButton btn = new JButton("d");
 		frame.add(toolBar, BorderLayout.NORTH);
 		toolBar.add(btn);
 		btn.addActionListener(actionListener);
@@ -137,18 +149,6 @@ public class GUIActivator extends DependencyActivatorBase {
 		
 		frame.setSize(300, 300);
 		frame.setVisible(true);
-		
-		btn.addActionListener(new ActionListener() {
-			
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				// TODO Auto-generated method stub
-				JFileChooser fileChooser = new JFileChooser();
-				fileChooser.setVisible(true);
-				System.out.println("fileChooser");
-			}
-		});
-		
 		frame.pack();
 				
 	}

@@ -62,7 +62,7 @@ public class FileChooserDialog extends JFrame {
 
 					if (ret == JFileChooser.APPROVE_OPTION) {
 						File file = fileopen.getSelectedFile();
-						String text = readFile(file);
+						String text = AdditionFunctions.readFile(file);
 						area.setText(text);
 					}
 				}
@@ -100,29 +100,5 @@ public class FileChooserDialog extends JFrame {
 			setSize(FRAME_WIDTH, FRAME_HEIGHT);
 			setLocationRelativeTo(null);
 			setDefaultCloseOperation(EXIT_ON_CLOSE);
-		}
-
-		public String readFile(final File file) {
-			StringBuffer fileBuffer = null;
-			String fileString = null;
-			String line = null;
-
-			try {
-				FileReader in = new FileReader(file);
-				BufferedReader brd = new BufferedReader(in);
-				fileBuffer = new StringBuffer();
-
-				while ((line = brd.readLine()) != null) {
-					fileBuffer.append(line).append(
-							System.getProperty("line.separator")
-							);
-				}
-				in.close();
-				fileString = fileBuffer.toString();
-			} catch (IOException e) {
-				System.out.println("FileChooserDialog exception " + e);
-				return null;
-			}
-			return fileString;
 		}
 }
