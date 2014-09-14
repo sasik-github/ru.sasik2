@@ -1,19 +1,17 @@
 package ru.sasik.gui.simple;
 
 import java.awt.BorderLayout;
-import java.awt.Container;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.io.File;
 
 import javax.swing.BorderFactory;
 import javax.swing.JButton;
-import javax.swing.JFileChooser;
 import javax.swing.JFrame;
 import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
 import javax.swing.JScrollPane;
+import javax.swing.JTabbedPane;
 import javax.swing.JTextArea;
 import javax.swing.JToolBar;
 
@@ -32,6 +30,8 @@ public class GUIActivator extends DependencyActivatorBase {
 	private JToolBar toolBar;
 	
 	private JTextArea area;
+	
+	private JTabbedPane tabbedPane;
 	
 	private ActionListener actionListener;
 	
@@ -56,6 +56,7 @@ public class GUIActivator extends DependencyActivatorBase {
 		frame = new JFrame(FRAME_TITLE);
 		toolBar = new JToolBar();
 		area = new JTextArea();
+		tabbedPane = new JTabbedPane(); 
 		actionListener = new MyActionListener();
 		actionTracker = new ToolbarActionTracker(context, toolBar);
 		actionTracker.open();
@@ -132,11 +133,15 @@ public class GUIActivator extends DependencyActivatorBase {
 	}
 	
 	public void createWorkspaceContent() {
+		//data source
 		area.setBorder(BorderFactory.createEmptyBorder());
 		JScrollPane pane = new JScrollPane();
 		pane.getViewport().add(area);
 		
-		frame.add(pane);
+		tabbedPane.addTab("Source", pane);
+		tabbedPane.addTab("Designer", new JTextArea("Here will be designer..."));
+		frame.add(tabbedPane);
+		
 	}
 	
 	public void createFrameContent() {
@@ -147,7 +152,7 @@ public class GUIActivator extends DependencyActivatorBase {
 		frame.setLocationRelativeTo(null);
 //		f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		
-		frame.setSize(300, 300);
+//		frame.setSize(300, 300);
 		frame.setVisible(true);
 		frame.pack();
 				

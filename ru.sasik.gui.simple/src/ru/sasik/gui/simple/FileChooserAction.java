@@ -5,8 +5,8 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.File;
 
-import javax.swing.AbstractAction;
 import javax.swing.JFileChooser;
+import javax.swing.JFrame;
 import javax.swing.JTextArea;
 import javax.swing.filechooser.FileFilter;
 import javax.swing.filechooser.FileNameExtensionFilter;
@@ -15,9 +15,9 @@ public class FileChooserAction implements ActionListener {
 
 	private JTextArea area;
 	
-	private Object frame;
+	private JFrame frame;
 	
-	public FileChooserAction(JTextArea area, Object frame) {
+	public FileChooserAction(JTextArea area, JFrame frame) {
 		this.area = area;
 		this.frame = frame;
 	}
@@ -42,6 +42,7 @@ public class FileChooserAction implements ActionListener {
 			String text = AdditionFunctions.readFile(file);
 			System.out.println(area);
 			area.setText(text);
+			frame.pack();
 		}
 
 	}
