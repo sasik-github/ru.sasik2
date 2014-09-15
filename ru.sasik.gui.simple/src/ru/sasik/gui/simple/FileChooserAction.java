@@ -11,6 +11,8 @@ import javax.swing.JTextArea;
 import javax.swing.filechooser.FileFilter;
 import javax.swing.filechooser.FileNameExtensionFilter;
 
+import ru.sasik.datafile.DefaultDataFile;
+
 public class FileChooserAction implements ActionListener {
 
 	private JTextArea area;
@@ -39,6 +41,8 @@ public class FileChooserAction implements ActionListener {
 
 		if (ret == JFileChooser.APPROVE_OPTION) {
 			File file = fileopen.getSelectedFile();
+			DefaultDataFile data = new DefaultDataFile();
+			data.openFromFile(file);
 			String text = AdditionFunctions.readFile(file);
 			System.out.println(area);
 			area.setText(text);

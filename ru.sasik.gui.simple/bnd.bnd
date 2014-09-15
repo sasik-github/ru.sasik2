@@ -2,7 +2,10 @@ Bundle-Version: 0.0.0.${tstamp}
 -buildpath:  \
 	ru.sasik.gui;version=latest,\
 	org.apache.felix.dependencymanager,\
-	osgi.core
+	osgi.core,\
+	ru.sasik.datafile;version=latest
 Private-Package:  \
 	ru.sasik.gui.simple
 Bundle-Activator: ru.sasik.gui.simple.GUIActivator
+-dsannotations:  \
+	*

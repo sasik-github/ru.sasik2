@@ -51,8 +51,6 @@ public class GUIActivator extends DependencyActivatorBase {
 	@Override
 	public void start(BundleContext context) throws Exception {
 		
-//		FileChooserDialog fcd = new FileChooserDialog();
-//		fcd.setVisible(true);
 		frame = new JFrame(FRAME_TITLE);
 		toolBar = new JToolBar();
 		area = new JTextArea();

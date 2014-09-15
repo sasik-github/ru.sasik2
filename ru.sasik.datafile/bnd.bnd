@@ -1,0 +1,6 @@
+Bundle-Version: 0.0.0.${tstamp}
+Export-Package:  \
+	ru.sasik.datafile
+-buildpath:  \
+	osgi.core
+Bundle-Activator: ru.sasik.datafile.Activator

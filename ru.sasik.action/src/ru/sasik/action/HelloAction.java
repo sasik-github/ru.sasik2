@@ -10,7 +10,7 @@ import javax.swing.JOptionPane;
 public class HelloAction extends AbstractAction {
 
 	public HelloAction() {
-		super("Hello");
+		super("view");
 	}
 
 	@Override
