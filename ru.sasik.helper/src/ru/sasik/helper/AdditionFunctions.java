@@ -1,4 +1,4 @@
-package ru.sasik.gui.simple;
+package ru.sasik.helper;
 
 import java.io.BufferedReader;
 import java.io.File;

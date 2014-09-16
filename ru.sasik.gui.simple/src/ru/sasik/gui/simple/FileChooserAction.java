@@ -12,6 +12,7 @@ import javax.swing.filechooser.FileFilter;
 import javax.swing.filechooser.FileNameExtensionFilter;
 
 import ru.sasik.datafile.DefaultDataFile;
+import ru.sasik.helper.AdditionFunctions;
 
 public class FileChooserAction implements ActionListener {
 
@@ -41,6 +42,7 @@ public class FileChooserAction implements ActionListener {
 
 		if (ret == JFileChooser.APPROVE_OPTION) {
 			File file = fileopen.getSelectedFile();
+			System.out.println(file.getPath());
 			DefaultDataFile data = new DefaultDataFile();
 			data.openFromFile(file);
 			String text = AdditionFunctions.readFile(file);

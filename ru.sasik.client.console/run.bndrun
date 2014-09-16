@@ -27,4 +27,5 @@
 	ru.sasik.datafile;version=latest,\
 	ru.sasik.gui;version=latest,\
 	ru.sasik.gui.simple;version=latest,\
+	ru.sasik.helper;version=latest,\
 	ru.sasik.service.simple;version=latest

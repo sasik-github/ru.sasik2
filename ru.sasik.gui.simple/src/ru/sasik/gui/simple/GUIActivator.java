@@ -3,6 +3,7 @@ package ru.sasik.gui.simple;
 import java.awt.BorderLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.File;
 
 import javax.swing.BorderFactory;
 import javax.swing.JButton;
@@ -19,6 +20,7 @@ import org.apache.felix.dm.DependencyActivatorBase;
 import org.apache.felix.dm.DependencyManager;
 import org.osgi.framework.BundleContext;
 
+import ru.sasik.datafile.DefaultDataFile;
 import ru.sasik.gui.IGUI;
 
 public class GUIActivator extends DependencyActivatorBase {
@@ -58,6 +60,10 @@ public class GUIActivator extends DependencyActivatorBase {
 		actionListener = new MyActionListener();
 		actionTracker = new ToolbarActionTracker(context, toolBar);
 		actionTracker.open();
+		
+		File file = new File("/home/sasik/Projects/ru.sasik/data/SERG.DAT");
+		DefaultDataFile data = new DefaultDataFile();
+		data.openFromFile(file);
 		
 		createMenuContent();
 		

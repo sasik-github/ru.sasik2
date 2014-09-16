@@ -2,5 +2,6 @@ Bundle-Version: 0.0.0.${tstamp}
 Export-Package:  \
 	ru.sasik.datafile
 -buildpath:  \
-	osgi.core
+	osgi.core,\
+	ru.sasik.helper;version=latest
 Bundle-Activator: ru.sasik.datafile.Activator
