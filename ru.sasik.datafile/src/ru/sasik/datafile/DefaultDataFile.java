@@ -124,13 +124,13 @@ public class DefaultDataFile implements Serializable {
 				line = lines[++i];
 				while (!line.startsWith("[")) {
 					String [] tokens = line.split("[ ]+");
-//					System.out.println("one " + tokens[0] + "two " + tokens[1] + "three " + tokens[2] + "four " + tokens[3]);
 					n = Integer.parseInt(tokens[1]);
 					x = Double.parseDouble(tokens[2]);
 					y = Double.parseDouble(tokens[3]);
 					unknown1 = Integer.parseInt(tokens[4]);
 					unknown2 = Double.parseDouble(tokens[5]);
 					node = new Point(n, x, y, unknown1, unknown2);
+					nodes.add(node);
 					System.out.println("\t" + node);
 					line = lines[++i];
 				}

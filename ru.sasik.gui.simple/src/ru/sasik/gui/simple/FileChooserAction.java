@@ -20,9 +20,16 @@ public class FileChooserAction implements ActionListener {
 	
 	private JFrame frame;
 	
-	public FileChooserAction(JTextArea area, JFrame frame) {
+	private CanvasPanel canvasPanel;
+	
+	private DefaultDataFile dataFile;
+	
+	
+	public FileChooserAction(JTextArea area, JFrame frame, DefaultDataFile dataFile, CanvasPanel canvasPanel) {
 		this.area = area;
 		this.frame = frame;
+		this.dataFile = dataFile;
+		this.canvasPanel = canvasPanel;
 	}
 
 	@Override
@@ -43,8 +50,9 @@ public class FileChooserAction implements ActionListener {
 		if (ret == JFileChooser.APPROVE_OPTION) {
 			File file = fileopen.getSelectedFile();
 			System.out.println(file.getPath());
-			DefaultDataFile data = new DefaultDataFile();
-			data.openFromFile(file);
+			dataFile = new DefaultDataFile();
+			dataFile.openFromFile(file);
+			canvasPanel.setDataFile(dataFile);
 			String text = AdditionFunctions.readFile(file);
 			System.out.println(area);
 			area.setText(text);

@@ -35,7 +35,11 @@ public class GUIActivator extends DependencyActivatorBase {
 	
 	private JTabbedPane tabbedPane;
 	
+	private CanvasPanel canvasPanel;
+	
 	private ActionListener actionListener;
+	
+	private DefaultDataFile dataFile;
 	
 	private ToolbarActionTracker actionTracker;
 
@@ -57,13 +61,14 @@ public class GUIActivator extends DependencyActivatorBase {
 		toolBar = new JToolBar();
 		area = new JTextArea();
 		tabbedPane = new JTabbedPane(); 
+		canvasPanel = new CanvasPanel();
 		actionListener = new MyActionListener();
 		actionTracker = new ToolbarActionTracker(context, toolBar);
 		actionTracker.open();
 		
-		File file = new File("/home/sasik/Projects/ru.sasik/data/SERG.DAT");
-		DefaultDataFile data = new DefaultDataFile();
-		data.openFromFile(file);
+//		File file = new File("/home/sasik/Projects/ru.sasik/data/SERG.DAT");
+//		DefaultDataFile data = new DefaultDataFile();
+//		data.openFromFile(file);
 		
 		createMenuContent();
 		
@@ -113,7 +118,7 @@ public class GUIActivator extends DependencyActivatorBase {
 		itm = new JMenuItem("Open");
 //		itm.addActionListener(actionListener);
 		menu.add(itm);
-		itm.addActionListener(new FileChooserAction(area, frame));
+		itm.addActionListener(new FileChooserAction(area, frame, dataFile, canvasPanel));
 		
 		itm = new JMenuItem("Сохранить");
 		itm.addActionListener(actionListener);
@@ -143,7 +148,7 @@ public class GUIActivator extends DependencyActivatorBase {
 		pane.getViewport().add(area);
 		
 		tabbedPane.addTab("Source", pane);
-		tabbedPane.addTab("Designer", new JTextArea("Here will be designer..."));
+		tabbedPane.addTab("Designer", canvasPanel);
 		frame.add(tabbedPane);
 		
 	}
