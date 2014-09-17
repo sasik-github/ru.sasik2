@@ -7,8 +7,6 @@ import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-import javax.swing.text.html.HTMLDocument.HTMLReader.SpecialAction;
-
 import ru.sasik.helper.AdditionFunctions;
 
 public class DefaultDataFile implements Serializable {
@@ -24,7 +22,7 @@ public class DefaultDataFile implements Serializable {
 //	public List<> otherParameter;
 	public List<Double> winstruct;
 //	public List<> lines;
-	
+
 	public DefaultDataFile() {
 		main = new ArrayList<Integer>();
 		time = new ArrayList<Double>();
@@ -39,7 +37,7 @@ public class DefaultDataFile implements Serializable {
 		winstruct = new ArrayList<Double>();
 //		lines = new ArrayList<Integer>();
 	}
-	
+
 	public void openFromFile(File file) {
 		System.out.println("Start parse from file");
 		String text = AdditionFunctions.readFile(file);
@@ -58,7 +56,7 @@ public class DefaultDataFile implements Serializable {
 					m = p.matcher(line);
 					m.find();
 					main.add(Integer.parseInt(m.group()));
-					System.out.println(Integer.parseInt((m.group())) + " = " + line);
+//					System.out.println(Integer.parseInt((m.group())) + " = " + line);
 					line = lines[++i];
 				}
 				i--;
@@ -70,7 +68,7 @@ public class DefaultDataFile implements Serializable {
 					m = p.matcher(line);
 					m.find();
 					time.add(Double.parseDouble(m.group()));
-					System.out.println(Double.parseDouble(m.group()) + " = " + line);
+//					System.out.println(Double.parseDouble(m.group()) + " = " + line);
 					line = lines[++i];
 				}
 				i--;
@@ -82,11 +80,11 @@ public class DefaultDataFile implements Serializable {
 					m = p.matcher(line);
 					m.find();
 					phisical.add(Double.parseDouble(m.group()));
-					System.out.println(Double.parseDouble(m.group()) + " = " + line);
+//					System.out.println(Double.parseDouble(m.group()) + " = " + line);
 					line = lines[++i];
 				}
 				i--;
-			} else 
+			} else
 			if (line.contains("[DOMAIN]")) {
 				line = lines[++i];
 				p = Pattern.compile("-?[\\d\\.]+");
@@ -94,7 +92,7 @@ public class DefaultDataFile implements Serializable {
 					m = p.matcher(line);
 					m.find();
 					domain.add(Integer.parseInt(m.group()));
-					System.out.println(Integer.parseInt(m.group()) + " = " + line);
+//					System.out.println(Integer.parseInt(m.group()) + " = " + line);
 					line = lines[++i];
 				}
 				i--;
@@ -109,9 +107,11 @@ public class DefaultDataFile implements Serializable {
 					// so i must use try catch block for avoiding that
 					try {
 						output.add(Integer.parseInt(m.group()));
-						System.out.println(Integer.parseInt(m.group()) + " = " + line);
+//						System.out.println(Integer.parseInt(m.group()) + " = " + line);
 					} catch (NumberFormatException e) {
-						System.err.println("[OUTPUT] " + e);
+						System.err.println(
+								"[OUTPUT] " + e
+						);
 					}
 					line = lines[++i];
 				}
@@ -134,9 +134,7 @@ public class DefaultDataFile implements Serializable {
 					System.out.println("\t" + node);
 					line = lines[++i];
 				}
-				
-				
-				
+
 //				p = Pattern.compile("-?[\\d\\.]+");
 //				while (!line.startsWith("[")) {
 //					m = p.matcher(line);
@@ -156,7 +154,7 @@ public class DefaultDataFile implements Serializable {
 //					line = lines[++i];
 //				}
 				i--;
-			} else 
+			} else
 			if (line.contains("[REGION]")) {
 				line = lines[++i];
 				while (!line.startsWith("[")) {

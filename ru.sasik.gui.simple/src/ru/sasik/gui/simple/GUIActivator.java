@@ -56,45 +56,46 @@ public class GUIActivator extends DependencyActivatorBase {
 
 	@Override
 	public void start(BundleContext context) throws Exception {
-		
+
 		frame = new JFrame(FRAME_TITLE);
 		toolBar = new JToolBar();
 		area = new JTextArea();
-		tabbedPane = new JTabbedPane(); 
+		tabbedPane = new JTabbedPane();
 		canvasPanel = new CanvasPanel();
 		actionListener = new MyActionListener();
 		actionTracker = new ToolbarActionTracker(context, toolBar);
 		actionTracker.open();
-		
-		File file = new File("/home/sasik/Dropbox/11111/Akord/SERG.DAT");
+
+		File file = new File(
+				"/home/sasik/Dropbox/11111/Akord/SERG.DAT"
+		);
 		DefaultDataFile data = new DefaultDataFile();
 		data.openFromFile(file);
 		canvasPanel.setDataFile(data);
-		
+
 		createMenuContent();
-		
+
 		createWorkspaceContent();
-		
+
 		createFrameContent();
-		
+
 		frame.pack();
 	}
 
 	@Override
-	public void stop(BundleContext context) throws Exception {
+	public void stop(final BundleContext context) throws Exception {
 		actionTracker.close();
 		frame.dispose();
 	}
-	
+
 	public class MyActionListener implements ActionListener {
 
 		@Override
-		public void actionPerformed(ActionEvent e) {
+		public void actionPerformed(final ActionEvent e) {
 			// TODO Auto-generated method stub
 			try {
 //				JMenuItem itm = (JMenuItem)e.getSource();
 			} catch (Exception e2) {
-				// TODO: handle exception
 				System.out.println("Button error");
 			} finally {
 //				System.out.println(e.);
@@ -104,12 +105,10 @@ public class GUIActivator extends DependencyActivatorBase {
 					System.exit(0);
 				}
 			}
-		
-			
 		}
-		
+
 	}
-	
+
 	public void createMenuContent() {
 //		MENU
 		JMenuBar menubar = new JMenuBar();
@@ -117,29 +116,36 @@ public class GUIActivator extends DependencyActivatorBase {
 		JMenuItem itm = new JMenuItem("New");
 		itm.addActionListener(actionListener);
 		menu.add(itm);
-		
+
 		itm = new JMenuItem("Open");
 //		itm.addActionListener(actionListener);
 		menu.add(itm);
-		itm.addActionListener(new FileChooserAction(area, frame, dataFile, canvasPanel));
-		
+		itm.addActionListener(
+				new FileChooserAction(
+						area,
+						frame,
+						dataFile,
+						canvasPanel
+				)
+		);
+
 		itm = new JMenuItem("Сохранить");
 		itm.addActionListener(actionListener);
 		menu.add(itm);
-		
+
 		itm = new JMenuItem("Close");
 		itm.addActionListener(actionListener);
 		menu.add(itm);
-		
+
 		menubar.add(menu);
 		frame.setJMenuBar(menubar);
-		
+
 		menu = new JMenu("Edit");
-		
+
 		itm = new JMenuItem("copy");
 		itm.addActionListener(actionListener);
 		menu.add(itm);
-		
+
 		menubar.add(menu);
 //		END MENU
 	}
@@ -149,13 +155,13 @@ public class GUIActivator extends DependencyActivatorBase {
 		area.setBorder(BorderFactory.createEmptyBorder());
 		JScrollPane pane = new JScrollPane();
 		pane.getViewport().add(area);
-		
+
 		tabbedPane.addTab("Source", pane);
 		tabbedPane.addTab("Designer", canvasPanel);
 		frame.add(tabbedPane);
-		
+
 	}
-	
+
 	public void createFrameContent() {
 		JButton btn = new JButton("d");
 		frame.add(toolBar, BorderLayout.NORTH);
@@ -163,11 +169,10 @@ public class GUIActivator extends DependencyActivatorBase {
 		btn.addActionListener(actionListener);
 		frame.setLocationRelativeTo(null);
 //		f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		
+
 //		frame.setSize(300, 300);
 		frame.setVisible(true);
 //		frame.pack();
-				
 	}
 
 }
