@@ -12,13 +12,21 @@ import ru.sasik.datafile.Point;
 
 public class CanvasPanel extends JPanel {
 	
-	private static final int X_ORIGIN = 300;
+	private static final int X_ORIGIN = 100;
 
-	private static final int Y_ORIGIN = 300;
+	private static final int Y_ORIGIN = 200;
 	
 	private static final int X_RADIUS = 2;
 	
 	private static final int Y_RADIUS = 2;
+	
+	private static final int ORIGIN_LENGTH = 50;
+	
+	private static final Color DATA_COLOR = Color.red;
+	
+	private static final Color ORIGIN_COLOR = Color.blue;
+	
+	private static final int Y_REVERSE = -1;
 
 	private DefaultDataFile dataFile;
 	
@@ -30,33 +38,49 @@ public class CanvasPanel extends JPanel {
 		
 		setVisible(true);
 	}
-
-	@Override
-	public void paintComponent(Graphics g) {
-		super.paintComponents(g);
-		Graphics2D g2= (Graphics2D) g;
-    	
-	    Rectangle r = getBounds();
-	    g2.setBackground(Color.white);
-	    g2.clearRect(0, 0, r.width, r.height);	
-	    	
-	    g.setColor(Color.red);
-	    
-	    try {
+	
+	private void paintCoord(Graphics2D g2d) {
+		g2d.setColor(ORIGIN_COLOR);
+		//OX
+		g2d.drawLine(X_ORIGIN, Y_ORIGIN, X_ORIGIN + ORIGIN_LENGTH, Y_ORIGIN);
+		g2d.drawLine(X_ORIGIN + ORIGIN_LENGTH, Y_ORIGIN, X_ORIGIN + ORIGIN_LENGTH - 10, Y_ORIGIN + 5);
+		g2d.drawLine(X_ORIGIN + ORIGIN_LENGTH, Y_ORIGIN, X_ORIGIN + ORIGIN_LENGTH - 10, Y_ORIGIN - 5);
+		//OY
+		g2d.drawLine(X_ORIGIN, Y_ORIGIN, X_ORIGIN, Y_ORIGIN + ORIGIN_LENGTH * Y_REVERSE);
+		g2d.drawLine(X_ORIGIN, Y_ORIGIN + ORIGIN_LENGTH * Y_REVERSE, X_ORIGIN + 5, Y_ORIGIN + (ORIGIN_LENGTH - 10) * Y_REVERSE);
+		g2d.drawLine(X_ORIGIN, Y_ORIGIN + ORIGIN_LENGTH * Y_REVERSE, X_ORIGIN - 5, Y_ORIGIN + (ORIGIN_LENGTH -10) *  Y_REVERSE);
+	}
+	
+	private void paintData(Graphics2D g2d) {
+		   
+		try {
+			g2d.setColor(DATA_COLOR);
 	    	for (Point node : dataFile.nodes) {
-		    	g.drawOval((int)((node.getX() + DX) * CONVERTER + X_ORIGIN), (int)((node.getY() + DY) * CONVERTER + Y_ORIGIN), X_RADIUS, Y_RADIUS);
+		    	g2d.drawOval((int)((node.getX() + DX) * CONVERTER + X_ORIGIN), (int)((node.getY() + DY) * CONVERTER * Y_REVERSE+ Y_ORIGIN), X_RADIUS, Y_RADIUS);
 		    }
+	    	System.out.println("Nodes size" + dataFile.nodes.size());
 		} catch (NullPointerException e) {
 			// TODO: handle exception
 			System.err.println("Cant draw data file cause " + e);
 		}
+	}
+
+	@Override
+	public void paintComponent(Graphics g) {
+		super.paintComponents(g);
+		Graphics2D g2d = (Graphics2D) g;
+    	
+	    Rectangle r = getBounds();
+	    g2d.setBackground(Color.white);
+	    g2d.clearRect(0, 0, r.width, r.height);
 	    
-	    
-	    System.out.println("Nodes size" + dataFile.nodes.size());
-	    g.drawString("Hello, world", 20, 20);
-//	    g.fillRect(60,60, 120, 120);
+	    paintCoord(g2d);
+	    paintData(g2d);
+	    g2d.dispose();
 		
 	}
+	
+	
 	
 	public void setDataFile(DefaultDataFile dataFile) {
 		

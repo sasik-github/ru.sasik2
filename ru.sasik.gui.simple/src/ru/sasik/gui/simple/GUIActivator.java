@@ -66,15 +66,18 @@ public class GUIActivator extends DependencyActivatorBase {
 		actionTracker = new ToolbarActionTracker(context, toolBar);
 		actionTracker.open();
 		
-//		File file = new File("/home/sasik/Projects/ru.sasik/data/SERG.DAT");
-//		DefaultDataFile data = new DefaultDataFile();
-//		data.openFromFile(file);
+		File file = new File("/home/sasik/Dropbox/11111/Akord/SERG.DAT");
+		DefaultDataFile data = new DefaultDataFile();
+		data.openFromFile(file);
+		canvasPanel.setDataFile(data);
 		
 		createMenuContent();
 		
 		createWorkspaceContent();
 		
 		createFrameContent();
+		
+		frame.pack();
 	}
 
 	@Override
@@ -163,7 +166,7 @@ public class GUIActivator extends DependencyActivatorBase {
 		
 //		frame.setSize(300, 300);
 		frame.setVisible(true);
-		frame.pack();
+//		frame.pack();
 				
 	}
 
