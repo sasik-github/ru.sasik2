@@ -67,7 +67,7 @@ public class GUIActivator extends DependencyActivatorBase {
 		actionTracker.open();
 
 		File file = new File(
-				"/home/sasik/Dropbox/11111/Akord/SERG.DAT"
+				"/home/sasik/Dropbox/11111/Akord/DMITRY.DAT"
 		);
 		DefaultDataFile data = new DefaultDataFile();
 		data.openFromFile(file);

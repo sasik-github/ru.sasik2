@@ -14,5 +14,7 @@ public class ConsoleClient {
 		for (Conference conf : conferences) {
 			System.out.println(conf);
 		}
+		
+		new TestDraw();
 	}
 }
