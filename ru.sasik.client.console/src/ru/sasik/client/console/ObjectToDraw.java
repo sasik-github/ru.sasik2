@@ -1,5 +1,6 @@
 package ru.sasik.client.console;
 
+import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
@@ -14,9 +15,9 @@ public class ObjectToDraw extends JComponent {
 	public ObjectToDraw(int x, int y) {
 		this.x = x;
 		this.y = y;
-		addMouseListener(new DragMouseAdapter());
-		setTransferHandler(new TransferHandler("point"));
-		setPreferredSize(new Dimension(10, 10));;
+//		addMouseListener(new DragMouseAdapter());
+//		setTransferHandler(new TransferHandler("point"));
+//		setPreferredSize(new Dimension(10, 10));;
 	}
 
 	private int x;
@@ -25,9 +26,12 @@ public class ObjectToDraw extends JComponent {
 
 	@Override
 	protected void paintComponent(Graphics arg0) {
+		super.paintComponent(arg0);
 		Graphics2D g2d = (Graphics2D) arg0;
 		
-		g2d.drawOval(x, y, 3, 3);
+		g2d.setColor(Color.red);
+		
+		g2d.drawOval(x, y, 5, 5);
 	}
 	
 	
