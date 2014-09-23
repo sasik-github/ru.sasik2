@@ -7,6 +7,7 @@ import java.awt.event.ActionListener;
 
 import javax.swing.BoxLayout;
 import javax.swing.JButton;
+import javax.swing.JColorChooser;
 import javax.swing.JDialog;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -36,15 +37,15 @@ public class PropertiesChanger extends JDialog implements ActionListener{
 	
 	private JTextField Y_REVERSE;
 
-	private JTextField DX; 
-
-	private JTextField DY;
+//	private JTextField DX; 
+//
+//	private JTextField DY;
 
 	private JTextField CONVERTER;
 
-//	private static Color DATA_COLOR = Color.red;
-//
-//	private static Color ORIGIN_COLOR = Color.blue;
+	private static Color DATA_COLOR = Color.red;
+
+	private static Color ORIGIN_COLOR = Color.blue;
 
 	
 
@@ -122,6 +123,16 @@ public class PropertiesChanger extends JDialog implements ActionListener{
 		panel.add(new JLabel("Converter"));
 		panel.add(CONVERTER);
 		
+		JButton btnColor = new JButton("Data color");
+		btnColor.addActionListener(new ColorActionListener("data"));
+		btnColor.setBackground(DATA_COLOR);
+		panel.add(btnColor);
+		
+		btnColor = new JButton("Origin color");
+		btnColor.addActionListener(new ColorActionListener("origin"));
+		btnColor.setBackground(ORIGIN_COLOR);
+		panel.add(btnColor);
+		
 	}
 	
 	public void saveChange() {
@@ -134,8 +145,51 @@ public class PropertiesChanger extends JDialog implements ActionListener{
 		canvasPanel.setORIGIN_ARROW_5(Integer.parseInt(ORIGIN_ARROW_5.getText()));
 		canvasPanel.setY_REVERSE(Integer.parseInt(Y_REVERSE.getText()));
 		canvasPanel.setCONVERTER(Integer.parseInt(CONVERTER.getText()));
+		canvasPanel.setDATA_COLOR(DATA_COLOR);
+		canvasPanel.setORIGIN_COLOR(ORIGIN_COLOR);
 	}
 	
-	
+	public class ColorActionListener implements ActionListener {
+		
+		private String typeOfColor;
+		
+		
+
+		public ColorActionListener(String typeOfColor) {
+			this.typeOfColor = typeOfColor;
+		}
+
+
+
+		@Override
+		public void actionPerformed(ActionEvent e) {
+			Color oldColor = null;
+			Color color;
+			switch (typeOfColor.toLowerCase()) {
+			case "data":
+				oldColor = DATA_COLOR;
+				break;
+			case "origin":
+				oldColor = ORIGIN_COLOR;
+				break;
+			}
+			
+			color = JColorChooser.showDialog(PropertiesChanger.this, "Choose a color", oldColor);
+			
+			if ( color != null) {
+				((JButton) e.getSource()).setBackground(color);
+				switch (typeOfColor.toLowerCase()) {
+				case "data":
+					DATA_COLOR = color;
+					break;
+				case "origin":
+					ORIGIN_COLOR = color;
+					break;
+				}
+			}
+			
+		}
+		
+	}
 
 }
