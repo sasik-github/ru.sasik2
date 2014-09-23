@@ -27,6 +27,10 @@ public class GUIActivator extends DependencyActivatorBase {
 	
 	private static final String FRAME_TITLE  = "ru.sasik.gui";
 	
+	private static int WIDTH = 1000;
+	
+	private static int HEIGHT = 700;
+	
 	private JFrame frame;
 	
 	private JToolBar toolBar;
@@ -78,8 +82,8 @@ public class GUIActivator extends DependencyActivatorBase {
 		createWorkspaceContent();
 
 		createFrameContent();
-
-		frame.pack();
+		frame.setSize(WIDTH, HEIGHT);
+//		frame.pack();
 	}
 
 	@Override
@@ -145,6 +149,17 @@ public class GUIActivator extends DependencyActivatorBase {
 		itm = new JMenuItem("copy");
 		itm.addActionListener(actionListener);
 		menu.add(itm);
+		
+		itm = new JMenuItem("Properties");
+		itm.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent arg0) {
+				new PropertiesChanger(canvasPanel);
+				
+			}
+		});
+		menu.add(itm);
 
 		menubar.add(menu);
 //		END MENU
@@ -156,8 +171,9 @@ public class GUIActivator extends DependencyActivatorBase {
 		JScrollPane pane = new JScrollPane();
 		pane.getViewport().add(area);
 
-		tabbedPane.addTab("Source", pane);
 		tabbedPane.addTab("Designer", canvasPanel);
+		tabbedPane.addTab("Source", pane);
+		
 		frame.add(tabbedPane);
 
 	}
