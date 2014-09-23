@@ -11,16 +11,18 @@ import ru.sasik.datafile.DefaultDataFile;
 import ru.sasik.datafile.Point;
 
 public class CanvasPanel extends JPanel {
+	
+	private static Integer CONVERTER = 70;
 
-	private static int X_ORIGIN = 100;
+	private static int X_ORIGIN = 2 * CONVERTER;
 
-	private static int Y_ORIGIN = 200;
+	private static int Y_ORIGIN = 2 * CONVERTER;
 
 	private static int X_RADIUS = 2;
 
 	private static int Y_RADIUS = 2;
 
-	private static int ORIGIN_LENGTH = 50;
+	private static int ORIGIN_LENGTH = CONVERTER;
 
 	private static int ORIGIN_ARROW_10 = 10;
 
@@ -38,7 +40,6 @@ public class CanvasPanel extends JPanel {
 
 	private static Double DY = 0.0;
 
-	private static Integer CONVERTER = 50;
 
 	public CanvasPanel() {
 
@@ -93,7 +94,7 @@ public class CanvasPanel extends JPanel {
 		for (int i = 0; i < canvasWidth; i += CONVERTER) {
 			g2d.drawLine(i, 0, i, canvasHeight);
 		}
-		System.out.println("Canvas size " + canvasHeight + " " + canvasWidth);
+		System.out.println("Canvas size  " + canvasHeight + " " + canvasWidth);
 		
 	}
 
@@ -102,7 +103,7 @@ public class CanvasPanel extends JPanel {
 		try {
 			g2d.setColor(DATA_COLOR);
 	    	for (Point node : dataFile.nodes) {
-		    	g2d.drawOval(
+		    	g2d.fillOval(
 		    			(int) ((node.getX() + DX) * CONVERTER + X_ORIGIN),
 		    			(int) ((node.getY() + DY) * CONVERTER * Y_REVERSE + Y_ORIGIN),
 		    			X_RADIUS,
