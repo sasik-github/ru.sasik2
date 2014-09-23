@@ -80,6 +80,22 @@ public class CanvasPanel extends JPanel {
 				Y_ORIGIN + (ORIGIN_LENGTH -ORIGIN_ARROW_10) *  Y_REVERSE
 		);
 	}
+	
+	private void paintCoordGrid(final Graphics2D g2d) {
+		
+		int canvasHeight = getSize().height;
+		int canvasWidth = getSize().width;
+		
+		g2d.setColor(Color.black);
+		for (int i = 0; i < canvasHeight; i += CONVERTER) {
+			g2d.drawLine(0, i, canvasWidth, i);
+		}
+		for (int i = 0; i < canvasWidth; i += CONVERTER) {
+			g2d.drawLine(i, 0, i, canvasHeight);
+		}
+		System.out.println("Canvas size " + canvasHeight + " " + canvasWidth);
+		
+	}
 
 	private void paintData(final Graphics2D g2d) {
 
@@ -108,6 +124,7 @@ public class CanvasPanel extends JPanel {
 	    g2d.setBackground(Color.white);
 	    g2d.clearRect(0, 0, r.width, r.height);
 
+	    paintCoordGrid(g2d);
 	    paintCoord(g2d);
 	    paintData(g2d);
 	    g2d.dispose();

@@ -64,8 +64,8 @@ public class PropertiesChanger extends JDialog implements ActionListener{
 		panel.add(button);
 		panel.setLayout(new BoxLayout(panel, BoxLayout.PAGE_AXIS));
 		add(panel);
-		pack();
 		setVisible(true);
+		pack();
 		
 	}
 
