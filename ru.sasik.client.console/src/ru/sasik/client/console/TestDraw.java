@@ -5,6 +5,7 @@ import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.HeadlessException;
 
+import javax.swing.JComponent;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
@@ -23,12 +24,12 @@ public class TestDraw extends JFrame {
 		setTitle("Test Draw");
 		setSize(400, 500);
 //		setLayout(null);
-		ObjectToDraw obj1 = new ObjectToDraw(100, 150);
-		ObjectToDraw obj2 = new ObjectToDraw(150, 150);
-		ObjectToDraw obj3 = new ObjectToDraw(150, 100);
-		panel.add(obj1, 0);
-		panel.add(obj2, 0);
-		panel.add(obj3);
+//		ObjectToDraw obj1 = new ObjectToDraw(100, 150, this);
+//		ObjectToDraw obj2 = new ObjectToDraw(150, 150, this);
+//		ObjectToDraw obj3 = new ObjectToDraw(150, 100, this);
+//		panel.add(obj1, 0);
+//		panel.add(obj2, 0);
+//		panel.add(obj3);
 		panel.validate();
 		panel.repaint(obj1.getBounds());
 		

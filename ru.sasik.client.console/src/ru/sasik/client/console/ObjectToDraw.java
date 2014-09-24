@@ -12,9 +12,12 @@ import javax.swing.TransferHandler;
 
 public class ObjectToDraw extends JComponent {
 	
-	public ObjectToDraw(int x, int y) {
+	private Graphics2D g2;
+	
+	public ObjectToDraw(int x, int y, JComponent parent) {
 		this.x = x;
 		this.y = y;
+		g2 = (Graphics2D) parent.getGraphics();
 //		addMouseListener(new DragMouseAdapter());
 //		setTransferHandler(new TransferHandler("point"));
 //		setPreferredSize(new Dimension(10, 10));;

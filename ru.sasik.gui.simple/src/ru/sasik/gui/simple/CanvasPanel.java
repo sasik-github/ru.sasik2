@@ -1,5 +1,6 @@
 package ru.sasik.gui.simple;
 
+import java.awt.BasicStroke;
 import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
@@ -18,9 +19,9 @@ public class CanvasPanel extends JPanel {
 
 	private static int Y_ORIGIN = 2 * CONVERTER;
 
-	private static int X_RADIUS = 2;
+	private static int X_RADIUS = 3;
 
-	private static int Y_RADIUS = 2;
+	private static int Y_RADIUS = 3;
 
 	private static int ORIGIN_LENGTH = CONVERTER;
 
@@ -47,6 +48,7 @@ public class CanvasPanel extends JPanel {
 	}
 
 	private void paintCoord(final Graphics2D g2d) {
+		g2d.setStroke(new BasicStroke());
 		g2d.setColor(ORIGIN_COLOR);
 		//OX
 		g2d.drawLine(X_ORIGIN,
@@ -86,7 +88,7 @@ public class CanvasPanel extends JPanel {
 		
 		int canvasHeight = getSize().height;
 		int canvasWidth = getSize().width;
-		
+		g2d.setStroke(new BasicStroke(0.1f));
 		g2d.setColor(Color.black);
 		for (int i = 0; i < canvasHeight; i += CONVERTER) {
 			g2d.drawLine(0, i, canvasWidth, i);
@@ -94,13 +96,12 @@ public class CanvasPanel extends JPanel {
 		for (int i = 0; i < canvasWidth; i += CONVERTER) {
 			g2d.drawLine(i, 0, i, canvasHeight);
 		}
-		System.out.println("Canvas size  " + canvasHeight + " " + canvasWidth);
-		
 	}
 
 	private void paintData(final Graphics2D g2d) {
 
 		try {
+			g2d.setStroke(new BasicStroke());
 			g2d.setColor(DATA_COLOR);
 	    	for (Point node : dataFile.nodes) {
 		    	g2d.fillOval(
@@ -147,7 +148,7 @@ public class CanvasPanel extends JPanel {
 	public static int getY_ORIGIN() {
 		return Y_ORIGIN;
 	}
-
+	
 	public static void setY_ORIGIN(int y_ORIGIN) {
 		Y_ORIGIN = y_ORIGIN;
 	}
