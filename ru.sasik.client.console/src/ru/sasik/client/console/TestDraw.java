@@ -5,12 +5,15 @@ import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.HeadlessException;
 
-import javax.swing.JComponent;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
 public class TestDraw extends JFrame {
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -3724931234115224352L;
 	private JPanel panel;
 
 	public TestDraw() throws HeadlessException {
@@ -31,7 +34,7 @@ public class TestDraw extends JFrame {
 //		panel.add(obj2, 0);
 //		panel.add(obj3);
 		panel.validate();
-		panel.repaint(obj1.getBounds());
+//		panel.repaint(obj1.getBounds());
 		
 		repaint();
 		setVisible(true);

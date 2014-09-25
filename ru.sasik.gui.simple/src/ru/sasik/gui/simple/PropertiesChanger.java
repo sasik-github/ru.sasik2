@@ -1,7 +1,6 @@
 package ru.sasik.gui.simple;
 
 import java.awt.Color;
-import java.awt.FlowLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -13,10 +12,12 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
-import ru.sasik.datafile.DefaultDataFile;
-
 public class PropertiesChanger extends JDialog implements ActionListener{
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 2588699347574228007L;
 	private CanvasPanel canvasPanel;
 	private JPanel panel;
 	
@@ -83,19 +84,19 @@ public class PropertiesChanger extends JDialog implements ActionListener{
 	
 	public void initGUI() {
 		JLabel lbl = new JLabel("X begin");
-		X_ORIGIN = new JTextField(String.valueOf(canvasPanel.getX_ORIGIN()));
+		X_ORIGIN = new JTextField(String.valueOf(CanvasPanel.getX_ORIGIN()));
 		panel.add(lbl);
 		panel.add(X_ORIGIN);
 		
-		Y_ORIGIN = new JTextField(String.valueOf(canvasPanel.getY_ORIGIN()));
+		Y_ORIGIN = new JTextField(String.valueOf(CanvasPanel.getY_ORIGIN()));
 		panel.add(new JLabel("Y begin"));
 		panel.add(Y_ORIGIN);
 		
-		X_RADIUS = new JTextField(String.valueOf(canvasPanel.getX_RADIUS()));
+		X_RADIUS = new JTextField(String.valueOf(CanvasPanel.getX_RADIUS()));
 		panel.add(new JLabel("X radius"));
 		panel.add(X_RADIUS);
 		
-		Y_RADIUS = new JTextField(String.valueOf(canvasPanel.getY_RADIUS()));
+		Y_RADIUS = new JTextField(String.valueOf(CanvasPanel.getY_RADIUS()));
 		panel.add(new JLabel("Y radius"));
 		panel.add(Y_RADIUS);
 		
@@ -103,15 +104,15 @@ public class PropertiesChanger extends JDialog implements ActionListener{
 		panel.add(new JLabel("Origin length"));
 		panel.add(ORIGIN_LENGTH);
 		
-		ORIGIN_ARROW_10 = new JTextField(String.valueOf(canvasPanel.getORIGIN_ARROW_10()));
+		ORIGIN_ARROW_10 = new JTextField(String.valueOf(CanvasPanel.getORIGIN_ARROW_10()));
 		panel.add(new JLabel("Origin length of arrow10"));
 		panel.add(ORIGIN_ARROW_10);
 		
-		ORIGIN_ARROW_5 = new JTextField(String.valueOf(canvasPanel.getORIGIN_ARROW_5()));
+		ORIGIN_ARROW_5 = new JTextField(String.valueOf(CanvasPanel.getORIGIN_ARROW_5()));
 		panel.add(new JLabel("Origin length of arrow5"));
 		panel.add(ORIGIN_ARROW_5);
 		
-		Y_REVERSE = new JTextField(String.valueOf(canvasPanel.getY_REVERSE()));
+		Y_REVERSE = new JTextField(String.valueOf(CanvasPanel.getY_REVERSE()));
 		panel.add(new JLabel("Reverse of oY"));
 		panel.add(Y_REVERSE);
 		
@@ -119,7 +120,7 @@ public class PropertiesChanger extends JDialog implements ActionListener{
 //		
 //		DY
 		
-		CONVERTER = new JTextField(String.valueOf(canvasPanel.getCONVERTER()));
+		CONVERTER = new JTextField(String.valueOf(CanvasPanel.getCONVERTER()));
 		panel.add(new JLabel("Converter"));
 		panel.add(CONVERTER);
 		
@@ -136,17 +137,17 @@ public class PropertiesChanger extends JDialog implements ActionListener{
 	}
 	
 	public void saveChange() {
-		canvasPanel.setX_ORIGIN(Integer.parseInt(X_ORIGIN.getText()));
-		canvasPanel.setY_ORIGIN(Integer.parseInt(Y_ORIGIN.getText()));
-		canvasPanel.setX_RADIUS(Integer.parseInt(X_RADIUS.getText()));
-		canvasPanel.setY_RADIUS(Integer.parseInt(Y_RADIUS.getText()));
-		canvasPanel.setORIGIN_LENGTH(Integer.parseInt(ORIGIN_LENGTH.getText()));
-		canvasPanel.setORIGIN_ARROW_10(Integer.parseInt(ORIGIN_ARROW_10.getText()));
-		canvasPanel.setORIGIN_ARROW_5(Integer.parseInt(ORIGIN_ARROW_5.getText()));
-		canvasPanel.setY_REVERSE(Integer.parseInt(Y_REVERSE.getText()));
-		canvasPanel.setCONVERTER(Integer.parseInt(CONVERTER.getText()));
-		canvasPanel.setDATA_COLOR(DATA_COLOR);
-		canvasPanel.setORIGIN_COLOR(ORIGIN_COLOR);
+		CanvasPanel.setX_ORIGIN(Integer.parseInt(X_ORIGIN.getText()));
+		CanvasPanel.setY_ORIGIN(Integer.parseInt(Y_ORIGIN.getText()));
+		CanvasPanel.setX_RADIUS(Integer.parseInt(X_RADIUS.getText()));
+		CanvasPanel.setY_RADIUS(Integer.parseInt(Y_RADIUS.getText()));
+		CanvasPanel.setORIGIN_LENGTH(Integer.parseInt(ORIGIN_LENGTH.getText()));
+		CanvasPanel.setORIGIN_ARROW_10(Integer.parseInt(ORIGIN_ARROW_10.getText()));
+		CanvasPanel.setORIGIN_ARROW_5(Integer.parseInt(ORIGIN_ARROW_5.getText()));
+		CanvasPanel.setY_REVERSE(Integer.parseInt(Y_REVERSE.getText()));
+		CanvasPanel.setCONVERTER(Integer.parseInt(CONVERTER.getText()));
+		CanvasPanel.setDATA_COLOR(DATA_COLOR);
+		CanvasPanel.setORIGIN_COLOR(ORIGIN_COLOR);
 	}
 	
 	public class ColorActionListener implements ActionListener {

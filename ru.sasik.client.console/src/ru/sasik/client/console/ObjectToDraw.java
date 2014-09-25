@@ -1,26 +1,21 @@
 package ru.sasik.client.console;
 
 import java.awt.Color;
-import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.event.MouseAdapter;
-import java.awt.event.MouseEvent;
-
 import javax.swing.JComponent;
-import javax.swing.TransferHandler;
 
 public class ObjectToDraw extends JComponent {
 	
-	private Graphics2D g2;
-	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -2542118036219574503L;
+
 	public ObjectToDraw(int x, int y, JComponent parent) {
 		this.x = x;
 		this.y = y;
-		g2 = (Graphics2D) parent.getGraphics();
-//		addMouseListener(new DragMouseAdapter());
-//		setTransferHandler(new TransferHandler("point"));
-//		setPreferredSize(new Dimension(10, 10));;
 	}
 
 	private int x;

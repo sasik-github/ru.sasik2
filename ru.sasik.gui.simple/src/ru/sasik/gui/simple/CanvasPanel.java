@@ -13,6 +13,11 @@ import ru.sasik.datafile.Point;
 
 public class CanvasPanel extends JPanel {
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 703560890112489533L;
+
 	private static Integer CONVERTER = 70;
 
 	private static int X_ORIGIN = 2 * CONVERTER;
@@ -110,20 +115,20 @@ public class CanvasPanel extends JPanel {
 
 	private void paintData(final Graphics2D g2d) {
 
-		try {
-			g2d.setStroke(new BasicStroke());
-			g2d.setColor(DATA_COLOR);
-	    	for (Point node : dataFile.nodes) {
-		    	g2d.fillOval(
-		    			(int) ((node.getX() + DX) * CONVERTER + X_ORIGIN),
-		    			(int) ((node.getY() + DY) * CONVERTER * Y_REVERSE + Y_ORIGIN),
-		    			X_RADIUS,
-		    			Y_RADIUS
-		    	);
-		    }
-	    	System.out.println("Nodes size" + dataFile.nodes.size());
-		} catch (NullPointerException e) {
-			System.err.println("Cant draw data file cause " + e);
+		if (dataFile != null) {
+			if (dataFile.nodes != null) {
+				g2d.setStroke(new BasicStroke());
+				g2d.setColor(DATA_COLOR);
+		    	for (Point node : dataFile.nodes) {
+			    	g2d.fillOval(
+			    			(int) ((node.getX() + DX) * CONVERTER + X_ORIGIN),
+			    			(int) ((node.getY() + DY) * CONVERTER * Y_REVERSE + Y_ORIGIN),
+			    			X_RADIUS,
+			    			Y_RADIUS
+			    	);
+			    }
+		    	System.out.println("Nodes size" + dataFile.nodes.size());
+			}
 		}
 	}
 

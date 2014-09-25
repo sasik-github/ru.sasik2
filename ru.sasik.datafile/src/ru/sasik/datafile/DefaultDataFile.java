@@ -10,6 +10,10 @@ import java.util.regex.Pattern;
 import ru.sasik.helper.AdditionFunctions;
 
 public class DefaultDataFile implements Serializable {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -4274296243256282739L;
 	public List<Integer> main;
 	public List<Double> time;
 	public List<Double> phisical;

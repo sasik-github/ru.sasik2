@@ -21,6 +21,11 @@ import ru.sasik.helper.AdditionFunctions;
 
 public class FileChooserDialog extends JFrame {
 
+		/**
+	 * 
+	 */
+	private static final long serialVersionUID = -2418283983706021047L;
+
 		private static final int FOR_BORDER = 10;
 
 		private static final int FRAME_HEIGHT = 400;
