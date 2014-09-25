@@ -12,7 +12,6 @@ public class GUI implements IGUI{
 	
 	@Override
 	public void startGUI() {
-		// TODO Auto-generated method stub
 		
 	}
 	

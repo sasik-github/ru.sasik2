@@ -41,6 +41,8 @@ public class GUIActivator extends DependencyActivatorBase {
 	
 	private CanvasPanel canvasPanel;
 	
+	private StatusBar statusBar;
+	
 	private ActionListener actionListener;
 	
 	private DefaultDataFile dataFile;
@@ -66,6 +68,7 @@ public class GUIActivator extends DependencyActivatorBase {
 		area = new JTextArea();
 		tabbedPane = new JTabbedPane();
 		canvasPanel = new CanvasPanel();
+		statusBar = new StatusBar();
 		actionListener = new MyActionListener();
 		actionTracker = new ToolbarActionTracker(context, toolBar);
 		actionTracker.open();
@@ -175,6 +178,8 @@ public class GUIActivator extends DependencyActivatorBase {
 		tabbedPane.addTab("Source", pane);
 		
 		frame.add(tabbedPane);
+		
+		frame.add(statusBar, BorderLayout.SOUTH);
 
 	}
 

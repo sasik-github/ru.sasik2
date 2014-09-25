@@ -48,8 +48,8 @@ public class CanvasPanel extends JPanel {
 
 
 	public CanvasPanel() {
-
-		setVisible(true);
+//		add(new StatusBar());
+//		setVisible(true);
 	}
 
 	private void paintCoord(final Graphics2D g2d) {
