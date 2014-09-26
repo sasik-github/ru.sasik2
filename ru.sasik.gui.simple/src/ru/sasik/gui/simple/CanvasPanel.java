@@ -20,33 +20,33 @@ public class CanvasPanel extends JPanel {
 	 */
 	private static final long serialVersionUID = 703560890112489533L;
 
-	private static Integer CONVERTER = 70;
+	public static Integer CONVERTER = 70;
 
-	private static int X_ORIGIN = 2 * CONVERTER;
+	public static int X_ORIGIN = 2 * CONVERTER;
 
-	private static int Y_ORIGIN = 2 * CONVERTER;
+	public static int Y_ORIGIN = 2 * CONVERTER;
 
-	private static int X_RADIUS = 3;
+	public static int X_RADIUS = 3;
 
-	private static int Y_RADIUS = 3;
+	public static int Y_RADIUS = 3;
 
-	private static int ORIGIN_LENGTH = CONVERTER;
+	public static int ORIGIN_LENGTH = CONVERTER;
 
-	private static int ORIGIN_ARROW_10 = 10;
+	public static int ORIGIN_ARROW_10 = 10;
 
-	private static int ORIGIN_ARROW_5 = 5;
+	public static int ORIGIN_ARROW_5 = 5;
 
-	private static Color DATA_COLOR = Color.red;
+	public static Color DATA_COLOR = Color.red;
 
-	private static Color ORIGIN_COLOR = Color.blue;
+	public static Color ORIGIN_COLOR = Color.blue;
 
-	private static int Y_REVERSE = -1;
+	public static int Y_REVERSE = -1;
 
 	private DefaultDataFile dataFile;
 
-	private static Double DX = 0.0; 
+	public static Double DX = 0.0; 
 
-	private static Double DY = 0.0;
+	public static Double DY = 0.0;
 
 
 	public CanvasPanel(final StatusBar statusBar) {
@@ -59,11 +59,15 @@ public class CanvasPanel extends JPanel {
 			}
 
 			@Override
-			public void mouseDragged(MouseEvent arg0) {
-				// TODO Auto-generated method stub
-				
+			public void mouseDragged(MouseEvent e) {
+				paintDragged(e.getX(), e.getY());
 			}
 		});
+	}
+
+	protected void paintDragged(int x, int y) {
+		
+		
 	}
 
 	private void paintCoord(final Graphics2D g2d) {
@@ -108,7 +112,7 @@ public class CanvasPanel extends JPanel {
 		int canvasHeight = getSize().height;
 		int canvasWidth = getSize().width;
 		g2d.setStroke(new BasicStroke(0.1f));
-		g2d.setColor(Color.black);
+		g2d.setColor(Color.gray);
 		// start drawing grid from beginning to left and down
 		//this is horiz
 		for (int i = Y_ORIGIN; i < canvasHeight; i += CONVERTER) {
@@ -169,111 +173,4 @@ public class CanvasPanel extends JPanel {
 		this.dataFile = dataFile;
 		repaint();
 	}
-
-	public static int getX_ORIGIN() {
-		return X_ORIGIN;
-	}
-
-	public static void setX_ORIGIN(int x_ORIGIN) {
-		X_ORIGIN = x_ORIGIN;
-	}
-
-	public static int getY_ORIGIN() {
-		return Y_ORIGIN;
-	}
-	
-	public static void setY_ORIGIN(int y_ORIGIN) {
-		Y_ORIGIN = y_ORIGIN;
-	}
-
-	public static int getX_RADIUS() {
-		return X_RADIUS;
-	}
-
-	public static void setX_RADIUS(int x_RADIUS) {
-		X_RADIUS = x_RADIUS;
-	}
-
-	public static int getY_RADIUS() {
-		return Y_RADIUS;
-	}
-
-	public static void setY_RADIUS(int y_RADIUS) {
-		Y_RADIUS = y_RADIUS;
-	}
-
-	public int getORIGIN_LENGTH() {
-		return ORIGIN_LENGTH;
-	}
-
-	public static void setORIGIN_LENGTH(int oRIGIN_LENGTH) {
-		ORIGIN_LENGTH = oRIGIN_LENGTH;
-	}
-
-	public static int getORIGIN_ARROW_10() {
-		return ORIGIN_ARROW_10;
-	}
-
-	public static void setORIGIN_ARROW_10(int oRIGIN_ARROW_10) {
-		ORIGIN_ARROW_10 = oRIGIN_ARROW_10;
-	}
-
-	public static int getORIGIN_ARROW_5() {
-		return ORIGIN_ARROW_5;
-	}
-
-	public static void setORIGIN_ARROW_5(int oRIGIN_ARROW_5) {
-		ORIGIN_ARROW_5 = oRIGIN_ARROW_5;
-	}
-
-	public static Color getDATA_COLOR() {
-		return DATA_COLOR;
-	}
-
-	public static void setDATA_COLOR(Color dATA_COLOR) {
-		DATA_COLOR = dATA_COLOR;
-	}
-
-	public static Color getORIGIN_COLOR() {
-		return ORIGIN_COLOR;
-	}
-
-	public static void setORIGIN_COLOR(Color oRIGIN_COLOR) {
-		ORIGIN_COLOR = oRIGIN_COLOR;
-	}
-
-	public static int getY_REVERSE() {
-		return Y_REVERSE;
-	}
-
-	public static void setY_REVERSE(int y_REVERSE) {
-		Y_REVERSE = y_REVERSE;
-	}
-
-	public static Double getDX() {
-		return DX;
-	}
-
-	public static void setDX(Double dX) {
-		DX = dX;
-	}
-
-	public static Double getDY() {
-		return DY;
-	}
-
-	public static void setDY(Double dY) {
-		DY = dY;
-	}
-
-	public static Integer getCONVERTER() {
-		return CONVERTER;
-	}
-
-	public static void setCONVERTER(Integer cONVERTER) {
-		CONVERTER = cONVERTER;
-	}
-	
-	
-
 }

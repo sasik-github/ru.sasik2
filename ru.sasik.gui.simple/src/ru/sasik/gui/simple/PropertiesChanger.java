@@ -63,8 +63,12 @@ public class PropertiesChanger extends JDialog implements ActionListener{
 		JButton button = new JButton("Ok");
 		button.addActionListener(this);
 		panel.add(button);
+		button = new JButton("Cancel");
+		button.addActionListener(this);
+		panel.add(button);
 		panel.setLayout(new BoxLayout(panel, BoxLayout.PAGE_AXIS));
 		add(panel);
+		setLocationRelativeTo(canvasPanel);
 		setVisible(true);
 		pack();
 		
@@ -84,35 +88,35 @@ public class PropertiesChanger extends JDialog implements ActionListener{
 	
 	public void initGUI() {
 		JLabel lbl = new JLabel("X begin");
-		X_ORIGIN = new JTextField(String.valueOf(CanvasPanel.getX_ORIGIN()));
+		X_ORIGIN = new JTextField(String.valueOf(CanvasPanel.X_ORIGIN));
 		panel.add(lbl);
 		panel.add(X_ORIGIN);
 		
-		Y_ORIGIN = new JTextField(String.valueOf(CanvasPanel.getY_ORIGIN()));
+		Y_ORIGIN = new JTextField(String.valueOf(CanvasPanel.Y_ORIGIN));
 		panel.add(new JLabel("Y begin"));
 		panel.add(Y_ORIGIN);
 		
-		X_RADIUS = new JTextField(String.valueOf(CanvasPanel.getX_RADIUS()));
+		X_RADIUS = new JTextField(String.valueOf(CanvasPanel.X_RADIUS));
 		panel.add(new JLabel("X radius"));
 		panel.add(X_RADIUS);
 		
-		Y_RADIUS = new JTextField(String.valueOf(CanvasPanel.getY_RADIUS()));
+		Y_RADIUS = new JTextField(String.valueOf(CanvasPanel.Y_RADIUS));
 		panel.add(new JLabel("Y radius"));
 		panel.add(Y_RADIUS);
 		
-		ORIGIN_LENGTH = new JTextField(String.valueOf(canvasPanel.getORIGIN_LENGTH()));
+		ORIGIN_LENGTH = new JTextField(String.valueOf(CanvasPanel.ORIGIN_LENGTH));
 		panel.add(new JLabel("Origin length"));
 		panel.add(ORIGIN_LENGTH);
 		
-		ORIGIN_ARROW_10 = new JTextField(String.valueOf(CanvasPanel.getORIGIN_ARROW_10()));
+		ORIGIN_ARROW_10 = new JTextField(String.valueOf(CanvasPanel.ORIGIN_ARROW_10));
 		panel.add(new JLabel("Origin length of arrow10"));
 		panel.add(ORIGIN_ARROW_10);
 		
-		ORIGIN_ARROW_5 = new JTextField(String.valueOf(CanvasPanel.getORIGIN_ARROW_5()));
+		ORIGIN_ARROW_5 = new JTextField(String.valueOf(CanvasPanel.ORIGIN_ARROW_5));
 		panel.add(new JLabel("Origin length of arrow5"));
 		panel.add(ORIGIN_ARROW_5);
 		
-		Y_REVERSE = new JTextField(String.valueOf(CanvasPanel.getY_REVERSE()));
+		Y_REVERSE = new JTextField(String.valueOf(CanvasPanel.Y_REVERSE));
 		panel.add(new JLabel("Reverse of oY"));
 		panel.add(Y_REVERSE);
 		
@@ -120,7 +124,7 @@ public class PropertiesChanger extends JDialog implements ActionListener{
 //		
 //		DY
 		
-		CONVERTER = new JTextField(String.valueOf(CanvasPanel.getCONVERTER()));
+		CONVERTER = new JTextField(String.valueOf(CanvasPanel.CONVERTER));
 		panel.add(new JLabel("Converter"));
 		panel.add(CONVERTER);
 		
@@ -137,17 +141,17 @@ public class PropertiesChanger extends JDialog implements ActionListener{
 	}
 	
 	public void saveChange() {
-		CanvasPanel.setX_ORIGIN(Integer.parseInt(X_ORIGIN.getText()));
-		CanvasPanel.setY_ORIGIN(Integer.parseInt(Y_ORIGIN.getText()));
-		CanvasPanel.setX_RADIUS(Integer.parseInt(X_RADIUS.getText()));
-		CanvasPanel.setY_RADIUS(Integer.parseInt(Y_RADIUS.getText()));
-		CanvasPanel.setORIGIN_LENGTH(Integer.parseInt(ORIGIN_LENGTH.getText()));
-		CanvasPanel.setORIGIN_ARROW_10(Integer.parseInt(ORIGIN_ARROW_10.getText()));
-		CanvasPanel.setORIGIN_ARROW_5(Integer.parseInt(ORIGIN_ARROW_5.getText()));
-		CanvasPanel.setY_REVERSE(Integer.parseInt(Y_REVERSE.getText()));
-		CanvasPanel.setCONVERTER(Integer.parseInt(CONVERTER.getText()));
-		CanvasPanel.setDATA_COLOR(DATA_COLOR);
-		CanvasPanel.setORIGIN_COLOR(ORIGIN_COLOR);
+		CanvasPanel.X_ORIGIN = Integer.parseInt(X_ORIGIN.getText());
+		CanvasPanel.Y_ORIGIN = Integer.parseInt(Y_ORIGIN.getText());
+		CanvasPanel.X_RADIUS = Integer.parseInt(X_RADIUS.getText());
+		CanvasPanel.Y_RADIUS = Integer.parseInt(Y_RADIUS.getText());
+		CanvasPanel.ORIGIN_LENGTH = Integer.parseInt(ORIGIN_LENGTH.getText());
+		CanvasPanel.ORIGIN_ARROW_10 = Integer.parseInt(ORIGIN_ARROW_10.getText());
+		CanvasPanel.ORIGIN_ARROW_5 = Integer.parseInt(ORIGIN_ARROW_5.getText());
+		CanvasPanel.Y_REVERSE = Integer.parseInt(Y_REVERSE.getText());
+		CanvasPanel.CONVERTER = Integer.parseInt(CONVERTER.getText());
+		CanvasPanel.DATA_COLOR = DATA_COLOR;
+		CanvasPanel.ORIGIN_COLOR = ORIGIN_COLOR;
 	}
 	
 	public class ColorActionListener implements ActionListener {
