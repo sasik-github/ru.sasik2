@@ -67,8 +67,8 @@ public class GUIActivator extends DependencyActivatorBase {
 		toolBar = new JToolBar();
 		area = new JTextArea();
 		tabbedPane = new JTabbedPane();
-		canvasPanel = new CanvasPanel();
 		statusBar = new StatusBar();
+		canvasPanel = new CanvasPanel(statusBar);
 		actionListener = new MyActionListener();
 		actionTracker = new ToolbarActionTracker(context, toolBar);
 		actionTracker.open();

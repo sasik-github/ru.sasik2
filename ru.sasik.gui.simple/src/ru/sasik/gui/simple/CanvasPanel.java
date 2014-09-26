@@ -5,6 +5,8 @@ import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.Rectangle;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseMotionListener;
 
 import javax.swing.JPanel;
 
@@ -47,8 +49,21 @@ public class CanvasPanel extends JPanel {
 	private static Double DY = 0.0;
 
 
-	public CanvasPanel() {
+	public CanvasPanel(final StatusBar statusBar) {
+		addMouseMotionListener(new MouseMotionListener() {
+			
+			@Override
+			public void mouseMoved(MouseEvent e) {
+				statusBar.setText("X: " + ((e.getX() - X_ORIGIN) / (float) CONVERTER)  + " Y: " + ((Y_REVERSE * (e.getY() - Y_ORIGIN)) / (float) CONVERTER));
+				
+			}
 
+			@Override
+			public void mouseDragged(MouseEvent arg0) {
+				// TODO Auto-generated method stub
+				
+			}
+		});
 	}
 
 	private void paintCoord(final Graphics2D g2d) {
