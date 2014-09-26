@@ -48,14 +48,13 @@ public class CanvasPanel extends JPanel {
 
 
 	public CanvasPanel() {
-//		add(new StatusBar());
-//		setVisible(true);
+
 	}
 
 	private void paintCoord(final Graphics2D g2d) {
 		g2d.setStroke(new BasicStroke());
 		g2d.setColor(ORIGIN_COLOR);
-		//OX
+		//OX 
 		g2d.drawLine(X_ORIGIN,
 				Y_ORIGIN,
 				X_ORIGIN + ORIGIN_LENGTH,
@@ -95,18 +94,22 @@ public class CanvasPanel extends JPanel {
 		int canvasWidth = getSize().width;
 		g2d.setStroke(new BasicStroke(0.1f));
 		g2d.setColor(Color.black);
-		// start drawing grid from begining to left and down
-		for (int i = X_ORIGIN; i < canvasHeight; i += CONVERTER) {
+		// start drawing grid from beginning to left and down
+		//this is horiz
+		for (int i = Y_ORIGIN; i < canvasHeight; i += CONVERTER) {
 			g2d.drawLine(0, i, canvasWidth, i);
 		}
-		for (int i = Y_ORIGIN; i < canvasWidth; i += CONVERTER) {
+		//this is vert
+		for (int i = X_ORIGIN; i < canvasWidth; i += CONVERTER) {
 			g2d.drawLine(i, 0, i, canvasHeight);
-		}
-		// drawing grid from begining to right and top
-		for (int i = X_ORIGIN; i > 0; i -= CONVERTER) {
+		} 
+		// drawing grid from beginning to right and top
+		// this is horiz
+		for (int i = Y_ORIGIN; i > 0; i -= CONVERTER) {
 			g2d.drawLine(0, i, canvasWidth, i);
 		}
-		for (int i = Y_ORIGIN; i > 0; i -= CONVERTER) {
+//		// this is vert
+		for (int i = X_ORIGIN; i > 0; i -= CONVERTER) {
 			g2d.drawLine(i, 0, i, canvasHeight);
 		}
 		

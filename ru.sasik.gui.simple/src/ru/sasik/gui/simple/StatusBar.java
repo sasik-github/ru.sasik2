@@ -5,6 +5,10 @@ import javax.swing.JPanel;
 
 public class StatusBar extends JPanel {
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 8911130270504957765L;
 	private JLabel msg;
 	
 	public StatusBar() {
