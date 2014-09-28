@@ -22,6 +22,7 @@ import org.osgi.framework.BundleContext;
 
 import ru.sasik.datafile.DefaultDataFile;
 import ru.sasik.gui.IGUI;
+import ru.sasik.helper.AdditionFunctions;
 
 public class GUIActivator extends DependencyActivatorBase {
 	
@@ -72,10 +73,15 @@ public class GUIActivator extends DependencyActivatorBase {
 		actionListener = new MyActionListener();
 		actionTracker = new ToolbarActionTracker(context, toolBar);
 		actionTracker.open();
+		
+		
 
 		File file = new File(
 				"/home/sasik/Dropbox/11111/Akord/DMITRY.DAT"
 		);
+		
+		AdditionFunctions.writeFile("/home/sasik/Dropbox/11111/Akord/sasik.DAT", AdditionFunctions.readFile(file));
+		
 		DefaultDataFile data = new DefaultDataFile();
 		data.openFromFile(file);
 		canvasPanel.setDataFile(data);

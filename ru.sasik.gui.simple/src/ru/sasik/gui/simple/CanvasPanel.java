@@ -15,9 +15,6 @@ import ru.sasik.datafile.Point;
 
 public class CanvasPanel extends JPanel {
 	
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = 703560890112489533L;
 
 	public static Integer CONVERTER = 70;

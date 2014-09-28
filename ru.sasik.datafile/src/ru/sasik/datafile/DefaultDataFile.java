@@ -14,6 +14,9 @@ public class DefaultDataFile implements Serializable {
 	 * 
 	 */
 	private static final long serialVersionUID = -4274296243256282739L;
+	
+	private File currFile = null;
+	
 	public List<Integer> main;
 	public List<Double> time;
 	public List<Double> phisical;
@@ -40,6 +43,8 @@ public class DefaultDataFile implements Serializable {
 //		otherParameter = new ArrayList<Integer>();
 		winstruct = new ArrayList<Double>();
 //		lines = new ArrayList<Integer>();
+		
+		
 	}
 
 	public void openFromFile(File file) {
@@ -205,6 +210,19 @@ public class DefaultDataFile implements Serializable {
 			}
 		}
 		
+		// for further work with file i have save it
+		currFile = file;
+		
+	}
+	
+	public void saveToFile(File file) {
+		if (file != null) {
+			
+		} else {
+			if (currFile != null) {
+				
+			}
+		}
 	}
 
 	@Override

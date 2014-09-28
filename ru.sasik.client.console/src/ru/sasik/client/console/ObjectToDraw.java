@@ -6,17 +6,21 @@ import java.awt.GradientPaint;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.RenderingHints;
+import java.awt.event.MouseListener;
 import java.awt.geom.GeneralPath;
 
 import javax.swing.JComponent;
 
-public class ObjectToDraw extends JComponent {
+import org.w3c.dom.events.MouseEvent;
+
+public class ObjectToDraw extends JComponent implements MouseListener{
 	
 	private static final long serialVersionUID = -2542118036219574503L;
 	
 //	private int x , y;
 	
 	public ObjectToDraw() {
+		
 		
 	}	
 
@@ -44,6 +48,36 @@ public class ObjectToDraw extends JComponent {
 	    g2d.setColor(Color.black);
 	    g2d.setStroke(wideStroke);
 	    g2d.draw(polygon);
+	}
+
+	@Override
+	public void mouseClicked(java.awt.event.MouseEvent e) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void mouseEntered(java.awt.event.MouseEvent e) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void mouseExited(java.awt.event.MouseEvent e) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void mousePressed(java.awt.event.MouseEvent e) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void mouseReleased(java.awt.event.MouseEvent e) {
+		// TODO Auto-generated method stub
+		
 	}
 
 }
