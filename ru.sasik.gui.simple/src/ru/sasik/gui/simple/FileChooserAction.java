@@ -16,7 +16,7 @@ import ru.sasik.helper.AdditionFunctions;
 
 public class FileChooserAction implements ActionListener {
 
-	private JTextArea area;
+	private final JTextArea area;
 	
 	private JFrame frame;
 	
@@ -37,26 +37,35 @@ public class FileChooserAction implements ActionListener {
 		
 		JFileChooser fileopen = new JFileChooser();
 		FileFilter filter = new FileNameExtensionFilter(
-				"c files",
-				"c"
+				"Data files",
+				"dat"
 		);
 		fileopen.addChoosableFileFilter(filter);
-
+		String commandName = e.getActionCommand().toLowerCase();
 		int ret = fileopen.showDialog(
 				(Component) frame,
-				"Open file"
-		);
-
-		if (ret == JFileChooser.APPROVE_OPTION) {
-			File file = fileopen.getSelectedFile();
+				  "open file"
+				);
+		File file = fileopen.getSelectedFile();
+		if (file != null) {
 			System.out.println(file.getPath());
-			dataFile = new DefaultDataFile();
-			dataFile.openFromFile(file);
-			canvasPanel.setDataFile(dataFile);
-			String text = AdditionFunctions.readFile(file);
-			System.out.println(area);
-			area.setText(text);
-			frame.pack();
+			System.out.println("FileChooserAction.actionPerformed() \"" + commandName.toLowerCase() + "\"");
+			System.out.println(ret + " " + JFileChooser.APPROVE_OPTION);
+			if (ret == JFileChooser.APPROVE_OPTION) {
+				if (commandName.equals("open") ) {
+					dataFile = new DefaultDataFile();
+					dataFile.openFromFile(file);
+					canvasPanel.setDataFile(dataFile);
+					String text = AdditionFunctions.readFile(file);
+					//					System.out.println(area);
+					area.setText(text);
+					frame.pack();
+				} else
+					if (commandName.equals("save")) {
+						System.out.println(fileopen.getSelectedFile().getPath());
+						AdditionFunctions.writeFile(fileopen.getSelectedFile().getPath(), dataFile.saveToFile());
+					}
+			}
 		}
 
 	}

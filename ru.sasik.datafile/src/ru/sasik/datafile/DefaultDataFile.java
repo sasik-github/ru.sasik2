@@ -57,7 +57,7 @@ public class DefaultDataFile implements Serializable {
 		Matcher m;
 		for (int i = 0; i < lines.length; i++) {
 			String line = lines[i];
-			System.out.println(line);
+//			System.out.println(line);
 			if (line.startsWith("[MAIN]")) {
 				i += 2;
 				line = lines[i];
@@ -119,7 +119,7 @@ public class DefaultDataFile implements Serializable {
 //						System.out.println(Integer.parseInt(m.group()) + " = " + line);
 					} catch (NumberFormatException e) {
 						System.err.println(
-								"[OUTPUT] " + e
+								"parse file from [OUTPUT] " + e
 						);
 					}
 					line = lines[++i];
@@ -140,7 +140,7 @@ public class DefaultDataFile implements Serializable {
 					unknown2 = Double.parseDouble(tokens[5]);
 					node = new Point(n, x, y, unknown1, unknown2);
 					nodes.add(node);
-					System.out.println("\t" + node);
+//					System.out.println("\t" + node);
 					line = lines[++i];
 				}
 
@@ -171,7 +171,7 @@ public class DefaultDataFile implements Serializable {
 					region.add(Integer.parseInt(tokens[1]));
 					region.add(Integer.parseInt(tokens[2]));
 					region.add(Integer.parseInt(tokens[3]));
-					System.out.println(region);
+//					System.out.println(region);
 					line = lines[++i];
 				}
 				i--;
@@ -195,7 +195,7 @@ public class DefaultDataFile implements Serializable {
 					winstruct.add(Double.parseDouble(tokens[1]));
 					line = lines[++i];
 				}
-				System.out.println(winstruct);
+//				System.out.println(winstruct);
 				i--;
 			} else
 			if (line.contains("[LINES]")) {
@@ -211,12 +211,14 @@ public class DefaultDataFile implements Serializable {
 		}
 		
 		// for further work with file i have save it
-		currFile = file;
+//		currFile = file;
 		
 	}
 	
-	public void saveToFile() {
+	public String saveToFile() {
+		System.out.println("DefaultDataFile.saveToFile()");
 		StringBuilder sb = new StringBuilder();
+		int iterator;
 		sb.append("[MAIN]\nTestfor new datafile structure\n");
 		sb.append(generatorToFile(main));
 		
@@ -233,7 +235,15 @@ public class DefaultDataFile implements Serializable {
 		sb.append(generatorToFile(output));
 		
 		sb.append("[NODES] POINTS\n");
-//		sb.append(gene)
+		iterator = 1;
+		for (Point node : nodes) {
+			sb.append("\t" + node.getN() + "   "
+						+ node.getX() + "  "
+						+ node.getY() + "  "
+						+ node.getUnknow1() + "  "
+						+ node.getUnknow2() + "\n"
+			);
+		}
 		
 		sb.append("[INTERNAL] POINTS\n");
 		
@@ -247,6 +257,7 @@ public class DefaultDataFile implements Serializable {
 		sb.append("[LINES] PARAMETERS\n");
 		System.out.println("DefaultDataFile.saveToFile()");
 		System.out.println(sb);
+		return sb.toString();
 	}
 	
 	private <E> String generatorToFile(List<E> list) {

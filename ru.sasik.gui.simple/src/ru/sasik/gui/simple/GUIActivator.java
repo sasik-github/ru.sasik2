@@ -49,6 +49,8 @@ public class GUIActivator extends DependencyActivatorBase {
 	private DefaultDataFile dataFile;
 	
 	private ToolbarActionTracker actionTracker;
+	
+	private FileChooserAction fileChooserAction;
 
 	@Override
 	public void init(BundleContext context, DependencyManager manager)
@@ -73,6 +75,7 @@ public class GUIActivator extends DependencyActivatorBase {
 		actionListener = new MyActionListener();
 		actionTracker = new ToolbarActionTracker(context, toolBar);
 		actionTracker.open();
+		fileChooserAction = new FileChooserAction(area, frame, dataFile, canvasPanel);
 		
 		
 
@@ -135,17 +138,10 @@ public class GUIActivator extends DependencyActivatorBase {
 		itm = new JMenuItem("Open");
 //		itm.addActionListener(actionListener);
 		menu.add(itm);
-		itm.addActionListener(
-				new FileChooserAction(
-						area,
-						frame,
-						dataFile,
-						canvasPanel
-				)
-		);
+		itm.addActionListener(fileChooserAction);
 
-		itm = new JMenuItem("Сохранить");
-		itm.addActionListener(actionListener);
+		itm = new JMenuItem("Save");
+		itm.addActionListener(fileChooserAction);
 		menu.add(itm);
 
 		itm = new JMenuItem("Close");

@@ -35,6 +35,9 @@ public class AdditionFunctions {
 	
 	public static void writeFile(final String filename, final String data) {
 		try {
+			System.out.println("AdditionFunctions.writeFile()");
+			System.out.println(filename);
+			
 			FileWriter file = new FileWriter(filename);
 			BufferedWriter out = new BufferedWriter(file);
 			// split string by Unix and windows end of line
