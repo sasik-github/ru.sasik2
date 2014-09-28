@@ -215,14 +215,46 @@ public class DefaultDataFile implements Serializable {
 		
 	}
 	
-	public void saveToFile(File file) {
-		if (file != null) {
-			
-		} else {
-			if (currFile != null) {
-				
-			}
+	public void saveToFile() {
+		StringBuilder sb = new StringBuilder();
+		sb.append("[MAIN]\nTestfor new datafile structure\n");
+		sb.append(generatorToFile(main));
+		
+		sb.append("[TIME] PARAMETERS\n");
+		sb.append(generatorToFile(time));
+		
+		sb.append("[PHISYCAL] PARAMETERS\n");
+		sb.append(generatorToFile(phisical));
+		
+		sb.append("[DOMAIN] PARAMETERS\n");
+		sb.append(generatorToFile(domain));
+		
+		sb.append("[OUTPUT] PARAMETERS\n");
+		sb.append(generatorToFile(output));
+		
+		sb.append("[NODES] POINTS\n");
+//		sb.append(gene)
+		
+		sb.append("[INTERNAL] POINTS\n");
+		
+		sb.append("[REGION] PARAMETERS (Num region, Num FIRSTS, Num Points)\n");
+		
+		sb.append("[SPECIAL] POINTS\n");
+		
+		sb.append("[WINSTRUCT] PARAMETERS\n");
+		sb.append(generatorToFile(winstruct));
+		
+		sb.append("[LINES] PARAMETERS\n");
+		System.out.println("DefaultDataFile.saveToFile()");
+		System.out.println(sb);
+	}
+	
+	private <E> String generatorToFile(List<E> list) {
+		StringBuilder sb = new StringBuilder();
+		for (E item : list) {
+			sb.append("\t" + item + "\t;\n");
 		}
+		return sb.toString();
 	}
 
 	@Override

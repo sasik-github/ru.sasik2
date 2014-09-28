@@ -80,10 +80,12 @@ public class GUIActivator extends DependencyActivatorBase {
 				"/home/sasik/Dropbox/11111/Akord/DMITRY.DAT"
 		);
 		
-		AdditionFunctions.writeFile("/home/sasik/Dropbox/11111/Akord/sasik.DAT", AdditionFunctions.readFile(file));
+//		test write function
+//		AdditionFunctions.writeFile("/home/sasik/Dropbox/11111/Akord/sasik.DAT", AdditionFunctions.readFile(file));
 		
 		DefaultDataFile data = new DefaultDataFile();
 		data.openFromFile(file);
+		data.saveToFile();
 		canvasPanel.setDataFile(data);
 
 		createMenuContent();
