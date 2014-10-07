@@ -1,0 +1,17 @@
+Bundle-Version: 0.0.0.${tstamp}
+Private-Package:  \
+	ru.sasik.gui.fx
+-buildpath:  \
+	org.apache.felix.dependencymanager,\
+	osgi.core
+Bundle-Activator: ru.sasik.gui.fx.GUIActivator
+-runfw: org.apache.felix.framework;version='[4.4.0,4.4.0]'
+-runee: JavaSE-1.8
+
+-runsystempackages: javafx.application,\
+	javafx.collections,\
+	javafx.event,\
+	javafx.scene,\
+	javafx.scene.control,\
+	javafx.scene.layout,\
+	javafx.stage

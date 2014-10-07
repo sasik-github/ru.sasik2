@@ -22,7 +22,6 @@ import org.osgi.framework.BundleContext;
 
 import ru.sasik.datafile.DefaultDataFile;
 import ru.sasik.gui.IGUI;
-import ru.sasik.helper.AdditionFunctions;
 
 public class GUIActivator extends DependencyActivatorBase {
 	

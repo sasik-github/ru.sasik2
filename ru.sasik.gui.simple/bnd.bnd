@@ -8,5 +8,4 @@ Bundle-Version: 0.0.0.${tstamp}
 Private-Package:  \
 	ru.sasik.gui.simple
 Bundle-Activator: ru.sasik.gui.simple.GUIActivator
--dsannotations:  \
-	*
+-runfw: org.apache.felix.framework;version='[4.0.3,4.0.3]'

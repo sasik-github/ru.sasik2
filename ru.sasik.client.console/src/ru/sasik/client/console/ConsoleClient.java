@@ -15,6 +15,6 @@ public class ConsoleClient {
 			System.out.println(conf);
 		}
 		
-		new TestDraw();
+//		new TestDraw();
 	}
 }

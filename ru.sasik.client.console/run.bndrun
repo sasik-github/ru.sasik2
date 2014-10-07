@@ -1,6 +1,26 @@
 -runfw: org.apache.felix.framework;version='[4,5)'
--runee: JavaSE-1.7
+-runee: JavaSE-1.8
 -runsystemcapabilities: ${native_capability}
+-runsystempackages: javafx.application,\
+	javafx.collections,\
+	javafx.event,\
+	javafx.scene,\
+	javafx.scene.control,\
+	javafx.scene.layout,\
+	javafx.stage,\
+	javax.swing,\
+	javax.swing.border,\
+	javax.swing.filechooser,\
+	javafx.embed.swing,\
+	javafx.animation,\
+	javafx.beans.property,\
+	javafx.beans.value,\
+	javafx.geometry,\
+	javafx.scene.paint,\
+	javafx.scene.shape,\
+	javafx.scene.transform,\
+	javafx.util
+	
 
 -resolve.effective: active
 
@@ -8,12 +28,13 @@
 -runrequires:  \
 	osgi.identity;filter:='(osgi.identity=org.apache.felix.gogo.shell)',\
 	osgi.identity;filter:='(osgi.identity=org.apache.felix.gogo.command)',\
-	osgi.identity;filter:='(osgi.identity=ru.sasik.client.console)',\
 	osgi.identity;filter:='(osgi.identity=ru.sasik.service.simple)',\
-	osgi.identity;filter:='(osgi.identity=ru.sasik.gui.simple)',\
+	osgi.identity;filter:='(osgi.identity=ru.sasik.datafile)',\
+	osgi.identity;filter:='(osgi.identity=ru.sasik.gui.fx)',\
 	osgi.identity;filter:='(osgi.identity=ru.sasik.action)',\
-	osgi.identity;filter:='(osgi.identity=ru.sasik.datafile)'
+	osgi.identity;filter:='(osgi.identity=ru.sasik.client.console)'
 -resolve: auto
+
 -runbundles:  \
 	org.apache.felix.configadmin;version='[1.8.0,1.8.1)',\
 	org.apache.felix.dependencymanager;version='[3.2.0,3.2.1)',\
@@ -25,7 +46,6 @@
 	ru.sasik.api;version=latest,\
 	ru.sasik.client.console;version=latest,\
 	ru.sasik.datafile;version=latest,\
-	ru.sasik.gui;version=latest,\
-	ru.sasik.gui.simple;version=latest,\
+	ru.sasik.gui.fx;version=latest,\
 	ru.sasik.helper;version=latest,\
 	ru.sasik.service.simple;version=latest

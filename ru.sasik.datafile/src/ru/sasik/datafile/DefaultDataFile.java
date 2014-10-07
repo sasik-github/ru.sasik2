@@ -218,7 +218,6 @@ public class DefaultDataFile implements Serializable {
 	public String saveToFile() {
 		System.out.println("DefaultDataFile.saveToFile()");
 		StringBuilder sb = new StringBuilder();
-		int iterator;
 		sb.append("[MAIN]\nTestfor new datafile structure\n");
 		sb.append(generatorToFile(main));
 		
@@ -235,7 +234,6 @@ public class DefaultDataFile implements Serializable {
 		sb.append(generatorToFile(output));
 		
 		sb.append("[NODES] POINTS\n");
-		iterator = 1;
 		for (Point node : nodes) {
 			sb.append("\t" + node.getN() + "   "
 						+ node.getX() + "  "
