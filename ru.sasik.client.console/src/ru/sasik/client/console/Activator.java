@@ -15,6 +15,7 @@ import ru.sasik.api.AgendaService;
 public class Activator extends DependencyActivatorBase{
 
 	protected Application service;
+	private Platform platform;
 
 	@Override
 	public void start(BundleContext context) throws Exception {
@@ -23,37 +24,48 @@ public class Activator extends DependencyActivatorBase{
 		ServiceReference serviceReference = context.getServiceReference(Application.class.getName());
 		service = (Application) context.getService(serviceReference);
 		System.out.println("Activator.init() " + service);
-//		Application.launch(service, null);
-//		try {
-//			
-//			new JFXPanel();	
-//			Platform.runLater(new Runnable() {
-//				
-//				@Override
-//				public void run() {
-//					try {
-//						service.start(new Stage());
-//						service.launch(null);
-//						
-//						System.out.println("Activator.init() Service is launched and started");
-//					} catch (Exception e) {
-//						// TODO Auto-generated catch block
-//						System.err.println("" + e);
-//					}
-//					
-//				}
-//			});
-//		} catch (Exception e) {
-//			System.err.println(e);
-//			service.start(new Stage());
-//		}
+//		Application.launch(null);
+		try {
+			
+			new JFXPanel();
+			
+			Platform.runLater(new Runnable() {
+				
+				@Override
+				public void run() {
+					try {
+						service.start(new Stage());
+						service.launch(null);
+						
+						System.out.println("Activator.init() Service is launched and started");
+					} catch (Exception e) {
+						// TODO Auto-generated catch block
+						System.err.println("" + e);
+					}
+					
+				}
+			});
+		} catch (Exception e) {
+			System.err.println(e);
+			service.start(new Stage());
+		}
 	}
 
 	@Override
 	public void stop(BundleContext context) throws Exception {
 		// TODO Auto-generated method stub
 //		super.stop(context);
-		service.stop();
+		try {
+			if (Platform.isFxApplicationThread()) {
+				Platform.exit();
+				System.out.println("Activator.stop() is FX APPlication");
+			}
+			if (service != null)
+				service.stop();
+		} catch (Exception e) {
+			System.err.println(e);
+		}
+		
 	}
 
 	@Override
@@ -65,6 +77,13 @@ public class Activator extends DependencyActivatorBase{
 				.setImplementation(ConsoleClient.class)
 				.add(createServiceDependency().setService(AgendaService.class).setRequired(true))
 		);
+		
+	}
+
+	@Override
+	public void destroy(BundleContext arg0, DependencyManager arg1)
+			throws Exception {
+		// TODO Auto-generated method stub
 		
 	}
 

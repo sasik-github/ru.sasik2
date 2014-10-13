@@ -199,4 +199,12 @@ public class GUIActivator extends DependencyActivatorBase {
 //		frame.pack();
 	}
 
+	@Override
+	public void destroy(BundleContext arg0, DependencyManager arg1)
+			throws Exception {
+		// TODO Auto-generated method stub
+		frame.dispose();
+		
+	}
+
 }
