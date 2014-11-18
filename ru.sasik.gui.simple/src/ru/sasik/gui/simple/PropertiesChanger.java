@@ -1,6 +1,7 @@
 package ru.sasik.gui.simple;
 
 import java.awt.Color;
+import java.awt.Point;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -53,13 +54,12 @@ public class PropertiesChanger extends JDialog implements ActionListener{
 	public PropertiesChanger(CanvasPanel canvasPanel) {
 		super();
 		this.canvasPanel = canvasPanel;
-		
+		this.setTitle("Properties");
 		panel = new JPanel();
 		panel.add(new JLabel("Change properties of canvas"));
 		
 		initGUI();
-		
-		
+
 		JButton button = new JButton("Ok");
 		button.addActionListener(this);
 		panel.add(button);

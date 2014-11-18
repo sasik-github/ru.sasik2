@@ -1,5 +1,8 @@
 package ru.sasik.gui.simple;
 
+//http://darkraha.com/rus/java/swing/swing00.php
+//http://zetcode.com/tutorials/javaswingtutorial/swingmodels/
+
 import java.awt.BorderLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -55,10 +58,10 @@ public class GUIActivator extends DependencyActivatorBase {
 	public void init(BundleContext context, DependencyManager manager)
 			throws Exception {
 		// TODO Auto-generated method stub
-		manager.add(createComponent()
-				.setInterface(IGUI.class.getName(), null)
-				.setImplementation(GUI.class)
-		);
+//		manager.add(createComponent()
+//				.setInterface(IGUI.class.getName(), null)
+//				.setImplementation(GUI.class)
+//		);
 		
 	}
 
