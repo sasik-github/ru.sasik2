@@ -18,6 +18,7 @@ import javax.swing.JScrollPane;
 import javax.swing.JTabbedPane;
 import javax.swing.JTextArea;
 import javax.swing.JToolBar;
+import javax.swing.UIManager;
 
 import org.apache.felix.dm.DependencyActivatorBase;
 import org.apache.felix.dm.DependencyManager;
@@ -78,7 +79,11 @@ public class GUIActivator extends DependencyActivatorBase {
 		actionTracker = new ToolbarActionTracker(context, toolBar);
 		actionTracker.open();
 		fileChooserAction = new FileChooserAction(area, frame, dataFile, canvasPanel);
-		
+		UIManager.setLookAndFeel("javax.swing.plaf.metal.MetalLookAndFeel");
+//		UIManager.setLookAndFeel("com.sun.java.swing.plaf.windows.WindowsLookAndFeel");	
+		UIManager.setLookAndFeel("javax.swing.plaf.nimbus.NimbusLookAndFeel");
+//		UIManager.setLookAndFeel("com.sun.java.swing.plaf.windows.WindowsClassicLookAndFeel");
+		UIManager.setLookAndFeel("com.sun.java.swing.plaf.motif.MotifLookAndFeel");
 		
 
 		File file = new File(
