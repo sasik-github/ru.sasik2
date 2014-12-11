@@ -16,7 +16,6 @@ public class ShapeComponent extends JComponent {
 	public ShapeComponent(ICanvas canvas, String shapeName) {
 		_canvas = canvas;
 		_shapeName = shapeName;
-		// setBorder(BorderFactory.createRaisedBevelBorder());
 	}
 
 	@Override
@@ -29,5 +28,4 @@ public class ShapeComponent extends JComponent {
 		shape.draw(g2d, new Point(getWidth(), getHeight()));
 		g2d.setBackground(Color.WHITE);
 	}
-
 }

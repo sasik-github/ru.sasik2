@@ -1,5 +1,7 @@
 package ru.sasik.gui.objects;
 
+import java.awt.Color;
+import java.awt.Dimension;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.HashMap;
@@ -13,6 +15,9 @@ import ru.sasik.datafile.DefaultDataFile;
 
 public class Canvas extends JPanel implements ICanvas {
 
+	private static final int CANVAS_WIDTH = 640;
+	private static final int CANVAS_HEIGHT = 480;
+	
 	private static final long serialVersionUID = 5449765633250881495L;
 	private JFrame _mainFrame;
 	private Map _shapesList = new HashMap<String, IShape>();
@@ -23,6 +28,10 @@ public class Canvas extends JPanel implements ICanvas {
 	public Canvas() {
 
 		_reusableActionListener = new ShapeButtonActionListener();
+//		IShape shape = new Poi
+//		addShape("Point", shape);
+		setBackground(Color.BLACK);
+		setPreferredSize(new Dimension(CANVAS_WIDTH, CANVAS_HEIGHT));
 		setLayout(null);
 
 	}

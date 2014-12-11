@@ -6,6 +6,9 @@ Bundle-Version: 0.0.0.${tstamp}
 	ru.sasik.datafile;version=latest,\
 	ru.sasik.helper;version=latest
 Private-Package:  \
-	ru.sasik.gui.simple
-Bundle-Activator: ru.sasik.gui.simple.GUIActivator
+	ru.sasik.gui.starter,\
+	ru.sasik.gui.simple,\
+	ru.sasik.gui.objects,\
+	ru.sasik.gui.objects.frame
+Bundle-Activator: ru.sasik.gui.starter.GuiStarterActivator
 -runfw: org.apache.felix.framework;version='[4.0.3,4.0.3]'

@@ -1,94 +1,77 @@
 package ru.sasik.gui.objects;
 
-import java.awt.event.ActionListener;
-import java.io.File;
+import java.awt.BorderLayout;
+import java.awt.Component;
+import java.awt.ComponentOrientation;
+import java.awt.Container;
+import java.awt.FlowLayout;
 
 import javax.swing.JFrame;
-import javax.swing.JTabbedPane;
-import javax.swing.JTextArea;
+import javax.swing.JPanel;
 import javax.swing.JToolBar;
-import javax.swing.UIManager;
-import javax.swing.UnsupportedLookAndFeelException;
 
-import ru.sasik.datafile.DefaultDataFile;
-import ru.sasik.gui.simple.CanvasPanel;
-import ru.sasik.gui.simple.FileChooserAction;
+import ru.sasik.gui.objects.frame.MainMenu;
+import ru.sasik.gui.objects.frame.MainToolbar;
 import ru.sasik.gui.simple.StatusBar;
-import ru.sasik.gui.simple.ToolbarActionTracker;
-import ru.sasik.gui.simple.GUIActivator.MyActionListener;
 
 public class MainFrame extends JFrame implements IMainFrame {
 
+	private static final long serialVersionUID = -3012101084369765594L;
+
 	private static final int WIDTH = 640;
 
-	private static final int HEIGHT = 400;
+	private static final int HEIGHT = 700;
+	
+	private static final String FRAME_TITLE  = "ru.sasik.gui";
 
-	private JToolBar _toolBar;
+	private Canvas canvas;
 
-	private JTextArea _area;
+	private JToolBar toolbar;
 
-	private JTabbedPane _tabbedPane;
+	private MainMenu menubar;
 
-	private ICanvas _canvas;
-
-	private StatusBar _statusBar;
-
-	// private ActionListener actionListener;
-
-	private DefaultDataFile dataFile;
-
-	private ToolbarActionTracker _actionTracker;
-
-	private FileChooserAction _fileChooserAction;
+	
+	// containers for all workspace objects
+	// used for BorderLayout if you want to add 
+	// several object to BorderLayour.North or other space
+	private Container mainContentPane;
+	private JPanel northContent;
+	private JPanel middleContent;
+	private JPanel SouthContent;
 
 	public MainFrame() {
+		
+		northContent = new JPanel();
+		FlowLayout northFlowLayout = new FlowLayout();
+		middleContent = new JPanel();
+		middleContent.setLayout(new FlowLayout());
+		SouthContent = new JPanel();
+		
+		mainContentPane = getContentPane();
+		mainContentPane.setLayout(new BorderLayout());
+		mainContentPane.add(northContent, BorderLayout.NORTH);
+		mainContentPane.add(middleContent, BorderLayout.CENTER);
+		mainContentPane.add(SouthContent, BorderLayout.SOUTH);
 
+		northContent.setLayout(northFlowLayout);
+		northFlowLayout.setAlignment(FlowLayout.LEFT);
+		
+		initComponents();
+		setTitle(FRAME_TITLE);
+		setSize(WIDTH, HEIGHT);
+		setVisible(true);
 	}
 
 	private void initComponents() {
-		_toolBar = new JToolBar();
-		_area = new JTextArea();
-		_tabbedPane = new JTabbedPane();
-		_statusBar = new StatusBar();
-		_canvas = new Canvas();
-		// _actionListener = new MyActionListener();
-		// _actionTracker = new ToolbarActionTracker(context, toolBar);
-		// _actionTracker.open();
-		// _fileChooserAction = new FileChooserAction(_area, this, dataFile,
-		// _canvas);
-
-		try {
-			// UIManager.setLookAndFeel("com.sun.java.swing.plaf.windows.WindowsLookAndFeel");
-			// UIManager.setLookAndFeel("com.sun.java.swing.plaf.windows.WindowsClassicLookAndFeel");
-			UIManager
-					.setLookAndFeel("com.sun.java.swing.plaf.motif.MotifLookAndFeel");
-			UIManager
-					.setLookAndFeel("javax.swing.plaf.nimbus.NimbusLookAndFeel");
-			UIManager.setLookAndFeel("javax.swing.plaf.metal.MetalLookAndFeel");
-		} catch (ClassNotFoundException | InstantiationException
-				| IllegalAccessException | UnsupportedLookAndFeelException e) {
-			e.printStackTrace();
-		}
-
-		File file = new File("/home/sasik/Dropbox/11111/Akord/DMITRY.DAT");
-
-		// test write function
-		// AdditionFunctions.writeFile("/home/sasik/Dropbox/11111/Akord/sasik.DAT",
-		// AdditionFunctions.readFile(file));
-
-		DefaultDataFile data = new DefaultDataFile();
-		data.openFromFile(file);
-		data.saveToFile();
-		_canvas.setDataFile(data);
-
+		createToolbarContent();
 		createMenuContent();
-
 		createWorkspaceContent();
-
 		createFrameContent();
+	}
 
-		this.setSize(WIDTH, HEIGHT);
-		// this.pack();
+	private void createToolbarContent() {
+		toolbar = new MainToolbar();
+		northContent.add(toolbar);
 	}
 
 	private void createFrameContent() {
@@ -97,28 +80,28 @@ public class MainFrame extends JFrame implements IMainFrame {
 	}
 
 	private void createWorkspaceContent() {
-		// TODO Auto-generated method stub
-
+		canvas = new Canvas();
+		middleContent.add(canvas);
 	}
 
 	private void createMenuContent() {
-		// TODO Auto-generated method stub
-
+		menubar = new MainMenu();
+		setJMenuBar(menubar);
 	}
 
 	@Override
 	public JToolBar getToolbar() {
-		return _toolBar;
+		return toolbar;
 	}
 
 	@Override
 	public StatusBar getStatusbar() {
-		return _statusBar;
+		return null;
 	}
 
 	@Override
 	public ICanvas getCanvas() {
-		return _canvas;
+		return null;
 	}
 
 }

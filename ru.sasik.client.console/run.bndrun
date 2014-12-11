@@ -28,10 +28,10 @@
 -runrequires:  \
 	osgi.identity;filter:='(osgi.identity=org.apache.felix.gogo.shell)',\
 	osgi.identity;filter:='(osgi.identity=org.apache.felix.gogo.command)',\
-	osgi.identity;filter:='(osgi.identity=ru.sasik.service.simple)',\
 	osgi.identity;filter:='(osgi.identity=ru.sasik.datafile)',\
 	osgi.identity;filter:='(osgi.identity=ru.sasik.action)',\
 	osgi.identity;filter:='(osgi.identity=ru.sasik.client.console)',\
+	osgi.identity;filter:='(osgi.identity=ru.sasik.service.simple)',\
 	osgi.identity;filter:='(osgi.identity=ru.sasik.gui.simple)'
 -resolve: auto
 
@@ -46,7 +46,6 @@
 	ru.sasik.api;version=latest,\
 	ru.sasik.client.console;version=latest,\
 	ru.sasik.datafile;version=latest,\
-	ru.sasik.gui;version=latest,\
 	ru.sasik.gui.simple;version=latest,\
 	ru.sasik.helper;version=latest,\
 	ru.sasik.service.simple;version=latest
