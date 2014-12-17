@@ -2,7 +2,7 @@ package ru.sasik.gui.objects;
 
 import javax.swing.JToolBar;
 
-import ru.sasik.gui.simple.StatusBar;
+import ru.sasik.gui.objects.frame.StatusBar;
 
 public interface IMainFrame {
 

@@ -1,6 +1,8 @@
 package ru.sasik.gui.objects;
 
+import java.awt.BasicStroke;
 import java.awt.Color;
+import java.awt.Graphics2D;
 
 public final class OriginObject {
 	
@@ -29,4 +31,25 @@ public final class OriginObject {
 	public static Double DX = 0.0;
 
 	public static Double DY = 0.0;
+	
+	public void draw(Graphics2D g2d) {
+		
+		g2d.setStroke(new BasicStroke());
+		g2d.setColor(ORIGIN_COLOR);
+		// OX
+		g2d.drawLine(X_ORIGIN, Y_ORIGIN, X_ORIGIN + ORIGIN_LENGTH, Y_ORIGIN);
+		g2d.drawLine(X_ORIGIN + ORIGIN_LENGTH, Y_ORIGIN, X_ORIGIN
+				+ ORIGIN_LENGTH - ORIGIN_ARROW_10, Y_ORIGIN + ORIGIN_ARROW_5);
+		g2d.drawLine(X_ORIGIN + ORIGIN_LENGTH, Y_ORIGIN, X_ORIGIN
+				+ ORIGIN_LENGTH - ORIGIN_ARROW_10, Y_ORIGIN - ORIGIN_ARROW_5);
+		// OY
+		g2d.drawLine(X_ORIGIN, Y_ORIGIN, X_ORIGIN, Y_ORIGIN + ORIGIN_LENGTH
+				* Y_REVERSE);
+		g2d.drawLine(X_ORIGIN, Y_ORIGIN + ORIGIN_LENGTH * Y_REVERSE, X_ORIGIN
+				+ ORIGIN_ARROW_5, Y_ORIGIN + (ORIGIN_LENGTH - ORIGIN_ARROW_10)
+				* Y_REVERSE);
+		g2d.drawLine(X_ORIGIN, Y_ORIGIN + ORIGIN_LENGTH * Y_REVERSE, X_ORIGIN
+				- ORIGIN_ARROW_5, Y_ORIGIN + (ORIGIN_LENGTH - ORIGIN_ARROW_10)
+				* Y_REVERSE);
+	}
 }

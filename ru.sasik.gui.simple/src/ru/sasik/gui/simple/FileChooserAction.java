@@ -20,12 +20,12 @@ public class FileChooserAction implements ActionListener {
 	
 	private JFrame frame;
 	
-	private CanvasPanel canvasPanel;
+	private ICanvas canvasPanel;
 	
 	private DefaultDataFile dataFile;
 	
 	
-	public FileChooserAction(JTextArea area, JFrame frame, DefaultDataFile dataFile, CanvasPanel canvasPanel) {
+	public FileChooserAction(JTextArea area, JFrame frame, DefaultDataFile dataFile, ICanvas canvasPanel) {
 		this.area = area;
 		this.frame = frame;
 		this.dataFile = dataFile;

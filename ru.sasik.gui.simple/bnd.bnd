@@ -9,6 +9,7 @@ Private-Package:  \
 	ru.sasik.gui.starter,\
 	ru.sasik.gui.simple,\
 	ru.sasik.gui.objects,\
-	ru.sasik.gui.objects.frame
+	ru.sasik.gui.objects.frame,\
+	ru.sasik.gui.simpleshapes
 Bundle-Activator: ru.sasik.gui.starter.GuiStarterActivator
 -runfw: org.apache.felix.framework;version='[4.0.3,4.0.3]'

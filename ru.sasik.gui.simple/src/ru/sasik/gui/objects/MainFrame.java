@@ -1,18 +1,20 @@
 package ru.sasik.gui.objects;
 
 import java.awt.BorderLayout;
-import java.awt.Component;
-import java.awt.ComponentOrientation;
+import java.awt.Color;
 import java.awt.Container;
+import java.awt.Dimension;
 import java.awt.FlowLayout;
 
+import javax.swing.BorderFactory;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
+import javax.swing.JScrollPane;
 import javax.swing.JToolBar;
 
 import ru.sasik.gui.objects.frame.MainMenu;
 import ru.sasik.gui.objects.frame.MainToolbar;
-import ru.sasik.gui.simple.StatusBar;
+import ru.sasik.gui.objects.frame.StatusBar;
 
 public class MainFrame extends JFrame implements IMainFrame {
 
@@ -21,8 +23,8 @@ public class MainFrame extends JFrame implements IMainFrame {
 	private static final int WIDTH = 640;
 
 	private static final int HEIGHT = 700;
-	
-	private static final String FRAME_TITLE  = "ru.sasik.gui";
+
+	private static final String FRAME_TITLE = "ru.sasik.gui";
 
 	private Canvas canvas;
 
@@ -30,35 +32,36 @@ public class MainFrame extends JFrame implements IMainFrame {
 
 	private MainMenu menubar;
 
-	
+	private StatusBar stausBar;
+
 	// containers for all workspace objects
-	// used for BorderLayout if you want to add 
+	// used for BorderLayout if you want to add
 	// several object to BorderLayour.North or other space
 	private Container mainContentPane;
 	private JPanel northContent;
 	private JPanel middleContent;
-	private JPanel SouthContent;
+	private JPanel southContent;
 
 	public MainFrame() {
-		
+
 		northContent = new JPanel();
 		FlowLayout northFlowLayout = new FlowLayout();
 		middleContent = new JPanel();
 		middleContent.setLayout(new FlowLayout());
-		SouthContent = new JPanel();
-		
+		southContent = new JPanel();
+
 		mainContentPane = getContentPane();
 		mainContentPane.setLayout(new BorderLayout());
 		mainContentPane.add(northContent, BorderLayout.NORTH);
 		mainContentPane.add(middleContent, BorderLayout.CENTER);
-		mainContentPane.add(SouthContent, BorderLayout.SOUTH);
+		mainContentPane.add(southContent, BorderLayout.SOUTH);
 
 		northContent.setLayout(northFlowLayout);
 		northFlowLayout.setAlignment(FlowLayout.LEFT);
-		
+
 		initComponents();
 		setTitle(FRAME_TITLE);
-		setSize(WIDTH, HEIGHT);
+		pack();
 		setVisible(true);
 	}
 
@@ -67,6 +70,13 @@ public class MainFrame extends JFrame implements IMainFrame {
 		createMenuContent();
 		createWorkspaceContent();
 		createFrameContent();
+		createStatusbarContent();
+	}
+
+	private void createStatusbarContent() {
+		stausBar = new ru.sasik.gui.objects.frame.StatusBar();
+		southContent.add(stausBar);
+
 	}
 
 	private void createToolbarContent() {
@@ -75,17 +85,20 @@ public class MainFrame extends JFrame implements IMainFrame {
 	}
 
 	private void createFrameContent() {
-		// TODO Auto-generated method stub
+		//
 
 	}
 
 	private void createWorkspaceContent() {
 		canvas = new Canvas();
-		middleContent.add(canvas);
+		canvas.setBorder(BorderFactory.createLineBorder(Color.red));
+		JScrollPane pane = new JScrollPane();
+		pane.getViewport().add(canvas);
+		add(pane, BorderLayout.CENTER);
 	}
 
 	private void createMenuContent() {
-		menubar = new MainMenu();
+		menubar = new MainMenu(this);
 		setJMenuBar(menubar);
 	}
 
@@ -96,7 +109,7 @@ public class MainFrame extends JFrame implements IMainFrame {
 
 	@Override
 	public StatusBar getStatusbar() {
-		return null;
+		return stausBar;
 	}
 
 	@Override

@@ -43,7 +43,7 @@ public class GUIActivator extends DependencyActivatorBase {
 	
 	private JTabbedPane tabbedPane;
 	
-	private CanvasPanel canvasPanel;
+	private ICanvas canvasPanel;
 	
 	private StatusBar statusBar;
 	
@@ -74,7 +74,7 @@ public class GUIActivator extends DependencyActivatorBase {
 		area = new JTextArea();
 		tabbedPane = new JTabbedPane();
 		statusBar = new StatusBar();
-		canvasPanel = new CanvasPanel(statusBar);
+		canvasPanel = new ICanvas(statusBar);
 		actionListener = new MyActionListener();
 		actionTracker = new ToolbarActionTracker(context, toolBar);
 		actionTracker.open();
