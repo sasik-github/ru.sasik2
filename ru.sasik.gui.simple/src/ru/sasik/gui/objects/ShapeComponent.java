@@ -13,6 +13,7 @@ public class ShapeComponent extends JComponent {
 	private String _shapeName;
 	private ICanvas _canvas;
 	public int displacmentX = 35;
+	private Color color = Color.RED;
 
 	public ShapeComponent(ICanvas canvas, String shapeName) {
 		_canvas = canvas;
@@ -24,9 +25,22 @@ public class ShapeComponent extends JComponent {
 		super.paintComponent(g);
 		Graphics2D g2d = (Graphics2D) g;
 		IShape shape = _canvas.getShape(_shapeName);
-		System.out.println("ShapeComponent.paintComponent() w:" + getWidth()
-				+ " h:" + getHeight());
+		g2d.setColor(getColor());
+		// System.out.println("ShapeComponent.paintComponent() w:" + getWidth()
+		// + " h:" + getHeight());
+		if (null == shape) {
+			// close method
+			return;
+		}
 		shape.draw(g2d, new Point(getWidth(), getHeight()));
 		g2d.setBackground(Color.WHITE);
+	}
+
+	public Color getColor() {
+		return color;
+	}
+
+	public void setColor(Color color) {
+		this.color = color;
 	}
 }

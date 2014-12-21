@@ -8,7 +8,9 @@ import java.awt.Graphics2D;
 import java.awt.Rectangle;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Iterator;
 import java.util.Map;
 
 import javax.swing.JButton;
@@ -28,11 +30,12 @@ public class Canvas extends JPanel implements ICanvas {
 	private static final int BOX = 15;
 
 	private JFrame _mainFrame;
-	private Map _shapesList = new HashMap<String, IShape>();
+	private Map<String, IShape> _shapesList = new HashMap<String, IShape>();
 	private IShape _defaultShape;
 	private String _shapeSelected;
 	private ActionListener _reusableActionListener;
 	private DefaultDataFile dataFile;
+	private ArrayList<ShapeComponent> shapeComponentList = new ArrayList<ShapeComponent>();
 
 	public Canvas() {
 
@@ -54,6 +57,8 @@ public class Canvas extends JPanel implements ICanvas {
 	@Override
 	public IShape getShape(String shapeName) {
 		IShape shape = (IShape) _shapesList.get(shapeName);
+
+		// System.out.println("Canvas.getShape(): Shape is " + shape);
 		if (shape == null) {
 			return _defaultShape;
 		}
@@ -121,25 +126,46 @@ public class Canvas extends JPanel implements ICanvas {
 			if (dataFile.nodes != null) {
 				g2d.setStroke(new BasicStroke());
 				g2d.setColor(OriginObject.DATA_COLOR);
-				for (Point node : dataFile.nodes) {
-//					g2d.fillOval(
-//							
-//							,
-//							OriginObject.X_RADIUS, OriginObject.Y_RADIUS);
+				if (shapeComponentList.isEmpty()) {
+					for (Point node : dataFile.nodes) {
+						String m_selected = "Point";
+						ShapeComponent sc = new ShapeComponent(this, m_selected);
+						sc.setBounds(
+								(int) ((node.getX() + OriginObject.DX)
+										* OriginObject.CONVERTER + OriginObject.X_ORIGIN),// BOX
+																							// /
+																							// 2
+								(int) ((node.getY() + OriginObject.DY)
+										* OriginObject.CONVERTER
+										* OriginObject.Y_REVERSE + OriginObject.Y_ORIGIN), // -
+																							// sc.displacmentX
+								BOX, BOX);
+						add(sc, 0);
+						repaint(sc.getBounds());
+						shapeComponentList.add(sc);
+						validate();
+					}
+				} else {
+					Iterator<Point> iterator = dataFile.nodes.iterator();
+					for (ShapeComponent shapeComponent : shapeComponentList) {
+						// System.out.println("Canvas.paintData() "
+						// + shapeComponent.getBounds());
+						Point p = iterator.next();
+						shapeComponent
+								.setBounds(
+										(int) ((p.getX() + OriginObject.DX)
+												* OriginObject.CONVERTER + OriginObject.X_ORIGIN),
+										(int) ((p.getY() + OriginObject.DY)
+												* OriginObject.CONVERTER
+												* OriginObject.Y_REVERSE + OriginObject.Y_ORIGIN),
+										BOX, BOX);
+						shapeComponent.setColor(OriginObject.DATA_COLOR);
 
-					String m_selected = "PointShape";
-					ShapeComponent sc = new ShapeComponent(this, m_selected);
-					sc.setBounds((int) ((node.getX() + OriginObject.DX)
-							* OriginObject.CONVERTER + OriginObject.X_ORIGIN),//  BOX / 2
-							(int) ((node.getY() + OriginObject.DY)
-									* OriginObject.CONVERTER
-									* OriginObject.Y_REVERSE + OriginObject.Y_ORIGIN), // - sc.displacmentX
-							BOX, BOX);
-					add(sc, 0);
-					repaint(sc.getBounds());
+					}
+					validate();
 				}
-				validate();
-//				System.out.println("Nodes size" + dataFile.nodes.size());
+
+				// System.out.println("Nodes size" + dataFile.nodes.size());
 			}
 		}
 	}
