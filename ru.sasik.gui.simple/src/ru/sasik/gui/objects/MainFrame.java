@@ -5,6 +5,7 @@ import java.awt.Color;
 import java.awt.Container;
 import java.awt.Dimension;
 import java.awt.FlowLayout;
+import java.io.File;
 
 import javax.swing.BorderFactory;
 import javax.swing.JFrame;
@@ -12,6 +13,7 @@ import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JToolBar;
 
+import ru.sasik.datafile.DefaultDataFile;
 import ru.sasik.gui.objects.frame.MainMenu;
 import ru.sasik.gui.objects.frame.MainToolbar;
 import ru.sasik.gui.objects.frame.StatusBar;
@@ -95,6 +97,18 @@ public class MainFrame extends JFrame implements IMainFrame {
 		JScrollPane pane = new JScrollPane();
 		pane.getViewport().add(canvas);
 		add(pane, BorderLayout.CENTER);
+		
+		File file = new File(
+				"/home/sasik/Dropbox/11111/Akord/DMITRY.DAT"
+		);
+		
+//		test write function
+//		AdditionFunctions.writeFile("/home/sasik/Dropbox/11111/Akord/sasik.DAT", AdditionFunctions.readFile(file));
+		
+		DefaultDataFile data = new DefaultDataFile();
+		data.openFromFile(file);
+		data.saveToFile();
+		canvas.setDataFile(data);
 	}
 
 	private void createMenuContent() {

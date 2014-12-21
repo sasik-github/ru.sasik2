@@ -24,7 +24,7 @@ public final class OriginObject {
 
 	public static Color DATA_COLOR = Color.red;
 
-	public static Color ORIGIN_COLOR = Color.blue;
+	public static Color ORIGIN_COLOR = Color.GREEN;
 
 	public static int Y_REVERSE = -1;
 

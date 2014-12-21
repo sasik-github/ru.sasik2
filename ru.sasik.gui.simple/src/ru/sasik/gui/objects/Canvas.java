@@ -16,24 +16,29 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 
 import ru.sasik.datafile.DefaultDataFile;
+import ru.sasik.datafile.Point;
+import ru.sasik.gui.simpleshapes.PointShape;
 
 public class Canvas extends JPanel implements ICanvas {
 
-	private static final int CANVAS_WIDTH = 640;
-	private static final int CANVAS_HEIGHT = 480;
-
 	private static final long serialVersionUID = 5449765633250881495L;
+
+	private static final int CANVAS_WIDTH = 800;
+	private static final int CANVAS_HEIGHT = 600;
+	private static final int BOX = 15;
+
 	private JFrame _mainFrame;
 	private Map _shapesList = new HashMap<String, IShape>();
 	private IShape _defaultShape;
 	private String _shapeSelected;
 	private ActionListener _reusableActionListener;
+	private DefaultDataFile dataFile;
 
 	public Canvas() {
 
 		_reusableActionListener = new ShapeButtonActionListener();
-		// IShape shape = new Poi
-		// addShape("Point", shape);
+		IShape shape = new PointShape();
+		addShape("Point", shape);
 		setBackground(Color.BLACK);
 		setPreferredSize(new Dimension(CANVAS_WIDTH, CANVAS_HEIGHT));
 		setLayout(null);
@@ -89,7 +94,8 @@ public class Canvas extends JPanel implements ICanvas {
 
 	@Override
 	public void setDataFile(DefaultDataFile data) {
-		// TODO Auto-generated method stub
+		dataFile = data;
+		repaint();
 
 	}
 
@@ -103,13 +109,68 @@ public class Canvas extends JPanel implements ICanvas {
 		g2d.setBackground(Color.BLACK);
 		g2d.clearRect(0, 0, r.width, r.height);
 
-		// paintCoordGrid(g2d);
+		paintGrid(g2d);
+
 		paintCoord(g2d);
+
+		paintData(g2d);
+	}
+
+	private void paintData(Graphics2D g2d) {
+		if (dataFile != null) {
+			if (dataFile.nodes != null) {
+				g2d.setStroke(new BasicStroke());
+				g2d.setColor(OriginObject.DATA_COLOR);
+				for (Point node : dataFile.nodes) {
+//					g2d.fillOval(
+//							
+//							,
+//							OriginObject.X_RADIUS, OriginObject.Y_RADIUS);
+
+					String m_selected = "PointShape";
+					ShapeComponent sc = new ShapeComponent(this, m_selected);
+					sc.setBounds((int) ((node.getX() + OriginObject.DX)
+							* OriginObject.CONVERTER + OriginObject.X_ORIGIN),//  BOX / 2
+							(int) ((node.getY() + OriginObject.DY)
+									* OriginObject.CONVERTER
+									* OriginObject.Y_REVERSE + OriginObject.Y_ORIGIN), // - sc.displacmentX
+							BOX, BOX);
+					add(sc, 0);
+					repaint(sc.getBounds());
+				}
+				validate();
+//				System.out.println("Nodes size" + dataFile.nodes.size());
+			}
+		}
+	}
+
+	private void paintData2(Graphics2D g2d) {
+		if (dataFile != null) {
+			if (dataFile.nodes != null) {
+				g2d.setStroke(new BasicStroke());
+				g2d.setColor(OriginObject.DATA_COLOR);
+				for (Point node : dataFile.nodes) {
+					g2d.fillOval(
+							(int) ((node.getX() + OriginObject.DX)
+									* OriginObject.CONVERTER + OriginObject.X_ORIGIN),
+							(int) ((node.getY() + OriginObject.DY)
+									* OriginObject.CONVERTER
+									* OriginObject.Y_REVERSE + OriginObject.Y_ORIGIN),
+							OriginObject.X_RADIUS, OriginObject.Y_RADIUS);
+				}
+				System.out.println("Nodes size" + dataFile.nodes.size());
+			}
+		}
 	}
 
 	private void paintCoord(final Graphics2D g2d) {
 		new OriginObject().draw(g2d);
 
+	}
+
+	private void paintGrid(final Graphics2D g2d) {
+		GridObject grid = new GridObject(this);
+		grid.draw(g2d);
 	}
 
 }

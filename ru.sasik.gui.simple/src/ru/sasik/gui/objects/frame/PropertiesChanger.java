@@ -50,9 +50,9 @@ public class PropertiesChanger extends JDialog implements ActionListener {
 
 	private JTextField CONVERTER;
 
-	private static Color DATA_COLOR = Color.red;
+	private static Color DATA_COLOR = OriginObject.DATA_COLOR;
 
-	private static Color ORIGIN_COLOR = Color.blue;
+	private static Color ORIGIN_COLOR = OriginObject.ORIGIN_COLOR;
 
 	public PropertiesChanger(IMainFrame frame) {
 		super();
