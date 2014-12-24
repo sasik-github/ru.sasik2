@@ -109,6 +109,9 @@ public class MainFrame extends JFrame implements IMainFrame {
 		data.openFromFile(file);
 		data.saveToFile();
 		canvas.setDataFile(data);
+		
+		CanvasMouseListener canvasMouseListener = new CanvasMouseListener(canvas);
+		canvas.addMouseListener(canvasMouseListener);
 	}
 
 	private void createMenuContent() {

@@ -27,7 +27,7 @@ public class Canvas extends JPanel implements ICanvas {
 
 	private static final int CANVAS_WIDTH = 800;
 	private static final int CANVAS_HEIGHT = 600;
-	private static final int BOX = 15;
+	public static final int BOX = 15;
 
 	private JFrame _mainFrame;
 	private Map<String, IShape> _shapesList = new HashMap<String, IShape>();
@@ -146,6 +146,8 @@ public class Canvas extends JPanel implements ICanvas {
 						validate();
 					}
 				} else {
+					// else - if shapeComponents was created
+					// we use created objects 
 					Iterator<Point> iterator = dataFile.nodes.iterator();
 					for (ShapeComponent shapeComponent : shapeComponentList) {
 						// System.out.println("Canvas.paintData() "
@@ -198,5 +200,4 @@ public class Canvas extends JPanel implements ICanvas {
 		GridObject grid = new GridObject(this);
 		grid.draw(g2d);
 	}
-
 }

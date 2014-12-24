@@ -12,8 +12,9 @@ public class ShapeComponent extends JComponent {
 	private static final long serialVersionUID = 8131137653298849378L;
 	private String _shapeName;
 	private ICanvas _canvas;
-	public int displacmentX = 35;
+	public Integer displacmentX = 35;
 	private Color color = Color.RED;
+	public Integer BOX = 15;
 
 	public ShapeComponent(ICanvas canvas, String shapeName) {
 		_canvas = canvas;
