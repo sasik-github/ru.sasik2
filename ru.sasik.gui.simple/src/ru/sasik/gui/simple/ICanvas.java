@@ -1,6 +1,7 @@
 package ru.sasik.gui.simple;
 
 import java.awt.BasicStroke;
+
 import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
@@ -13,6 +14,8 @@ import javax.swing.JPanel;
 import ru.sasik.datafile.DefaultDataFile;
 import ru.sasik.datafile.Point;
 
+
+@Deprecated
 public class ICanvas extends JPanel {
 
 	private static final long serialVersionUID = 703560890112489533L;

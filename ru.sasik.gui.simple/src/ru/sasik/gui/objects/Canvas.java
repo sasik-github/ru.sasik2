@@ -100,6 +100,14 @@ public class Canvas extends JPanel implements ICanvas {
 	@Override
 	public void setDataFile(DefaultDataFile data) {
 		dataFile = data;
+		
+		// перед добавлением нового файл, удаляем старые результаты
+		if (shapeComponentList != null) {
+			for (ShapeComponent shape : shapeComponentList) {
+				remove(shape);
+			}
+		}
+		shapeComponentList = new ArrayList<ShapeComponent>();
 		repaint();
 
 	}
@@ -199,5 +207,10 @@ public class Canvas extends JPanel implements ICanvas {
 	private void paintGrid(final Graphics2D g2d) {
 		GridObject grid = new GridObject(this);
 		grid.draw(g2d);
+	}
+
+	@Override
+	public DefaultDataFile getDataFile() {
+		return dataFile;
 	}
 }

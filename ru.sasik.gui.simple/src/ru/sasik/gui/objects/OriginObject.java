@@ -4,6 +4,11 @@ import java.awt.BasicStroke;
 import java.awt.Color;
 import java.awt.Graphics2D;
 
+/**
+ * Отвечает за построения осей координат
+ * @author sasik
+ *
+ */
 public final class OriginObject {
 	
 	public static Integer CONVERTER = 70;

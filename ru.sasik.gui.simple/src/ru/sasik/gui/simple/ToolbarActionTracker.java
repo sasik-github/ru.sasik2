@@ -8,6 +8,8 @@ import org.apache.felix.dm.tracker.ServiceTracker;
 import org.osgi.framework.BundleContext;
 import org.osgi.framework.ServiceReference;
 
+
+@Deprecated
 public class ToolbarActionTracker extends ServiceTracker{
 	
 	private final JToolBar toolBar;

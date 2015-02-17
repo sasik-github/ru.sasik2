@@ -7,7 +7,6 @@ Bundle-Version: 0.0.0.${tstamp}
 	ru.sasik.helper;version=latest
 Private-Package:  \
 	ru.sasik.gui.starter,\
-	ru.sasik.gui.simple,\
 	ru.sasik.gui.objects,\
 	ru.sasik.gui.objects.frame,\
 	ru.sasik.gui.simpleshapes

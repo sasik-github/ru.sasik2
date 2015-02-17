@@ -64,7 +64,17 @@ public class CanvasMouseListener implements MouseListener, MouseMotionListener {
 		// return;
 		// }
 		if (m_selectedComponent != null) {
+			if (canvas.contains(e.getX(), e.getY())) {
 
+				ShapeComponent sc = new ShapeComponent(canvas, m_selected);
+				sc.setBounds(e.getX() - m_selectedComponent.BOX / 2, e.getY()
+						- sc.displacmentX, m_selectedComponent.BOX,
+						m_selectedComponent.BOX);
+				canvas.add(sc, 0);
+				canvas.validate();
+				canvas.repaint(sc.getBounds());
+//				return;
+			}
 			canvas.removeMouseMotionListener(this);
 			canvas.setCursor(Cursor.getPredefinedCursor(Cursor.DEFAULT_CURSOR));
 			m_selectedComponent.setBounds(e.getX() - m_selectedComponent.BOX
@@ -75,16 +85,7 @@ public class CanvasMouseListener implements MouseListener, MouseMotionListener {
 			return;
 
 		}
-		if (canvas.contains(e.getX(), e.getY())) {
-			ShapeComponent sc = new ShapeComponent(canvas, m_selected);
-			sc.setBounds(e.getX() - m_selectedComponent.BOX / 2, e.getY()
-					- sc.displacmentX, m_selectedComponent.BOX,
-					m_selectedComponent.BOX);
-			canvas.add(sc, 0);
-			canvas.validate();
-			canvas.repaint(sc.getBounds());
-			return;
-		}
+		
 	}
 
 	@Override

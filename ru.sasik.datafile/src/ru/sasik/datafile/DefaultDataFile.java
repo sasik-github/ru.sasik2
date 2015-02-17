@@ -125,7 +125,7 @@ public class DefaultDataFile implements Serializable {
 					line = lines[++i];
 				}
 				i--;
-			}else
+			} else
 			if (line.contains("[NODES]")) {
 				Point node;
 				int n, unknown1;
@@ -191,7 +191,7 @@ public class DefaultDataFile implements Serializable {
 			if (line.contains("[WINSTRUCT]")) {
 				line = lines[++i];
 				while (!line.startsWith("[")) {
-					String [] tokens = line.split("[ ]+");
+					String [] tokens = line.split("[\\s]+");
 					winstruct.add(Double.parseDouble(tokens[1]));
 					line = lines[++i];
 				}
@@ -235,7 +235,7 @@ public class DefaultDataFile implements Serializable {
 		
 		sb.append("[NODES] POINTS\n");
 		for (Point node : nodes) {
-			sb.append("\t" + node.getN() + "   "
+			sb.append("    " + node.getN() + "   "
 						+ node.getX() + "  "
 						+ node.getY() + "  "
 						+ node.getUnknow1() + "  "
@@ -261,7 +261,7 @@ public class DefaultDataFile implements Serializable {
 	private <E> String generatorToFile(List<E> list) {
 		StringBuilder sb = new StringBuilder();
 		for (E item : list) {
-			sb.append("\t" + item + "\t;\n");
+			sb.append("  " + item + "\t;\n");
 		}
 		return sb.toString();
 	}

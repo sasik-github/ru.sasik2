@@ -19,11 +19,10 @@ import javax.swing.filechooser.FileNameExtensionFilter;
 
 import ru.sasik.helper.AdditionFunctions;
 
+
+@Deprecated
 public class FileChooserDialog extends JFrame {
 
-		/**
-	 * 
-	 */
 	private static final long serialVersionUID = -2418283983706021047L;
 
 		private static final int FOR_BORDER = 10;

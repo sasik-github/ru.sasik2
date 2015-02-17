@@ -1,4 +1,4 @@
-package ru.sasik.gui.simple;
+package ru.sasik.gui.objects.frame;
 
 import java.awt.Component;
 import java.awt.event.ActionEvent;
@@ -12,27 +12,33 @@ import javax.swing.filechooser.FileFilter;
 import javax.swing.filechooser.FileNameExtensionFilter;
 
 import ru.sasik.datafile.DefaultDataFile;
+import ru.sasik.gui.objects.ICanvas;
 import ru.sasik.gui.objects.IMainFrame;
 import ru.sasik.helper.AdditionFunctions;
 
-
-@Deprecated
 public class FileChooserAction implements ActionListener {
 
-	private final JTextArea area;
+//	private final JTextArea area;
 	
-	private JFrame frame;
+	private IMainFrame frame;
 	
 	private ICanvas canvasPanel;
 	
 	private DefaultDataFile dataFile;
 	
 	
-	public FileChooserAction(JTextArea area, JFrame frame, DefaultDataFile dataFile, ICanvas canvasPanel) {
-		this.area = area;
-		this.frame = frame;
-		this.dataFile = dataFile;
-		this.canvasPanel = canvasPanel;
+	public FileChooserAction(IMainFrame frame) {
+//		this.area = area;
+		if (frame != null) {
+			this.frame = frame;
+			this.canvasPanel = frame.getCanvas();
+//			this.dataFile = canvasPanel.getDataFile();
+		} else {
+			System.out.println("FileChooserAction.FileChooserAction()");
+		}
+			
+		
+		
 	}
 
 	@Override
@@ -52,7 +58,6 @@ public class FileChooserAction implements ActionListener {
 		File file = fileopen.getSelectedFile();
 		if (file != null) {
 			System.out.println(file.getPath());
-			System.out.println("FileChooserAction.actionPerformed() \"" + commandName.toLowerCase() + "\"");
 			System.out.println(ret + " " + JFileChooser.APPROVE_OPTION);
 			if (ret == JFileChooser.APPROVE_OPTION) {
 				if (commandName.equals("open") ) {
@@ -61,8 +66,9 @@ public class FileChooserAction implements ActionListener {
 					canvasPanel.setDataFile(dataFile);
 					String text = AdditionFunctions.readFile(file);
 					//					System.out.println(area);
-					area.setText(text);
-					frame.pack();
+//					area.setText(text);
+					((JFrame )frame).pack();
+					System.out.println("FileChooserAction.actionPerformed() \"" + commandName.toLowerCase() + "\"");
 				} else
 					if (commandName.equals("save")) {
 						System.out.println(fileopen.getSelectedFile().getPath());

@@ -1,12 +1,9 @@
 package ru.sasik.gui.starter;
 
-import javax.swing.JFrame;
-
 import org.apache.felix.dm.DependencyActivatorBase;
 import org.apache.felix.dm.DependencyManager;
 import org.osgi.framework.BundleContext;
 
-import ru.sasik.gui.objects.IMainFrame;
 import ru.sasik.gui.objects.MainFrame;
 
 public class GuiStarterActivator extends DependencyActivatorBase{

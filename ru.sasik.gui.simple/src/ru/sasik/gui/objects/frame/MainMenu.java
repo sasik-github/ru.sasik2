@@ -7,16 +7,17 @@ import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
 
-import ru.sasik.gui.objects.ICanvas;
 import ru.sasik.gui.objects.IMainFrame;
 
 public class MainMenu extends JMenuBar {
 
 	private static final long serialVersionUID = 7315824184809695830L;
 	private IMainFrame mainFrame;
+	private ActionListener fileChooserAction;
 
 	public MainMenu(IMainFrame frame) {
 		mainFrame = frame;
+		initActions();
 		initComponents();
 	}
 
@@ -28,10 +29,10 @@ public class MainMenu extends JMenuBar {
 
 		itm = new JMenuItem("Open");
 		menu.add(itm);
-		// itm.addActionListener(fileChooserAction);
+		itm.addActionListener(fileChooserAction);
 
 		itm = new JMenuItem("Save");
-		// itm.addActionListener(fileChooserAction);
+		itm.addActionListener(fileChooserAction);
 		menu.add(itm);
 
 		itm = new JMenuItem("Close");
@@ -59,6 +60,10 @@ public class MainMenu extends JMenuBar {
 		menu.add(itm);
 
 		add(menu);
+	}
+	
+	public void initActions() {
+		fileChooserAction = new FileChooserAction(mainFrame);
 	}
 
 }

@@ -34,7 +34,7 @@ public class ShapeComponent extends JComponent {
 			return;
 		}
 		shape.draw(g2d, new Point(getWidth(), getHeight()));
-		g2d.setBackground(Color.WHITE);
+//		g2d.setBackground(Color.WHITE);
 	}
 
 	public Color getColor() {

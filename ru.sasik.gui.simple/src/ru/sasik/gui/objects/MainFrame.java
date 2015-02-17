@@ -69,10 +69,10 @@ public class MainFrame extends JFrame implements IMainFrame {
 
 	private void initComponents() {
 		createToolbarContent();
-		createMenuContent();
 		createWorkspaceContent();
 		createFrameContent();
 		createStatusbarContent();
+		createMenuContent();
 	}
 
 	private void createStatusbarContent() {
@@ -131,7 +131,7 @@ public class MainFrame extends JFrame implements IMainFrame {
 
 	@Override
 	public ICanvas getCanvas() {
-		return null;
+		return canvas;
 	}
 
 }

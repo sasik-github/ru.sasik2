@@ -20,6 +20,8 @@ public interface ICanvas {
 	
 	public void setDataFile(DefaultDataFile data);
 	
+	public DefaultDataFile getDataFile();
+	
 	public Component getComponentAt(Point p);
 
 	public void setCursor(Cursor predefinedCursor);

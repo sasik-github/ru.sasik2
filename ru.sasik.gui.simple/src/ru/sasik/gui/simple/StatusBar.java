@@ -3,6 +3,8 @@ package ru.sasik.gui.simple;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
+
+@Deprecated
 public class StatusBar extends JPanel {
 	
 	/**

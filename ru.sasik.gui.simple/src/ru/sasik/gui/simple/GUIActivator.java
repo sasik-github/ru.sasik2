@@ -27,6 +27,8 @@ import org.osgi.framework.BundleContext;
 import ru.sasik.datafile.DefaultDataFile;
 import ru.sasik.gui.IGUI;
 
+
+@Deprecated
 public class GUIActivator extends DependencyActivatorBase {
 	
 	private static final String FRAME_TITLE  = "ru.sasik.gui";

@@ -13,6 +13,9 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
+
+
+@Deprecated
 public class PropertiesChanger extends JDialog implements ActionListener{
 	
 	/**

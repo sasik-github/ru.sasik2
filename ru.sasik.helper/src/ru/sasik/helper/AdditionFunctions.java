@@ -8,7 +8,17 @@ import java.io.FileWriter;
 import java.io.IOException;
 
 
+/**
+ * сборник вспомогательных статических функций 
+ * @author sasik
+ *
+ */
 public class AdditionFunctions {
+	/**
+	 * Функция для чтения файла, возвращает string
+	 * @param file File фаил, который надо считать
+	 * @return String
+	 */
 	public static String readFile(final File file) {
 		StringBuffer fileBuffer = null;
 		String fileString = null;
@@ -33,6 +43,12 @@ public class AdditionFunctions {
 		return fileString;
 	}
 	
+	
+	/**
+	 * Запись файла в на жесткий диск
+	 * @param filename String путь к файлу
+	 * @param data String информация для записи
+	 */
 	public static void writeFile(final String filename, final String data) {
 		try {
 			System.out.println("AdditionFunctions.writeFile()");
