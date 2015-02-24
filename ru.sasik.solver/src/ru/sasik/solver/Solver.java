@@ -3,44 +3,69 @@ package ru.sasik.solver;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.PrintStream;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
+import org.omg.CORBA.portable.ApplicationException;
+
 public class Solver {
 
-	public String solverFileName;
+//	public String solverFileName;
 	
-	
+	private String os_env = "linux";
+
+
 	public Solver(String fileName) {
-		this.solverFileName = fileName;
+//		this.solverFileName = fileName;
 	}
 	
-	public String execute(String[] args) {
+	/**
+	 * передаем список команд на выполнение, первая комманда в листе, это исполняемый файл
+	 * вместе с путем до него, остальные элементы, это параметры к команде
+	 * @param commands
+	 * @return
+	 */
+	public String execute(List<String> commands) {
 		
 		System.out.println("Working Directory = " +
 	              System.getProperty("user.dir"));
 		
-		List<String> command = new ArrayList<String>();
+		if (commands == null) { 
+			commands = new ArrayList<String>();
+			// пример передаваемого списка
+			commands.add(System.getProperty("user.dir") + "/solverData/test.exe");
+//			commands.add("param1");
+//			commands.add("param2");
+//			commands.add("param2");
+//			commands.add("param2");
+		}
 		
-		command.add(System.getProperty("user.dir") + "/sharpConsole.exe");
-		command.add("param1");
-		command.add("param2");
-		
+		// проверка на операционную систему
+		// если солвер ехе то надо запускать через вайн
+		if (os_env == "linux") {
+			Path p = Paths.get(commands.get(0));
+			String file = p.getFileName().toString();
+			
+			String pathTofile = p.getParent().toString();
+			
+			commands.set(0, "wine");
+			commands.add(pathTofile + "/" + file);
+		}
 		
 		try {
 			
-			Process p = new ProcessBuilder(command).start();
+			Process p = new ProcessBuilder(commands).start();
 			inheritIO(p.getInputStream(), System.out);
 		    inheritIO(p.getErrorStream(), System.err);
 		    
 		} catch (IOException e) {
-			
 //			System.out.println(p.getInputStream());
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		return solverFileName;
+		return null;
 		
 	}
 	
@@ -56,5 +81,5 @@ public class Solver {
 	        }
 	    }).start();
 	}
-	
 }
+

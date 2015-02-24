@@ -50,7 +50,7 @@ public class DefaultDataFile implements Serializable {
 	public void openFromFile(File file) {
 		System.out.println("Start parse from file");
 		String text = AdditionFunctions.readFile(file);
-		String [] lines = text.split("\n");
+		String [] lines = text.split(System.lineSeparator());
 		Pattern p = Pattern.compile("-?\\d+");
 //		Pattern p = Pattern.compile("[0-9]+.[0-9]*|[0-9]*.[0-9]+|[0-9]+");
 		
@@ -253,8 +253,6 @@ public class DefaultDataFile implements Serializable {
 		sb.append(generatorToFile(winstruct));
 		
 		sb.append("[LINES] PARAMETERS\n");
-		System.out.println("DefaultDataFile.saveToFile()");
-		System.out.println(sb);
 		return sb.toString();
 	}
 	
