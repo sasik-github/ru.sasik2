@@ -3,23 +3,23 @@ package ru.sasik.datafile;
 import java.io.File;
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.List;
 import java.util.Scanner;
 
+import ru.sasik.entity.RezFile;
+import ru.sasik.entity.Zone;
 import ru.sasik.helper.AdditionFunctions;
 
 public class SolutionDataFile {
 	
 	private RezFile rezFile;
+	
+	private File file;
 
-	public SolutionDataFile() {
+	public SolutionDataFile() {}
 
-	}
-
-	public void open() {
+	public void open(File file) {
 		String rezFile = AdditionFunctions
-				.readFile(new File(
-						"/home/sasik/EclipseWorkspace/ru.sasik2/ru.sasik.solver/solverData/SERG.REZ"));
+				.readFile(file);
 		
 		// построчные данные
 		ArrayList<String> rezFileByLine = new ArrayList<String>(Arrays.asList(rezFile.split(System.lineSeparator())));
@@ -33,6 +33,7 @@ public class SolutionDataFile {
 		// дальше пошел парсинг файла
 		this.rezFile = new RezFile();
 		Zone zone;
+		System.out.println("SolutionDataFile.open() parse begin...");
 		for (int i = 0; i < rezFileByLine.size(); i++) {
 			String line = rezFileByLine.get(i);
 			
@@ -46,107 +47,52 @@ public class SolutionDataFile {
 		            st.next();
 		        }
 		        Double t = st.nextDouble();
+		        st.close();
 			        
 				zone = new Zone(t);
 				line = rezFileByLine.get(++i);
-				while(!line.startsWith("ZONE")) {
-					// TODO: доделать сплит, почемуто разделитель точка
+//				while(!line.contains("ZONE") && i < rezFileByLine.size()){
+				// TODO: не обрабатываеются последние строки!"!!!!!!
+				do{
+					if (i == rezFileByLine.size() - 1) break;
+					
+					
+					
 					String[] strValues = line.split("[ ]+");
+//					System.out.println(line);
 					ArrayList<Double> lineOfValues = new ArrayList<Double>();
 					for (String val : strValues) {
-						System.out.println(val + System.lineSeparator());
-						if (!val.isEmpty())
+						if (!val.isEmpty()) {
 							lineOfValues.add(Double.parseDouble(val));
+//							System.out.println(Double.parseDouble(val));
+						}
+						
 					}
-					line = rezFileByLine.get(++i);
+					line = rezFileByLine.get(++i); 
+//					System.out.println("\t" + line);
+//					System.out.println("\t" + Double.parseDouble(line));
 					lineOfValues.add(Double.parseDouble(line));
 					zone.add(lineOfValues);
-					line = rezFileByLine.get(++i);
-				}
+					if (rezFileByLine.size() - 1  > i) 
+						line = rezFileByLine.get(++i);
+
+				} while( !line.contains("ZONE") && rezFileByLine.size() > i);
 				this.rezFile.addZone(zone);
 			}
 		}
 		
-		System.out.println(this.rezFile);
+		System.out.println("SolutionDataFile.open() parse was ended");
 	}
 	
-	public class RezFile {
-		
-		private ArrayList<Zone> zones;
-		
-		public RezFile() {
-			zones = new ArrayList<Zone>();
-		}
-		
-		public void addZone(Double valueT, ArrayList<Double> lineOfValues) {
-			Zone zone = new Zone(valueT);
-			zone.add(lineOfValues);
-			this.addZone(zone);
-		}
-		
-		public void addZone(Zone zone) {
-			zones.add(zone);
-		}
-
-		public ArrayList<Zone> getZones() {
-			return zones;
-		}
-
-		public void setZones(ArrayList<Zone> zones) {
-			this.zones = zones;
-		}
-		
-		@Override
-		public String toString() {
-			
-			String ls = System.lineSeparator();
-			String result = "RezFile Container" + ls;
-			
-			for (Zone zone: zones) {
-				result += "ZONE = " + zone.getT() + ls;
-				for (ArrayList<Double> lineOfValues : zone.getAll()) {
-					for (Double val : lineOfValues) {
-						result += val.toString() + " ";
-					}
-					result += ls;
-				}
-//				result += zone.values.toString() + ls;
-			}
-			
-			return result;
-		}
+	public RezFile getRezFile() {
+		return rezFile;
 	}
-	
-	public class Zone {
-		
-		private Double t;
-		
-		private ArrayList<ArrayList<Double>> values;
 
-		public Zone(Double zoneValueT) {
-			setT(zoneValueT);
-			
-			values = new ArrayList<ArrayList<Double>>();
-		}
-		
-		public void add(ArrayList<Double> lineOfValues) {
-			values.add(lineOfValues);
-		}
-		
-		public ArrayList<Double> get(int index) {
-			return values.get(index);
-		}
-		
-		public ArrayList<ArrayList<Double>> getAll() {
-			return values;
-		}
-
-		public Double getT() {
-			return t;
-		}
-
-		public void setT(Double t) {
-			this.t = t;
-		}
+	/**
+	 * возвращает открытый файл
+	 * @return File
+	 */
+	public File getFile() {
+		return file;
 	}
 }
