@@ -8,8 +8,8 @@ import ru.sasik.entity.Zone;
 public class DataFileTest {
 	
 	public static void main(String[] args) {
-//		solutionDataFileTest();
-		solutionEnergyDataFileTest();
+		solutionDataFileTest();
+//		solutionEnergyDataFileTest();
 	}
 	
 	public static void solutionDataFileTest() {
@@ -18,10 +18,11 @@ public class DataFileTest {
 		sol.open(new File(
 				"/home/sasik/EclipseWorkspace/ru.sasik2/ru.sasik.solver/solverData/SERG.REZ"));
 		
-		RezFile rezFile = sol.getRezFile();
-		for (Zone zone : rezFile.getZones()) {
-			System.out.println("Zone " + zone.getT() + " have " + zone.getAll().size() + " lines of values");
-		}
+//		System.out.println(sol.getRezFile());
+//		RezFile rezFile = sol.getRezFile();
+//		for (Zone zone : rezFile.getZones()) {
+//			System.out.println("Zone " + zone.getT() + " have " + zone.getAll().size() + " lines of values");
+//		}
 	}
 	
 	public static void solutionEnergyDataFileTest() {

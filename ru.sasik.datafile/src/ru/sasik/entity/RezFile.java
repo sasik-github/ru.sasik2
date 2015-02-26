@@ -42,9 +42,7 @@ public class RezFile {
 				}
 				result += ls;
 			}
-//			result += zone.values.toString() + ls;
 		}
-		
 		return result;
 	}
 }

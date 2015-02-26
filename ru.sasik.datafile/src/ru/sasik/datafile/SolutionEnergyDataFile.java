@@ -10,38 +10,35 @@ import ru.sasik.entity.RezFile;
 import ru.sasik.entity.Zone;
 import ru.sasik.helper.AdditionFunctions;
 
-public class SolutionEnergyDataFile {
+public class SolutionEnergyDataFile extends SolutionAbstract{
 	
 	private RezFile rezFile;
 	
-	public void open(File file) {
-		String rezFile = AdditionFunctions
-				.readFile(file);
+	/**
+	 * процесс перевода из строкового типа в объектный
+	 * @param data Лист строк из файла решения
+	 * @return Объект решения
+	 */
+	protected RezFile parseString(ArrayList<String> data) {
 		
-		// построчные данные
-		ArrayList<String> rezFileByLine = new ArrayList<String>(Arrays.asList(rezFile.split(System.lineSeparator())));
-		
-		
-		// дальше пошел парсинг файла
-		this.rezFile = new RezFile();
-		Zone zone;
-		System.out.println("SolutionEnergyDataFile.open() parse begin...");
-		
-		Iterator<String> iterator = rezFileByLine.iterator();
+		RezFile resultFile = new RezFile();
+		Zone zone = new Zone(1.0);
+
+		Iterator<String> iterator = data.iterator();
 		while (iterator.hasNext()) {
 			String line = iterator.next();
-			
+			ArrayList<Double> lineOfValues = new ArrayList<Double>();
 			String[] split = line.split("\\s+");
 			
-			
-			
-			for (String string : split) {
-				System.out.println(string);
-				System.out.println("__");
+			for (int i = 1; i < split.length; i++) {
+				lineOfValues.add(Double.parseDouble(split[i]));
 			}
-//			break;
+			
+			zone.add(lineOfValues);
 		}
-				
-		System.out.println("SolutionEnergyDataFile.open() parse was ended");
+		
+		resultFile.addZone(zone);
+		
+		return resultFile;
 	}
 }
