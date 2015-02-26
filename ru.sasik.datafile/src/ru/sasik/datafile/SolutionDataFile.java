@@ -11,22 +11,7 @@ import ru.sasik.helper.AdditionFunctions;
 
 public class SolutionDataFile extends SolutionAbstract {
 	
-	private RezFile rezFile;
-	
-	private File file;
-
 	public SolutionDataFile() {}
-
-//	public void open(File file) {
-//		String rezFile = AdditionFunctions
-//				.readFile(file);
-//		
-//		// построчные данные
-//		ArrayList<String> rezFileByLine = new ArrayList<String>(Arrays.asList(rezFile.split(System.lineSeparator())));
-//		
-//		
-//	}
-	
 	
 	@Override
 	protected RezFile parseString(ArrayList<String> rezFileByLine) {
