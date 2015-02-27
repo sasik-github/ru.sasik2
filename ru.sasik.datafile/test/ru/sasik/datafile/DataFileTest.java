@@ -18,7 +18,7 @@ public class DataFileTest {
 		sol.open(new File(
 				"/home/sasik/EclipseWorkspace/ru.sasik2/ru.sasik.solver/solverData/SERG.REZ"));
 		
-//		System.out.println(sol.getRezFile());
+		System.out.println(sol.getRezFile());
 //		RezFile rezFile = sol.getRezFile();
 //		for (Zone zone : rezFile.getZones()) {
 //			System.out.println("Zone " + zone.getT() + " have " + zone.getAll().size() + " lines of values");

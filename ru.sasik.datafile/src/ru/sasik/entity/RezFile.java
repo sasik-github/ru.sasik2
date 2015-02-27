@@ -1,6 +1,7 @@
 package ru.sasik.entity;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 
 public class RezFile {
 	
@@ -32,17 +33,21 @@ public class RezFile {
 	public String toString() {
 		
 		String ls = System.lineSeparator();
-		String result = "RezFile Container" + ls;
 		
-		for (Zone zone: zones) {
-			result += "ZONE = " + zone.getT() + ls;
-			for (ArrayList<Double> lineOfValues : zone.getAll()) {
-				for (Double val : lineOfValues) {
-					result += val.toString() + " ";
+		StringBuffer stringBuffer = new StringBuffer();
+		
+		for (Zone zone : zones) {
+			stringBuffer.append("Zone = " + zone.getT() + ls);
+			
+			for (ArrayList<Double> lineofValues : zone.getAll()) {
+				for (Double val : lineofValues) {
+					stringBuffer.append(val + " ");
 				}
-				result += ls;
+				stringBuffer.append(ls);
 			}
+			
 		}
-		return result;
+		
+		return stringBuffer.toString();
 	}
 }
