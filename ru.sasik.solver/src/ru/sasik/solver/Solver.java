@@ -51,8 +51,11 @@ public class Solver {
 			
 			String pathTofile = p.getParent().toString();
 			
-			commands.set(0, "wine");
-			commands.add(pathTofile + "/" + file);
+//			commands.set(0, "wine");
+//			commands.set(1, "start");
+//			commands.set(2, "/unix");
+//			commands.add(pathTofile + "/" + file);
+//			commands.add(p.toString());
 		}
 		
 		try {
