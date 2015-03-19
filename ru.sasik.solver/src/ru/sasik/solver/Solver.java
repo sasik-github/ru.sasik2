@@ -18,7 +18,7 @@ public class Solver {
 	private String os_env = "linux";
 
 
-	public Solver(String fileName) {
+	public Solver(String file) {
 //		this.solverFileName = fileName;
 	}
 	
