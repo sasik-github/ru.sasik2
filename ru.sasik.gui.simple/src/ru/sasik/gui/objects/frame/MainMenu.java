@@ -7,6 +7,7 @@ import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
 
+import ru.sasik.gui.actionlisteners.MenuSolverActionListener;
 import ru.sasik.gui.objects.IMainFrame;
 
 public class MainMenu extends JMenuBar {
@@ -14,6 +15,7 @@ public class MainMenu extends JMenuBar {
 	private static final long serialVersionUID = 7315824184809695830L;
 	private IMainFrame mainFrame;
 	private ActionListener fileChooserAction;
+	private ActionListener solverActionListener;
 
 	public MainMenu(IMainFrame frame) {
 		mainFrame = frame;
@@ -22,6 +24,17 @@ public class MainMenu extends JMenuBar {
 	}
 
 	private void initComponents() {
+		initFileMenu();
+		initEditMenu();
+		initSolverMenu();
+	}
+	
+	public void initActions() {
+		fileChooserAction = new FileChooserAction(mainFrame);
+		solverActionListener = new MenuSolverActionListener();
+	}
+	
+	public void initFileMenu() {
 		JMenu menu = new JMenu("File");
 		JMenuItem itm = new JMenuItem("New");
 		// itm.addActionListener(actionListener);
@@ -40,10 +53,12 @@ public class MainMenu extends JMenuBar {
 		menu.add(itm);
 
 		add(menu);
+	}
+	
+	public void initEditMenu() {
+		JMenu menu = new JMenu("Edit");
 
-		menu = new JMenu("Edit");
-
-		itm = new JMenuItem("copy");
+		JMenuItem itm = new JMenuItem("copy");
 		// itm.addActionListener(actionListener);
 		menu.add(itm);
 
@@ -62,8 +77,21 @@ public class MainMenu extends JMenuBar {
 		add(menu);
 	}
 	
-	public void initActions() {
-		fileChooserAction = new FileChooserAction(mainFrame);
+	public void initSolverMenu() {
+		JMenu menu = new JMenu("Solver");
+
+		JMenuItem itm = new JMenuItem("Run");
+		itm.addActionListener(solverActionListener);
+		menu.add(itm);
+
+		itm = new JMenuItem("List of Solvers");
+		itm.addActionListener(solverActionListener);
+		itm.setActionCommand("List");
+		menu.add(itm);
+		
+		add(menu);
 	}
+	
+	
 
 }
