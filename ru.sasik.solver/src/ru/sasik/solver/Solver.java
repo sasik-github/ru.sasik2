@@ -50,9 +50,9 @@ public class Solver {
 		
 		// пример передаваемого списка
 //			commands.add(System.getProperty("user.dir") + "/solverData/test.exe");
-		commands.add(filePathToSolver);
-		commands.add(filePathToInput);
-		commands.add(filePathToOutput);
+		commands.add(getFilePathToSolver());
+		commands.add(getFilePathToInput());
+		commands.add(getFilePathToOutput());
 		
 		// проверка на операционную систему
 		// если солвер ехе то надо запускать через вайн
@@ -77,7 +77,8 @@ public class Solver {
 		    
 		} catch (IOException e) {
 //			System.out.println(p.getInputStream());
-			e.printStackTrace();
+			System.out.println("Solver.execute()" + e);
+//			e.printStackTrace();
 		}
 		return null;
 		
@@ -95,6 +96,11 @@ public class Solver {
 	        }
 	    }).start();
 	}
+	
+	@Override
+		public String toString() {
+			return getFilePathToSolver() + " " + getFilePathToInput() + " " + getFilePathToOutput();
+		}
 
 	public String getFilePathToSolver() {
 		return filePathToSolver;

@@ -6,6 +6,7 @@ import java.awt.Container;
 import java.awt.Dimension;
 import java.awt.FlowLayout;
 import java.io.File;
+import java.util.ArrayList;
 
 import javax.swing.BorderFactory;
 import javax.swing.JFrame;
@@ -38,6 +39,10 @@ public class MainFrame extends JFrame implements IMainFrame {
 	private StatusBar stausBar;
 	
 	private Solver selectedSolver;
+	
+	private String filePathToInput;
+	
+	private String filePathToOutput;
 
 	// containers for all workspace objects
 	// used for BorderLayout if you want to add
@@ -46,6 +51,8 @@ public class MainFrame extends JFrame implements IMainFrame {
 	private JPanel northContent;
 	private JPanel middleContent;
 	private JPanel southContent;
+
+	private ArrayList<Solver> solverList;
 
 	public MainFrame() {
 
@@ -101,9 +108,9 @@ public class MainFrame extends JFrame implements IMainFrame {
 		pane.getViewport().add(canvas);
 		add(pane, BorderLayout.CENTER);
 		
-		File file = new File(
-				"/home/sasik/Dropbox/11111/Akord/DMITRY.DAT"
-		);
+		filePathToInput = "/home/sasik/Dropbox/11111/Akord/DMITRY.DAT"; 
+		
+		File file = new File(filePathToInput);
 		
 //		test write function
 //		AdditionFunctions.writeFile("/home/sasik/Dropbox/11111/Akord/sasik.DAT", AdditionFunctions.readFile(file));
@@ -143,7 +150,51 @@ public class MainFrame extends JFrame implements IMainFrame {
 	}
 
 	public void setSelectedSolver(Solver selectedSolver) {
+		selectedSolver.setFilePathToInput(getFilePathToInput());
+		selectedSolver.setFilePathToOutput(getFilePathToOutput());
 		this.selectedSolver = selectedSolver;
+	}
+
+	public String getFilePathToInput() {
+		return filePathToInput;
+	}
+
+	public void setFilePathToInput(String filePathToInput) {
+		this.filePathToInput = filePathToInput;
+	}
+
+	public String getFilePathToOutput() {
+		if (filePathToOutput == null) 
+			filePathToOutput = filePathToInput + ".output.rez";
+		return filePathToOutput;
+	}
+
+	public void setFilePathToOutput(String filePathToOutput) {
+		this.filePathToOutput = filePathToOutput;
+	}
+
+	@Override
+	public String getDebugInfo() {
+		StringBuilder sb = new StringBuilder();
+		
+		sb.append("Input file: " + getFilePathToInput() + System.lineSeparator());
+		sb.append("Outpu file: " + getFilePathToOutput() + System.lineSeparator());
+		sb.append("Solver file: " + selectedSolver.name + " " + selectedSolver + System.lineSeparator());
+		return sb.toString();
+	}
+
+	@Override
+	public ArrayList<Solver> getSolvers() {
+		if (solverList == null) {
+			solverList = new ArrayList<Solver>();
+		}
+		return solverList;
+	}
+
+	@Override
+	public void addSolver(Solver solver) {
+		ArrayList<Solver> solvers = getSolvers();
+		solvers.add(solver);
 	}
 
 }

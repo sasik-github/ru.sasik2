@@ -64,6 +64,9 @@ public class FileChooserAction implements ActionListener {
 					dataFile = new DefaultDataFile();
 					dataFile.openFromFile(file);
 					canvasPanel.setDataFile(dataFile);
+					frame.setFilePathToInput(file.getAbsolutePath());
+					frame.setFilePathToOutput(null);
+					System.out.println("FileChooserAction.actionPerformed() " + file.getAbsolutePath());
 					String text = AdditionFunctions.readFile(file);
 					//					System.out.println(area);
 //					area.setText(text);

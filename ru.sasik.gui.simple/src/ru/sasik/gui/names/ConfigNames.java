@@ -22,6 +22,9 @@ public class ConfigNames {
 	public static String GUI_MENU_SOLVER_LIST_NAME = "List of Solvers";
 	public static String GUI_MENU_SOLVER_LIST_COMMAND = "list";
 	
+	public static String GUI_MENU_SOLVER_DEBUG_NAME = "Debug Info";
+	public static String GUI_MENU_SOLVER_DEBUG_COMMAND = "debug";
+	
 	
 	
 }

@@ -12,7 +12,7 @@ public class SolverTest {
 		solv.setFilePathToInput("/home/sasik/EclipseWorkspace/ru.sasik2/ru.sasik.solver/solverData/SERG.DAT");
 		solv.setFilePathToOutput("/home/sasik/EclipseWorkspace/ru.sasik2/ru.sasik.solver/solverData/result2.rez");
 		
-		ArrayList<String> commands = new ArrayList<String>();
+//		ArrayList<String> commands = new ArrayList<String>();
 		
 ////		if(osEnv == "linux")
 ////			commands.add("wine");
@@ -24,7 +24,13 @@ public class SolverTest {
 //		// output file
 //		commands.add("/home/sasik/EclipseWorkspace/ru.sasik2/ru.sasik.solver/solverData/result2.rez");
 		
+		Solver solv2 = new Solver("Serg2");
+		// /home/sasik/EclipseWorkspace/ru.sasik2/ru.sasik.solver/solverData/test.exe /home/sasik/Dropbox/11111/Akord/DMITRY.DAT /home/sasik/Dropbox/11111/Akord/DMITRY.DAT.output.rez
+		solv2.setFilePathToInput("/home/sasik/Dropbox/11111/Akord/DMITRY.DAT");
+		solv2.setFilePathToOutput("/home/sasik/Dropbox/11111/Akord/DMITRY.DAT.output.rez");
+		solv2.setFilePathToSolver("/home/sasik/EclipseWorkspace/ru.sasik2/ru.sasik.solver/solverData/test.exe");
 		
-		solv.execute();
+		
+		solv2.execute();
 	}
 }

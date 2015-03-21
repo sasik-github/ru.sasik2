@@ -33,24 +33,25 @@ public class SolverListDialog extends JDialog implements ActionListener{
 
 	private JMenuItem whoInvoke;
 	
-	public SolverListDialog(IMainFrame frame) {
+	public SolverListDialog(IMainFrame frame, JMenuItem menuItem) {
 		super();
 		this.mainFrame = (JFrame) frame;
+		whoInvoke = menuItem;
 		
 		Solver solv = new Solver("SergSolver");
 		solv.setFilePathToSolver("/home/sasik/EclipseWorkspace/ru.sasik2/ru.sasik.solver/solverData/test.exe");
 		solv.setFilePathToInput("/home/sasik/EclipseWorkspace/ru.sasik2/ru.sasik.solver/solverData/SERG.DAT");
 		solv.setFilePathToOutput("/home/sasik/EclipseWorkspace/ru.sasik2/ru.sasik.solver/solverData/result2.rez");
+//		
+//		Solver solv2 = new Solver("DNS");
+//		solv2.setFilePathToSolver("/home/sasik/EclipseWorkspace/ru.sasik2/ru.sasik.solver/solverData/DNS.exe");
+//		solv2.setFilePathToInput("/home/sasik/EclipseWorkspace/ru.sasik2/ru.sasik.solver/solverData/DNS.DAT");
+//		solv2.setFilePathToOutput("/home/sasik/EclipseWorkspace/ru.sasik2/ru.sasik.solver/solverData/DNS.rez");
 		
-		Solver solv2 = new Solver("DNS");
-		solv.setFilePathToSolver("/home/sasik/EclipseWorkspace/ru.sasik2/ru.sasik.solver/solverData/test.exe");
-		solv.setFilePathToInput("/home/sasik/EclipseWorkspace/ru.sasik2/ru.sasik.solver/solverData/SERG.DAT");
-		solv.setFilePathToOutput("/home/sasik/EclipseWorkspace/ru.sasik2/ru.sasik.solver/solverData/result2.rez");
+		solvers = frame.getSolvers();
 		
-		solvers = new ArrayList<Solver>();
-		
-		solvers.add(solv);
-		solvers.add(solv2);
+//		solvers.add(solv);
+//		solvers.add(solv2);
 		
 		frame.setSelectedSolver(solv);
 		
@@ -108,12 +109,13 @@ public class SolverListDialog extends JDialog implements ActionListener{
 					if (null != solver) {
 						runItemName += " (" + selectedSolver.name +")";
 					}
+					System.out.println("SolverListDialog.actionPerformed()" + whoInvoke);
 					whoInvoke.setText(runItemName);
-					dispose();
 					break;
 				}
 			}
 			
+			dispose();
 		}
 	}
 

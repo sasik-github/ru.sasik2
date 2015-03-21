@@ -99,6 +99,11 @@ public class MainMenu extends JMenuBar {
 		itm.setActionCommand(ConfigNames.GUI_MENU_SOLVER_LIST_COMMAND);
 		menu.add(itm);
 		
+		itm = new JMenuItem(ConfigNames.GUI_MENU_SOLVER_DEBUG_NAME);
+		itm.addActionListener(solverActionListener);
+		itm.setActionCommand(ConfigNames.GUI_MENU_SOLVER_DEBUG_COMMAND);
+		menu.add(itm);
+		
 		add(menu);
 	}
 	

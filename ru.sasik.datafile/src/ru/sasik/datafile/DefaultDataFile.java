@@ -15,7 +15,7 @@ public class DefaultDataFile implements Serializable {
 	 */
 	private static final long serialVersionUID = -4274296243256282739L;
 	
-	private File currFile = null;
+	private File file;
 	
 	public List<Integer> main;
 	public List<Double> time;
@@ -48,6 +48,7 @@ public class DefaultDataFile implements Serializable {
 	}
 
 	public void openFromFile(File file) {
+		this.file = file;
 		System.out.println("Start parse from file");
 		String text = AdditionFunctions.readFile(file);
 		String [] lines = text.split(System.lineSeparator());
@@ -271,8 +272,12 @@ public class DefaultDataFile implements Serializable {
 				+ output + ", nodes=" + nodes + ", region=" + region
 				+ ", winstruct=" + winstruct + "]";
 	}
-	
-	
-	
-	
+
+	public File getFile() {
+		return file;
+	}
+
+	public void setFile(File file) {
+		this.file = file;
+	}
 }
