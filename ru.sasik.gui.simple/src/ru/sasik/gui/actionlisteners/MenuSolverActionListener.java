@@ -47,12 +47,16 @@ public class MenuSolverActionListener implements ActionListener {
 	
 	private void runSolver() {
 		Solver solver = mainFrame.getSelectedSolver();
-		
-		solver.setFilePathToInput(mainFrame.getFilePathToInput());
-		
-		solver.setFilePathToOutput(mainFrame.getFilePathToOutput());
-		
-		solver.execute();
+		try {
+			solver.setFilePathToInput(mainFrame.getFilePathToInput());
+			
+			solver.setFilePathToOutput(mainFrame.getFilePathToOutput());
+			
+			solver.execute();
+		} catch (NullPointerException ex) {
+			System.out.println("MenuSolverActionListener.runSolver() " + ex);
+			new DebugInfoDialog(mainFrame, ex.toString());
+		}
 	}
 	
 	private void listSolver() {
@@ -60,7 +64,7 @@ public class MenuSolverActionListener implements ActionListener {
 	}
 	
 	private void debugInfo() {
-		DebugInfoDialog debug = new DebugInfoDialog(mainFrame);
+		DebugInfoDialog debug = new DebugInfoDialog(mainFrame, mainFrame.getDebugInfo());
 	}
 
 }

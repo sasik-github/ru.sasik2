@@ -16,6 +16,26 @@ public class ConfigNames {
 	public static String GUI_CANCEL_NAME = "Cancel";
 	public static String GUI_CANCEL_COMMAND = "cancel";
 	
+	/**
+	 * FILE MENU ITEMS
+	 */
+	public static String GUI_MENU_FILE_FILE_NAME = "File";
+	
+	public static String GUI_MENU_FILE_NEW_NAME = "New";
+	public static String GUI_MENU_FILE_NEW_COMMAND = "new";
+	
+	public static String GUI_MENU_FILE_OPEN_NAME = "Open";
+	public static String GUI_MENU_FILE_OPEN_COMMAND = "open";
+	
+	public static String GUI_MENU_FILE_SAVE_NAME = "Save";
+	public static String GUI_MENU_FILE_SAVE_COMMAND = "save";
+	
+	public static String GUI_MENU_FILE_CLOSE_NAME = "Close";
+	public static String GUI_MENU_FILE_CLOSE_COMMAND = "close";
+	
+	/**
+	 * SOLVER MENU ITEMS
+	 */
 	public static String GUI_MENU_SOLVER_RUN_NAME = "Run";
 	public static String GUI_MENU_SOLVER_RUN_COMMAND = "run";
 	

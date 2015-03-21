@@ -38,10 +38,8 @@ public class SolverListDialog extends JDialog implements ActionListener{
 		this.mainFrame = (JFrame) frame;
 		whoInvoke = menuItem;
 		
-		Solver solv = new Solver("SergSolver");
-		solv.setFilePathToSolver("/home/sasik/EclipseWorkspace/ru.sasik2/ru.sasik.solver/solverData/test.exe");
-		solv.setFilePathToInput("/home/sasik/EclipseWorkspace/ru.sasik2/ru.sasik.solver/solverData/SERG.DAT");
-		solv.setFilePathToOutput("/home/sasik/EclipseWorkspace/ru.sasik2/ru.sasik.solver/solverData/result2.rez");
+		
+
 //		
 //		Solver solv2 = new Solver("DNS");
 //		solv2.setFilePathToSolver("/home/sasik/EclipseWorkspace/ru.sasik2/ru.sasik.solver/solverData/DNS.exe");
@@ -53,13 +51,11 @@ public class SolverListDialog extends JDialog implements ActionListener{
 //		solvers.add(solv);
 //		solvers.add(solv2);
 		
-		frame.setSelectedSolver(solv);
-		
-		this.setTitle("Properties");
+		this.setTitle("List of Solver");
 		panel = new JPanel();
 //		panel.sets
 		
-		panel.add(new JLabel("Change properties of canvas"));
+		panel.add(new JLabel("Choose the Solver:"));
 		
 		initGUI();
 

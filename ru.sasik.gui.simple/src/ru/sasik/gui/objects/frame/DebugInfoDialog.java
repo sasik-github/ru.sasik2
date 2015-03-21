@@ -10,6 +10,7 @@ import javax.swing.JDialog;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.JTextArea;
 
 import ru.sasik.gui.names.ConfigNames;
 import ru.sasik.gui.objects.IMainFrame;
@@ -20,15 +21,17 @@ public class DebugInfoDialog extends JDialog implements ActionListener {
 	
 	private JFrame mainFrame;
 	private JPanel panel;
+	
+	private String message;
 
-	public DebugInfoDialog(IMainFrame frame) {
+	public DebugInfoDialog(IMainFrame frame, String message) {
 		super();
 		this.mainFrame = (JFrame) frame;
+		this.message = message;
 		
 		this.setTitle("Debug Info");
 		panel = new JPanel();
-//		panel.sets
-		
+		panel.setLayout(new BoxLayout(panel, BoxLayout.Y_AXIS));
 		panel.add(new JLabel("Change properties of canvas"));
 		
 		initGUI();
@@ -47,13 +50,13 @@ public class DebugInfoDialog extends JDialog implements ActionListener {
 	private void initGUI() {
 		IMainFrame frame = (IMainFrame) mainFrame; 
 		
-		System.out.println(frame.getDebugInfo());
+		JTextArea textArea = new JTextArea(message);
+		panel.add(textArea);
 		
 	}
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		dispose();
-		
 	}
 }

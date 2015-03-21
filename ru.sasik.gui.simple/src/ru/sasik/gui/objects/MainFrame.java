@@ -83,6 +83,11 @@ public class MainFrame extends JFrame implements IMainFrame {
 		createFrameContent();
 		createStatusbarContent();
 		createMenuContent();
+		
+		Solver solv = new Solver("SergSolver");
+		solv.setFilePathToSolver("/home/sasik/EclipseWorkspace/ru.sasik2/ru.sasik.solver/solverData/test.exe");
+		
+		addSolver(solv);
 	}
 
 	private void createStatusbarContent() {
