@@ -3,3 +3,5 @@ Export-Package:  \
 	ru.sasik.solver
 -runfw: org.apache.felix.framework;version='[4.0.3,4.0.3]'
 -runee: OSGi/Minimum-1.0
+-buildpath:  \
+	osgi.core

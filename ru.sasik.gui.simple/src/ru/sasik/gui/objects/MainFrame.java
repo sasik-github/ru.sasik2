@@ -17,6 +17,7 @@ import ru.sasik.datafile.DefaultDataFile;
 import ru.sasik.gui.objects.frame.MainMenu;
 import ru.sasik.gui.objects.frame.MainToolbar;
 import ru.sasik.gui.objects.frame.StatusBar;
+import ru.sasik.solver.Solver;
 
 public class MainFrame extends JFrame implements IMainFrame {
 
@@ -35,6 +36,8 @@ public class MainFrame extends JFrame implements IMainFrame {
 	private MainMenu menubar;
 
 	private StatusBar stausBar;
+	
+	private Solver selectedSolver;
 
 	// containers for all workspace objects
 	// used for BorderLayout if you want to add
@@ -132,6 +135,15 @@ public class MainFrame extends JFrame implements IMainFrame {
 	@Override
 	public ICanvas getCanvas() {
 		return canvas;
+	}
+
+	@Override
+	public Solver getSelectedSolver() {
+		return selectedSolver;
+	}
+
+	public void setSelectedSolver(Solver selectedSolver) {
+		this.selectedSolver = selectedSolver;
 	}
 
 }

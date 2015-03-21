@@ -15,11 +15,24 @@ public class Solver {
 
 //	public String solverFileName;
 	
+	public String name;
+	
 	private String os_env = "linux";
 
+	private String filePathToSolver;
+	
+	private String filePathToInput;
+	
+	private String filePathToOutput;
 
-	public Solver(String file) {
-//		this.solverFileName = fileName;
+
+	public Solver(String name) {
+		this.name = name;
+	}
+	
+	public Solver(String name, String filepath) {
+		this.name = name;
+		this.filePathToSolver = filepath;
 	}
 	
 	/**
@@ -28,20 +41,18 @@ public class Solver {
 	 * @param commands
 	 * @return
 	 */
-	public String execute(List<String> commands) {
+	public String execute() {
+		
 		
 		System.out.println("Working Directory = " +
 	              System.getProperty("user.dir"));
+		List<String> commands = new ArrayList<String>();
 		
-		if (commands == null) { 
-			commands = new ArrayList<String>();
-			// пример передаваемого списка
-			commands.add(System.getProperty("user.dir") + "/solverData/test.exe");
-//			commands.add("param1");
-//			commands.add("param2");
-//			commands.add("param2");
-//			commands.add("param2");
-		}
+		// пример передаваемого списка
+//			commands.add(System.getProperty("user.dir") + "/solverData/test.exe");
+		commands.add(filePathToSolver);
+		commands.add(filePathToInput);
+		commands.add(filePathToOutput);
 		
 		// проверка на операционную систему
 		// если солвер ехе то надо запускать через вайн
@@ -83,6 +94,30 @@ public class Solver {
 	            }
 	        }
 	    }).start();
+	}
+
+	public String getFilePathToSolver() {
+		return filePathToSolver;
+	}
+
+	public void setFilePathToSolver(String filePathToSolver) {
+		this.filePathToSolver = filePathToSolver;
+	}
+
+	public String getFilePathToInput() {
+		return filePathToInput;
+	}
+
+	public void setFilePathToInput(String filePathToInput) {
+		this.filePathToInput = filePathToInput;
+	}
+
+	public String getFilePathToOutput() {
+		return filePathToOutput;
+	}
+
+	public void setFilePathToOutput(String filePathToOutput) {
+		this.filePathToOutput = filePathToOutput;
 	}
 }
 

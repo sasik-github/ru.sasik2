@@ -7,8 +7,11 @@ import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
 
+import jdk.nashorn.internal.runtime.regexp.joni.Config;
 import ru.sasik.gui.actionlisteners.MenuSolverActionListener;
+import ru.sasik.gui.names.ConfigNames;
 import ru.sasik.gui.objects.IMainFrame;
+import ru.sasik.solver.Solver;
 
 public class MainMenu extends JMenuBar {
 
@@ -31,7 +34,7 @@ public class MainMenu extends JMenuBar {
 	
 	public void initActions() {
 		fileChooserAction = new FileChooserAction(mainFrame);
-		solverActionListener = new MenuSolverActionListener();
+		solverActionListener = new MenuSolverActionListener(mainFrame);
 	}
 	
 	public void initFileMenu() {
@@ -79,14 +82,21 @@ public class MainMenu extends JMenuBar {
 	
 	public void initSolverMenu() {
 		JMenu menu = new JMenu("Solver");
-
-		JMenuItem itm = new JMenuItem("Run");
+		
+		Solver solver = mainFrame.getSelectedSolver();
+		String runItemName = ConfigNames.GUI_MENU_SOLVER_RUN_NAME;
+		if (null != solver) {
+			runItemName += " (" + solver.name +")";
+		}
+		
+		JMenuItem itm = new JMenuItem(runItemName);
 		itm.addActionListener(solverActionListener);
+		itm.setActionCommand(ConfigNames.GUI_MENU_SOLVER_RUN_COMMAND);
 		menu.add(itm);
 
-		itm = new JMenuItem("List of Solvers");
+		itm = new JMenuItem(ConfigNames.GUI_MENU_SOLVER_LIST_NAME);
 		itm.addActionListener(solverActionListener);
-		itm.setActionCommand("List");
+		itm.setActionCommand(ConfigNames.GUI_MENU_SOLVER_LIST_COMMAND);
 		menu.add(itm);
 		
 		add(menu);

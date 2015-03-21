@@ -7,21 +7,24 @@ public class SolverTest {
 	private static String osEnv = "linux";
 	
 	public static void main(String[] args) {
-		Solver solv = new Solver(null);
+		Solver solv = new Solver("SergSolver");
+		solv.setFilePathToSolver("/home/sasik/EclipseWorkspace/ru.sasik2/ru.sasik.solver/solverData/test.exe");
+		solv.setFilePathToInput("/home/sasik/EclipseWorkspace/ru.sasik2/ru.sasik.solver/solverData/SERG.DAT");
+		solv.setFilePathToOutput("/home/sasik/EclipseWorkspace/ru.sasik2/ru.sasik.solver/solverData/result2.rez");
 		
 		ArrayList<String> commands = new ArrayList<String>();
 		
-//		if(osEnv == "linux")
-//			commands.add("wine");
-		// file to exec
-		commands.add("/home/sasik/EclipseWorkspace/ru.sasik2/ru.sasik.solver/solverData/test.exe");
-		// data file
-		commands.add("/home/sasik/EclipseWorkspace/ru.sasik2/ru.sasik.solver/solverData/SERG.DAT");
-//		commands.add("solverData/SERG.DAT");
-		// output file
-		commands.add("/home/sasik/EclipseWorkspace/ru.sasik2/ru.sasik.solver/solverData/result2.rez");
+////		if(osEnv == "linux")
+////			commands.add("wine");
+//		// file to exec
+//		commands.add("/home/sasik/EclipseWorkspace/ru.sasik2/ru.sasik.solver/solverData/test.exe");
+//		// data file
+//		commands.add("/home/sasik/EclipseWorkspace/ru.sasik2/ru.sasik.solver/solverData/SERG.DAT");
+////		commands.add("solverData/SERG.DAT");
+//		// output file
+//		commands.add("/home/sasik/EclipseWorkspace/ru.sasik2/ru.sasik.solver/solverData/result2.rez");
 		
 		
-		solv.execute(commands);
+		solv.execute();
 	}
 }

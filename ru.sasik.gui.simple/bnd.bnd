@@ -4,7 +4,8 @@ Bundle-Version: 0.0.0.${tstamp}
 	org.apache.felix.dependencymanager,\
 	osgi.core,\
 	ru.sasik.datafile;version=latest,\
-	ru.sasik.helper;version=latest
+	ru.sasik.helper;version=latest,\
+	ru.sasik.solver;version=latest
 Private-Package:  \
 	ru.sasik.gui.starter,\
 	ru.sasik.gui.objects,\
