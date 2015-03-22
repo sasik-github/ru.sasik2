@@ -40,19 +40,22 @@ public class MenuSolverActionListener implements ActionListener {
 	}
 	
 	private void getAction(String actionCommand) {
-		if (ConfigNames.GUI_MENU_SOLVER_RUN_COMMAND == actionCommand) {
+		switch (actionCommand) {
+		case ConfigNames.GUI_MENU_SOLVER_RUN_COMMAND:
 			runSolver();
-		} else
-		if (ConfigNames.GUI_MENU_SOLVER_LIST_COMMAND == actionCommand) {
+			break;
+		case ConfigNames.GUI_MENU_SOLVER_LIST_COMMAND:
 			listSolver();
-		} else 
-		if (ConfigNames.GUI_MENU_SOLVER_DEBUG_COMMAND == actionCommand) {
+			break;
+		case ConfigNames.GUI_MENU_SOLVER_DEBUG_COMMAND:
 			debugInfo();
-		} else 
-		if (ConfigNames.GUI_MENU_SOLVER_LIST_ADDSOLVER_COMMAND == actionCommand) {
+			break;
+		case ConfigNames.GUI_MENU_SOLVER_LIST_ADDSOLVER_COMMAND:
 			addSolver();
+			break;
+		default:
+			break;
 		}
-		
 	}
 	
 	private void addSolver() {

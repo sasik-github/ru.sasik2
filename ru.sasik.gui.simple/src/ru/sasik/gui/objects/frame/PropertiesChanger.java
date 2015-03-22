@@ -65,14 +65,17 @@ public class PropertiesChanger extends JDialog implements ActionListener {
 		
 		initGUI();
 
+		JPanel actionsPanel = new JPanel();
 		JButton button = new JButton("Ok");
 		button.addActionListener(this);
-		panel.add(button);
+		actionsPanel.add(button);
 		button = new JButton("Cancel");
 		button.addActionListener(this);
-		panel.add(button);
+		actionsPanel.add(button);
+		
 		panel.setLayout(new BoxLayout(panel, BoxLayout.Y_AXIS));
 		
+		panel.add(actionsPanel);
 		add(panel);
 		setLocationRelativeTo(this.mainFrame);
 		setVisible(true);

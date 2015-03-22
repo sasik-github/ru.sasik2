@@ -113,17 +113,18 @@ public class MainFrame extends JFrame implements IMainFrame {
 		pane.getViewport().add(canvas);
 		add(pane, BorderLayout.CENTER);
 		
-		filePathToInput = "/home/sasik/Dropbox/11111/Akord/DMITRY.DAT"; 
+		filePathToInput = "/home/sasik/Dropbox/11111/Akord/DMITRY.DATfdsafd"; 
 		
 		File file = new File(filePathToInput);
 		
 //		test write function
 //		AdditionFunctions.writeFile("/home/sasik/Dropbox/11111/Akord/sasik.DAT", AdditionFunctions.readFile(file));
-		
-		DefaultDataFile data = new DefaultDataFile();
-		data.openFromFile(file);
-		data.saveToFile();
-		canvas.setDataFile(data);
+		if (file.exists()) {
+			DefaultDataFile data = new DefaultDataFile();
+			data.openFromFile(file);
+			data.saveToFile();
+			canvas.setDataFile(data);
+		}
 		
 		CanvasMouseListener canvasMouseListener = new CanvasMouseListener(canvas);
 		canvas.addMouseListener(canvasMouseListener);

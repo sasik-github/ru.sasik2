@@ -52,17 +52,22 @@ public class SolverListDialog extends JDialog implements ActionListener{
 		
 		initGUI();
 
+		JPanel actionsPanel = new JPanel();
 		JButton button = new JButton(ConfigNames.GUI_OK_NAME);
 		button.addActionListener(this);
 		button.setActionCommand(ConfigNames.GUI_OK_COMMAND);
-		panel.add(button);
+		actionsPanel.add(button);
 		button = new JButton(ConfigNames.GUI_CANCEL_NAME);
 		button.addActionListener(this);
 		button.setActionCommand(ConfigNames.GUI_CANCEL_COMMAND);
-		panel.add(button);
+		actionsPanel.add(button);
+//		actionsPanel.setLayout(mgr);
+		
 		panel.setLayout(new BoxLayout(panel, BoxLayout.Y_AXIS));
 		
 		add(panel);
+		panel.add(actionsPanel);
+		
 		setLocationRelativeTo(this.mainFrame);
 		setVisible(true);
 		pack();

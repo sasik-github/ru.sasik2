@@ -84,7 +84,7 @@ public class MainMenu extends JMenuBar {
 	}
 	
 	public void initSolverMenu() {
-		JMenu menu = new JMenu("Solver");
+		JMenu menu = new JMenu(ConfigNames.GUI_MENU_SOLVER_SOLVER_NAME);
 		
 		Solver solver = mainFrame.getSelectedSolver();
 		String runItemName = ConfigNames.GUI_MENU_SOLVER_RUN_NAME;
@@ -110,6 +110,11 @@ public class MainMenu extends JMenuBar {
 		add(menu);
 	}
 	
-	
+	public void initPostprocMenu() {
+		JMenu menu = new JMenu(ConfigNames.GUI_MENU_POSTPROC_POSTPROC_NAME);
+		
+		
+		add(menu);
+	}
 
 }
