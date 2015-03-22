@@ -8,6 +8,7 @@ import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
 
 import jdk.nashorn.internal.runtime.regexp.joni.Config;
+import ru.sasik.gui.actionlisteners.MenuFileActionListener;
 import ru.sasik.gui.actionlisteners.MenuSolverActionListener;
 import ru.sasik.gui.names.ConfigNames;
 import ru.sasik.gui.objects.IMainFrame;
@@ -19,6 +20,7 @@ public class MainMenu extends JMenuBar {
 	private IMainFrame mainFrame;
 	private ActionListener fileChooserAction;
 	private ActionListener solverActionListener;
+	private ActionListener fileActionListener;
 
 	public MainMenu(IMainFrame frame) {
 		mainFrame = frame;
@@ -35,6 +37,7 @@ public class MainMenu extends JMenuBar {
 	public void initActions() {
 		fileChooserAction = new FileChooserAction(mainFrame);
 		solverActionListener = new MenuSolverActionListener(mainFrame);
+		fileActionListener = new MenuFileActionListener(mainFrame);
 	}
 	
 	public void initFileMenu() {

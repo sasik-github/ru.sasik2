@@ -9,12 +9,14 @@ import java.util.ArrayList;
 
 import javax.swing.BoxLayout;
 import javax.swing.JButton;
+import javax.swing.JComboBox;
 import javax.swing.JDialog;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JMenuItem;
 import javax.swing.JPanel;
 
+import ru.sasik.gui.actionlisteners.MenuSolverActionListener;
 import ru.sasik.gui.names.ConfigNames;
 import ru.sasik.gui.objects.IMainFrame;
 import ru.sasik.solver.Solver;
@@ -32,24 +34,15 @@ public class SolverListDialog extends JDialog implements ActionListener{
 	private JPanel panel;
 
 	private JMenuItem whoInvoke;
+
+	private JComboBox<Object> solverChoice2;
 	
 	public SolverListDialog(IMainFrame frame, JMenuItem menuItem) {
 		super();
 		this.mainFrame = (JFrame) frame;
 		whoInvoke = menuItem;
 		
-		
-
-//		
-//		Solver solv2 = new Solver("DNS");
-//		solv2.setFilePathToSolver("/home/sasik/EclipseWorkspace/ru.sasik2/ru.sasik.solver/solverData/DNS.exe");
-//		solv2.setFilePathToInput("/home/sasik/EclipseWorkspace/ru.sasik2/ru.sasik.solver/solverData/DNS.DAT");
-//		solv2.setFilePathToOutput("/home/sasik/EclipseWorkspace/ru.sasik2/ru.sasik.solver/solverData/DNS.rez");
-		
 		solvers = frame.getSolvers();
-		
-//		solvers.add(solv);
-//		solvers.add(solv2);
 		
 		this.setTitle("List of Solver");
 		panel = new JPanel();
@@ -77,14 +70,17 @@ public class SolverListDialog extends JDialog implements ActionListener{
 
 	private void initGUI() {
 		solverChoice = new Choice();
-		
-		for (Solver solver : solvers) {
-			solverChoice.add(solver.name);
-		}
-		
-		solverChoice.getSelectedItem();
-		
+		solverChoice2 = new JComboBox<>();
 		panel.add(solverChoice);
+		
+		JButton addSolverButton = new JButton(ConfigNames.GUI_MENU_SOLVER_LIST_ADDSOLVER_NAME);
+		addSolverButton.setActionCommand(ConfigNames.GUI_MENU_SOLVER_LIST_ADDSOLVER_COMMAND);
+		addSolverButton.addActionListener(new MenuSolverActionListener((IMainFrame) mainFrame));
+		panel.add(addSolverButton);
+		
+		panel.add(solverChoice2);
+
+		initSolversList();
 		
 	}
 
@@ -95,10 +91,10 @@ public class SolverListDialog extends JDialog implements ActionListener{
 			dispose();
 		}else
 		if (ConfigNames.GUI_OK_COMMAND == e.getActionCommand()) {
-			System.out.println("SolverListDialog.actionPerformed()" + solverChoice.getSelectedItem());
 			Solver selectedSolver = null;
+			System.out.println("SolverListDialog.actionPerformed()" + solverChoice2.getSelectedItem());
 			for (Solver solver : solvers) {
-				if (solverChoice.getSelectedItem() == solver.name) {
+				if (solverChoice2.getSelectedItem() == solver.name) {
 					selectedSolver = solver;
 					((IMainFrame) mainFrame).setSelectedSolver(selectedSolver);
 					String runItemName = ConfigNames.GUI_MENU_SOLVER_LIST_NAME;
@@ -114,9 +110,12 @@ public class SolverListDialog extends JDialog implements ActionListener{
 			dispose();
 		}
 	}
-
-	public void setWhoInvoke(Object menuItem) {
-		whoInvoke = (JMenuItem) menuItem;
-		
+	
+	public void initSolversList() {
+		for (Solver solver : solvers) {
+			solverChoice.add(solver.name);
+			solverChoice2.addItem(solver.name);
+		}
 	}
+
 }

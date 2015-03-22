@@ -1,12 +1,16 @@
 package ru.sasik.gui.actionlisteners;
 
+import java.awt.Component;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
 
 import javax.swing.JDialog;
+import javax.swing.JFileChooser;
 import javax.swing.JMenuItem;
+import javax.swing.filechooser.FileNameExtensionFilter;
 
 import ru.sasik.gui.names.ConfigNames;
 import ru.sasik.gui.objects.IMainFrame;
@@ -20,7 +24,8 @@ public class MenuSolverActionListener implements ActionListener {
 	
 	// who invoke the listener
 	private Object menuItem;
-	
+
+	private ActionEvent event;
 	
 	public MenuSolverActionListener(IMainFrame mainFrame) {
 		this.mainFrame = mainFrame;
@@ -28,6 +33,7 @@ public class MenuSolverActionListener implements ActionListener {
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
+		event = e;
 		System.out.println("MenuSovlerActionListener.actionPerformed()" + e.getActionCommand());
 		menuItem = e.getSource();
 		getAction(e.getActionCommand());
@@ -42,9 +48,26 @@ public class MenuSolverActionListener implements ActionListener {
 		} else 
 		if (ConfigNames.GUI_MENU_SOLVER_DEBUG_COMMAND == actionCommand) {
 			debugInfo();
+		} else 
+		if (ConfigNames.GUI_MENU_SOLVER_LIST_ADDSOLVER_COMMAND == actionCommand) {
+			addSolver();
 		}
+		
 	}
 	
+	private void addSolver() {
+		JFileChooser solverChooser = new JFileChooser();
+		FileNameExtensionFilter filter = new FileNameExtensionFilter("Only executable binaryies files", "exe", "com");
+		solverChooser.setFileFilter(filter);
+		int returnVal = solverChooser.showOpenDialog((Component) mainFrame);
+		if (returnVal == JFileChooser.APPROVE_OPTION) {
+			File selectedFile = solverChooser.getSelectedFile();
+			Solver newSolver = new Solver(selectedFile.getName());
+			newSolver.setFilePathToSolver(selectedFile.getAbsolutePath());
+			mainFrame.addSolver(newSolver);
+		}
+	}
+
 	private void runSolver() {
 		Solver solver = mainFrame.getSelectedSolver();
 		try {

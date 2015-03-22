@@ -1,5 +1,7 @@
 package ru.sasik.gui.names;
 
+import javax.swing.Icon;
+
 
 /**
  * Class for Action Name in View => Action Name in Code!!!!
@@ -34,6 +36,14 @@ public class ConfigNames {
 	public static String GUI_MENU_FILE_CLOSE_COMMAND = "close";
 	
 	/**
+	 * EDIT MENU ITEMS
+	 */
+	public static String GUI_MENU_EDIT_EDIT_NAME = "Edit";
+	
+	public static String GUI_MENU_EDIT_PROPERTIES_NAME = "Properties";
+	public static String GUI_MENU_EDIT_PROPERTIES_COMMAND = "properties";
+	
+	/**
 	 * SOLVER MENU ITEMS
 	 */
 	public static String GUI_MENU_SOLVER_RUN_NAME = "Run";
@@ -45,6 +55,7 @@ public class ConfigNames {
 	public static String GUI_MENU_SOLVER_DEBUG_NAME = "Debug Info";
 	public static String GUI_MENU_SOLVER_DEBUG_COMMAND = "debug";
 	
-	
+	public static final String GUI_MENU_SOLVER_LIST_ADDSOLVER_NAME = "Add Solver";
+	public static final String GUI_MENU_SOLVER_LIST_ADDSOLVER_COMMAND = "addsolver";
 	
 }
