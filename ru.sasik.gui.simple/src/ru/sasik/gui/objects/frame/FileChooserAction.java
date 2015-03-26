@@ -7,7 +7,6 @@ import java.io.File;
 
 import javax.swing.JFileChooser;
 import javax.swing.JFrame;
-import javax.swing.JTextArea;
 import javax.swing.filechooser.FileFilter;
 import javax.swing.filechooser.FileNameExtensionFilter;
 
@@ -16,6 +15,7 @@ import ru.sasik.gui.objects.ICanvas;
 import ru.sasik.gui.objects.IMainFrame;
 import ru.sasik.helper.AdditionFunctions;
 
+@Deprecated
 public class FileChooserAction implements ActionListener {
 
 //	private final JTextArea area;
@@ -26,7 +26,6 @@ public class FileChooserAction implements ActionListener {
 	
 	private DefaultDataFile dataFile;
 	
-	
 	public FileChooserAction(IMainFrame frame) {
 //		this.area = area;
 		if (frame != null) {
@@ -36,9 +35,6 @@ public class FileChooserAction implements ActionListener {
 		} else {
 			System.out.println("FileChooserAction.FileChooserAction()");
 		}
-			
-		
-		
 	}
 
 	@Override

@@ -76,7 +76,7 @@ public class SolverListDialog extends JDialog implements ActionListener{
 	private void initGUI() {
 		solverChoice = new Choice();
 		solverChoice2 = new JComboBox<>();
-		panel.add(solverChoice);
+//		panel.add(solverChoice);
 		
 		JButton addSolverButton = new JButton(ConfigNames.GUI_MENU_SOLVER_LIST_ADDSOLVER_NAME);
 		addSolverButton.setActionCommand(ConfigNames.GUI_MENU_SOLVER_LIST_ADDSOLVER_COMMAND);

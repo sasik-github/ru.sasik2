@@ -65,4 +65,7 @@ public class ConfigNames {
 	 * POSTPROCESSOR MENU ITEMS
 	 */
 	public static final String GUI_MENU_POSTPROC_POSTPROC_NAME = "Post processor";
+	
+	public static final String GUI_MENU_POSTPROC_SHOW_NAME = "Show results";
+	public static final String GUI_MENU_POSTPROC_SHOW_COMMAND = "show";
 }

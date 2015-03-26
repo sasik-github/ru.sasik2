@@ -10,6 +10,7 @@ import java.util.ArrayList;
 import javax.swing.JDialog;
 import javax.swing.JFileChooser;
 import javax.swing.JMenuItem;
+import javax.swing.SwingUtilities;
 import javax.swing.filechooser.FileNameExtensionFilter;
 
 import ru.sasik.gui.names.ConfigNames;
@@ -18,28 +19,13 @@ import ru.sasik.gui.objects.frame.DebugInfoDialog;
 import ru.sasik.gui.objects.frame.SolverListDialog;
 import ru.sasik.solver.Solver;
 
-public class MenuSolverActionListener implements ActionListener {
-	
-	private IMainFrame mainFrame;
-	
-	// who invoke the listener
-	private Object menuItem;
+public class MenuSolverActionListener extends MenuActionListenerAbstract{
 
-	private ActionEvent event;
-	
 	public MenuSolverActionListener(IMainFrame mainFrame) {
-		this.mainFrame = mainFrame;
+		super(mainFrame);
 	}
 
-	@Override
-	public void actionPerformed(ActionEvent e) {
-		event = e;
-		System.out.println("MenuSovlerActionListener.actionPerformed()" + e.getActionCommand());
-		menuItem = e.getSource();
-		getAction(e.getActionCommand());
-	}
-	
-	private void getAction(String actionCommand) {
+	protected void getAction(String actionCommand) {
 		switch (actionCommand) {
 		case ConfigNames.GUI_MENU_SOLVER_RUN_COMMAND:
 			runSolver();
@@ -59,16 +45,24 @@ public class MenuSolverActionListener implements ActionListener {
 	}
 	
 	private void addSolver() {
-		JFileChooser solverChooser = new JFileChooser();
-		FileNameExtensionFilter filter = new FileNameExtensionFilter("Only executable binaryies files", "exe", "com");
-		solverChooser.setFileFilter(filter);
-		int returnVal = solverChooser.showOpenDialog((Component) mainFrame);
-		if (returnVal == JFileChooser.APPROVE_OPTION) {
-			File selectedFile = solverChooser.getSelectedFile();
-			Solver newSolver = new Solver(selectedFile.getName());
-			newSolver.setFilePathToSolver(selectedFile.getAbsolutePath());
-			mainFrame.addSolver(newSolver);
-		}
+		Runnable runnable = new Runnable() {
+			@Override
+			public void run() {
+				JFileChooser solverChooser = new JFileChooser();
+				FileNameExtensionFilter filter = new FileNameExtensionFilter("Only executable binaryies files", "exe", "com");
+				solverChooser.setFileFilter(filter);
+				int returnVal = solverChooser.showOpenDialog((Component) mainFrame);
+				if (returnVal == JFileChooser.APPROVE_OPTION) {
+					File selectedFile = solverChooser.getSelectedFile();
+					Solver newSolver = new Solver(selectedFile.getName());
+					newSolver.setFilePathToSolver(selectedFile.getAbsolutePath());
+					mainFrame.addSolver(newSolver);
+				}
+				
+			}
+		};
+		
+		SwingUtilities.invokeLater(runnable);
 	}
 
 	private void runSolver() {
@@ -86,7 +80,7 @@ public class MenuSolverActionListener implements ActionListener {
 	}
 	
 	private void listSolver() {
-		SolverListDialog solvListDialog = new SolverListDialog(mainFrame, (JMenuItem) menuItem);
+		SolverListDialog solvListDialog = new SolverListDialog(mainFrame, (JMenuItem) event.getSource());
 	}
 	
 	private void debugInfo() {

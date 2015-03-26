@@ -10,6 +10,7 @@ import javax.swing.JDialog;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 
 import ru.sasik.gui.names.ConfigNames;
@@ -51,7 +52,8 @@ public class DebugInfoDialog extends JDialog implements ActionListener {
 		IMainFrame frame = (IMainFrame) mainFrame; 
 		
 		JTextArea textArea = new JTextArea(message);
-		panel.add(textArea);
+		JScrollPane scrollArea = new JScrollPane(textArea);
+		panel.add(scrollArea);
 		
 	}
 
