@@ -7,7 +7,6 @@ import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
 
-import jdk.nashorn.internal.runtime.regexp.joni.Config;
 import ru.sasik.gui.actionlisteners.MenuFileActionListener;
 import ru.sasik.gui.actionlisteners.MenuPostprocActionListener;
 import ru.sasik.gui.actionlisteners.MenuSolverActionListener;

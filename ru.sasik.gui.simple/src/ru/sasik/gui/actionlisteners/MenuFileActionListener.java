@@ -1,12 +1,16 @@
 package ru.sasik.gui.actionlisteners;
 
 import java.awt.Component;
+import java.awt.FileDialog;
+import java.awt.Frame;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.File;
+import java.io.FilenameFilter;
 
 import javax.swing.JFileChooser;
 import javax.swing.JFrame;
+import javax.swing.SwingUtilities;
 import javax.swing.filechooser.FileFilter;
 import javax.swing.filechooser.FileNameExtensionFilter;
 
@@ -45,56 +49,67 @@ public class MenuFileActionListener extends MenuActionListenerAbstract {
 	}
 
 	private void newDataFile() {
+//		throw new UnsupportedOperationException();
 		
-		
+		FileDialog openDialog = new FileDialog((Frame)mainFrame, "Choose a dat file", FileDialog.LOAD);
+		openDialog.setFile("*.dat");
+		openDialog.setVisible(true);
+		String filename = openDialog.getDirectory() + openDialog.getFile();
+		System.out.println("MenuFileActionListener.newDataFile() " + filename);
 	}
 
 	private void openDataFile() {
 		
-		DefaultDataFile dataFile = null;
-		ICanvas canvasPanel = mainFrame.getCanvas();
+		Runnable runnable = new Runnable() {
+			
+			@Override
+			public void run() {
+				DefaultDataFile dataFile = null;
+				ICanvas canvasPanel = mainFrame.getCanvas();
 
-		JFileChooser fileopen = new JFileChooser();
-		FileFilter filter = new FileNameExtensionFilter(
-				"Data files",
-				"dat"
-		);
-		fileopen.addChoosableFileFilter(filter);
-		String commandName = event.getActionCommand().toLowerCase();
-		int ret = fileopen.showOpenDialog(
-				(Component) mainFrame//,
-//				  "open file"
+				JFileChooser fileopen = new JFileChooser();
+				FileFilter filter = new FileNameExtensionFilter(
+						"Data files",
+						"dat"
 				);
-		File file = fileopen.getSelectedFile();
-		if (file != null) {
-			System.out.println(file.getPath());
-			System.out.println(ret + " " + JFileChooser.APPROVE_OPTION);
-			if (ret == JFileChooser.APPROVE_OPTION) {
-				if (commandName.equals("open") ) {
-					dataFile = new DefaultDataFile();
-					dataFile.openFromFile(file);
-					canvasPanel.setDataFile(dataFile);
-					mainFrame.setFilePathToInput(file.getAbsolutePath());
-					mainFrame.setFilePathToOutput(null);
-					System.out.println("FileChooserAction.actionPerformed() " + file.getAbsolutePath());
-					String text = AdditionFunctions.readFile(file);
-					//					System.out.println(area);
-//					area.setText(text);
-					((JFrame )mainFrame).pack();
-					System.out.println("FileChooserAction.actionPerformed() \"" + commandName.toLowerCase() + "\"");
-				} else
-					if (commandName.equals("save")) {
-						System.out.println(fileopen.getSelectedFile().getPath());
-						AdditionFunctions.writeFile(fileopen.getSelectedFile().getPath(), dataFile.saveToFile());
+				fileopen.addChoosableFileFilter(filter);
+				String commandName = event.getActionCommand().toLowerCase();
+				int ret = fileopen.showOpenDialog(
+						(Component) mainFrame//,
+//						  "open file"
+						);
+				File file = fileopen.getSelectedFile();
+				if (file != null) {
+					System.out.println(file.getPath());
+					System.out.println(ret + " " + JFileChooser.APPROVE_OPTION);
+					if (ret == JFileChooser.APPROVE_OPTION) {
+						if (commandName.equals("open") ) {
+							dataFile = new DefaultDataFile();
+							dataFile.openFromFile(file);
+							canvasPanel.setDataFile(dataFile);
+							mainFrame.setFilePathToInput(file.getAbsolutePath());
+							mainFrame.setFilePathToOutput(null);
+							System.out.println("FileChooserAction.actionPerformed() " + file.getAbsolutePath());
+							String text = AdditionFunctions.readFile(file);
+							//					System.out.println(area);
+//							area.setText(text);
+							((JFrame )mainFrame).pack();
+							System.out.println("FileChooserAction.actionPerformed() \"" + commandName.toLowerCase() + "\"");
+						} else
+							if (commandName.equals("save")) {
+								System.out.println(fileopen.getSelectedFile().getPath());
+								AdditionFunctions.writeFile(fileopen.getSelectedFile().getPath(), dataFile.saveToFile());
+							}
 					}
+				}
 			}
-		}
+		};
 		
+		SwingUtilities.invokeLater(runnable);
 	}
 
 	private void saveDataFile() {
-		
-		
+		throw new UnsupportedOperationException();
 	}
 
 	private void closeApplication() {
