@@ -68,4 +68,10 @@ public class ConfigNames {
 	
 	public static final String GUI_MENU_POSTPROC_SHOW_NAME = "Show results";
 	public static final String GUI_MENU_POSTPROC_SHOW_COMMAND = "show";
+	
+	/**
+	 * TABS ITEMS NAME
+	 */
+	public static final String GUI_TABS_PREPROC_NAME = "Pre-processor";
+	public static final String GUI_TABS_POSTPROC_NAME = "Post-processor";
 }

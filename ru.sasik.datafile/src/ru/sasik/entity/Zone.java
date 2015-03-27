@@ -23,6 +23,8 @@ public class Zone {
 	}
 	
 	public ArrayList<ArrayList<Double>> getAll() {
+		if (values == null)
+			values = new ArrayList<ArrayList<Double>>();
 		return values;
 	}
 

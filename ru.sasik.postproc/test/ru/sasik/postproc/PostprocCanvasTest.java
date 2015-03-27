@@ -24,7 +24,7 @@ public class PostprocCanvasTest {
 		PostprocCanvas postprocCanvas = new PostprocCanvas();
 		PostprocState postprocState = new PostprocState();
 		SolutionDataFile solutionDataFile = new SolutionDataFile();
-		solutionDataFile.open(new File("/home/sasik/workspace/ru.sasik2/ru.sasik.solver/solverData/SERG.DAT.output.rez"));
+		solutionDataFile.open(new File("/home/sasik/Dropbox/11111/Akord/SERG.DAT.output.rez"));
 		postprocState.setSolutionDataFile(solutionDataFile);
 		postprocCanvas.setPostprocState(postprocState );
 		

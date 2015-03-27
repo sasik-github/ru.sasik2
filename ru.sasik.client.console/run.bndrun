@@ -32,7 +32,8 @@
 	osgi.identity;filter:='(osgi.identity=ru.sasik.action)',\
 	osgi.identity;filter:='(osgi.identity=ru.sasik.client.console)',\
 	osgi.identity;filter:='(osgi.identity=ru.sasik.service.simple)',\
-	osgi.identity;filter:='(osgi.identity=ru.sasik.gui.simple)'
+	osgi.identity;filter:='(osgi.identity=ru.sasik.gui.simple)',\
+	osgi.identity;filter:='(osgi.identity=ru.sasik.postproc)'
 -resolve: auto
 
 -runbundles:  \
@@ -48,5 +49,6 @@
 	ru.sasik.datafile;version=latest,\
 	ru.sasik.gui.simple;version=latest,\
 	ru.sasik.helper;version=latest,\
+	ru.sasik.postproc;version=latest,\
 	ru.sasik.service.simple;version=latest,\
 	ru.sasik.solver;version=latest

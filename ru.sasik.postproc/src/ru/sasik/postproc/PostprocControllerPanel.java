@@ -22,8 +22,21 @@ public class PostprocControllerPanel extends JPanel{
 		
 		createNextButton();
 		createPlayButton();
+		createStopButton();
 		createResetButton();
 		
+	}
+
+	private void createStopButton() {
+		JButton btn = new JButton("Stop");
+		btn.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				isPlay = false;
+			}
+		});
+		add(btn);
 	}
 
 	private void createResetButton() {

@@ -5,7 +5,8 @@ Bundle-Version: 0.0.0.${tstamp}
 	osgi.core,\
 	ru.sasik.datafile;version=latest,\
 	ru.sasik.helper;version=latest,\
-	ru.sasik.solver;version=latest
+	ru.sasik.solver;version=latest,\
+	ru.sasik.postproc;version=latest
 Private-Package:  \
 	ru.sasik.gui.starter,\
 	ru.sasik.gui.objects,\

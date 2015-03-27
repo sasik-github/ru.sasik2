@@ -48,8 +48,14 @@ public class PostprocState {
 	}
 
 	public void setSolutionDataFile(SolutionDataFile solutionDataFile) {
+		if (solutionDataFile == null)
+			return;
+		
 		this.solutionDataFile = solutionDataFile;
 		RezFile rezFile = solutionDataFile.getRezFile();
+		if (rezFile == null)
+			return;
+		
 		zones = rezFile.getZones();
 		nextState();
 	}
@@ -62,6 +68,8 @@ public class PostprocState {
 	}
 
 	public Zone getCurrentZone() {
+		if (currentZone == null) 
+			return new Zone(2.);
 		return currentZone;
 	}
 

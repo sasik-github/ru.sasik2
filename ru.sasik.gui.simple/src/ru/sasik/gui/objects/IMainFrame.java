@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import javax.swing.JToolBar;
 
 import ru.sasik.gui.objects.frame.StatusBar;
+import ru.sasik.postproc.PostprocState;
 import ru.sasik.solver.Solver;
 
 public interface IMainFrame {
@@ -32,5 +33,9 @@ public interface IMainFrame {
 	public String getFilePathToInput();
 	
 	public String getDebugInfo();
+	
+	public void setPostprocState(PostprocState postprocState);
+	
+	public PostprocState getPostprocState();
 
 }

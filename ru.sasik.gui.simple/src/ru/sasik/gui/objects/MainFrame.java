@@ -3,7 +3,6 @@ package ru.sasik.gui.objects;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Container;
-import java.awt.Dimension;
 import java.awt.FlowLayout;
 import java.io.File;
 import java.util.ArrayList;
@@ -12,12 +11,18 @@ import javax.swing.BorderFactory;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
+import javax.swing.JTabbedPane;
 import javax.swing.JToolBar;
 
 import ru.sasik.datafile.DefaultDataFile;
+import ru.sasik.datafile.SolutionDataFile;
+import ru.sasik.gui.names.ConfigNames;
 import ru.sasik.gui.objects.frame.MainMenu;
 import ru.sasik.gui.objects.frame.MainToolbar;
 import ru.sasik.gui.objects.frame.StatusBar;
+import ru.sasik.postproc.PostprocCanvas;
+import ru.sasik.postproc.PostprocControllerPanel;
+import ru.sasik.postproc.PostprocState;
 import ru.sasik.solver.Solver;
 
 public class MainFrame extends JFrame implements IMainFrame {
@@ -53,6 +58,10 @@ public class MainFrame extends JFrame implements IMainFrame {
 	private JPanel southContent;
 
 	private ArrayList<Solver> solverList;
+
+	private SolutionDataFile solutionDataFile;
+
+	private PostprocState postprocState;
 
 	public MainFrame() {
 
@@ -107,14 +116,19 @@ public class MainFrame extends JFrame implements IMainFrame {
 	}
 
 	private void createWorkspaceContent() {
+		JTabbedPane jTabbedPane = new JTabbedPane();
+		
 		canvas = new Canvas();
 		canvas.setBorder(BorderFactory.createLineBorder(Color.red));
 		JScrollPane pane = new JScrollPane();
 		pane.getViewport().add(canvas);
-		add(pane, BorderLayout.CENTER);
+		jTabbedPane.addTab(ConfigNames.GUI_TABS_PREPROC_NAME, pane);
 		
-//		filePathToInput = "/home/sasik/Dropbox/11111/Akord/SERG.DAT";
-		filePathToInput = "/home/sasik/workspace/ru.sasik2/ru.sasik.solver/solverData/SERG.DAT";
+		
+		
+		
+		filePathToInput = "/home/sasik/Dropbox/11111/Akord/SERG.DAT";
+//		filePathToInput = "/home/sasik/workspace/ru.sasik2/ru.sasik.solver/solverData/SERG.DAT";
 		
 		
 		File file = new File(filePathToInput);
@@ -130,6 +144,29 @@ public class MainFrame extends JFrame implements IMainFrame {
 		
 		CanvasMouseListener canvasMouseListener = new CanvasMouseListener(canvas);
 		canvas.addMouseListener(canvasMouseListener);
+		
+		PostprocCanvas postprocCanvas = new PostprocCanvas();
+		setPostprocState(new PostprocState());
+		solutionDataFile = new SolutionDataFile();
+//		solutionDataFile.open(new File(getFilePathToOutput()));
+		getPostprocState().setSolutionDataFile(solutionDataFile);
+		postprocCanvas.setPostprocState(getPostprocState() );
+		
+		
+		
+//		postprocCanvas.setBorder(BorderFactory.createLineBorder(Color.red));
+		JPanel panel = new JPanel();
+		panel.setLayout(new BorderLayout());
+		pane = new JScrollPane();
+		pane.getViewport().add(postprocCanvas);
+		panel.add(pane, BorderLayout.CENTER);
+		PostprocControllerPanel postprocControllerPanel = new PostprocControllerPanel(getPostprocState(), postprocCanvas);
+		panel.add(postprocControllerPanel, BorderLayout.NORTH);
+		jTabbedPane.addTab(ConfigNames.GUI_TABS_POSTPROC_NAME, panel);
+		
+		
+		
+		add(jTabbedPane, BorderLayout.CENTER);
 	}
 
 	private void createMenuContent() {
@@ -203,6 +240,14 @@ public class MainFrame extends JFrame implements IMainFrame {
 	public void addSolver(Solver solver) {
 		ArrayList<Solver> solvers = getSolvers();
 		solvers.add(solver);
+	}
+
+	public PostprocState getPostprocState() {
+		return postprocState;
+	}
+
+	public void setPostprocState(PostprocState postprocState) {
+		this.postprocState = postprocState;
 	}
 
 }

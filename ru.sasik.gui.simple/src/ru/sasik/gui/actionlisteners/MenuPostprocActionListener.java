@@ -31,6 +31,7 @@ public class MenuPostprocActionListener extends MenuActionListenerAbstract{
 		SolutionDataFile results = new SolutionDataFile();
 		results.open(new File(filePathToOutput));
 		
+		mainFrame.getPostprocState().setSolutionDataFile(results);
 		new DebugInfoDialog(mainFrame, results.getRezFile().toString());
 	}
 

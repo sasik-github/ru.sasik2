@@ -5,9 +5,9 @@
      1     ; Regions number
      0     ; Internal node numbers
 [TIME] PARAMETERS
-   0.010000      ; Max Time Step
+   0.10000      ; Max Time Step
    0.000000      ; Min Time Step
-   0.000000      ; Initial Time
+   4.000000      ; Initial Time
    0.000000      ; Max Time
 [PHISICAL] PARAMETERS
    0.000000     ; Estimate
