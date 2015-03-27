@@ -113,7 +113,9 @@ public class MainFrame extends JFrame implements IMainFrame {
 		pane.getViewport().add(canvas);
 		add(pane, BorderLayout.CENTER);
 		
-		filePathToInput = "/home/sasik/Dropbox/11111/Akord/SERG.DAT"; 
+//		filePathToInput = "/home/sasik/Dropbox/11111/Akord/SERG.DAT";
+		filePathToInput = "/home/sasik/workspace/ru.sasik2/ru.sasik.solver/solverData/SERG.DAT";
+		
 		
 		File file = new File(filePathToInput);
 		

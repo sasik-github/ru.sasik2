@@ -50,24 +50,26 @@ public class Solver {
 		
 		// пример передаваемого списка
 //			commands.add(System.getProperty("user.dir") + "/solverData/test.exe");
+		if (os_env == "linux") 
+			commands.add("wine");
 		commands.add(getFilePathToSolver());
 		commands.add(getFilePathToInput());
 		commands.add(getFilePathToOutput());
 		
 		// проверка на операционную систему
 		// если солвер ехе то надо запускать через вайн
-		if (os_env == "linux") {
-			Path p = Paths.get(commands.get(0));
-			String file = p.getFileName().toString();
-			
-			String pathTofile = p.getParent().toString();
-			
-//			commands.set(0, "wine");
-//			commands.set(1, "start");
-//			commands.set(2, "/unix");
-//			commands.add(pathTofile + "/" + file);
-//			commands.add(p.toString());
-		}
+//		if (os_env == "linux") {
+//			Path p = Paths.get(commands.get(0));
+//			String file = p.getFileName().toString();
+//			
+//			String pathTofile = p.getParent().toString();
+//			
+////			commands.set(0, "wine");
+////			commands.set(1, "start");
+////			commands.set(2, "/unix");
+////			commands.add(pathTofile + "/" + file);
+////			commands.add(p.toString());
+//		}
 		
 		try {
 			

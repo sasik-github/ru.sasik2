@@ -74,8 +74,12 @@ public class MenuSolverActionListener extends MenuActionListenerAbstract{
 			
 			solver.execute();
 		} catch (NullPointerException ex) {
+			System.out.println("MenuSolverActionListener.runSolver()" + mainFrame);
+			System.out.println("MenuSolverActionListener.runSolver()" + mainFrame.getFilePathToInput());
+			System.out.println("MenuSolverActionListener.runSolver()" + mainFrame.getFilePathToOutput());
 			System.out.println("MenuSolverActionListener.runSolver() " + ex);
-			new DebugInfoDialog(mainFrame, ex.toString());
+			ex.printStackTrace();
+			new DebugInfoDialog(mainFrame, ex.getMessage());
 		}
 	}
 	
