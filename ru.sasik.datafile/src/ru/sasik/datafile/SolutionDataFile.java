@@ -3,6 +3,7 @@ package ru.sasik.datafile;
 import java.io.File;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Locale;
 import java.util.Scanner;
 
 import ru.sasik.entity.RezFile;
@@ -32,12 +33,14 @@ public class SolutionDataFile extends SolutionAbstract {
 //						Double t = Double.parseDouble(line.split("=\"")[1]);
 				
 				Scanner st = new Scanner(line);
+				st.useLocale(new Locale("en_US"));
 		        while (!st.hasNextDouble())
 		        {
 		            st.next();
 		        }
 		        Double t = st.nextDouble();
 		        st.close();
+		        
 			        
 				zone = new Zone(t);
 				line = rezFileByLine.get(++i);
