@@ -28,6 +28,7 @@ public class ConfigNames {
 
 	public static final String GUI_MENU_FILE_OPEN_NAME = "Open";
 	public static final String GUI_MENU_FILE_OPEN_COMMAND = "open";
+	public static final String GUI_MENU_FILE_OPEN2_COMMAND = "open2";
 
 	public static final String GUI_MENU_FILE_SAVE_NAME = "Save";
 	public static final String GUI_MENU_FILE_SAVE_COMMAND = "save";
@@ -59,6 +60,7 @@ public class ConfigNames {
 	
 	public static final String GUI_MENU_SOLVER_LIST_ADDSOLVER_NAME = "Add Solver";
 	public static final String GUI_MENU_SOLVER_LIST_ADDSOLVER_COMMAND = "addsolver";
+	public static final String GUI_MENU_SOLVER_LIST_ADDSOLVER2_COMMAND = "addsolver2";
 	
 	
 	/**
@@ -74,4 +76,5 @@ public class ConfigNames {
 	 */
 	public static final String GUI_TABS_PREPROC_NAME = "Pre-processor";
 	public static final String GUI_TABS_POSTPROC_NAME = "Post-processor";
+	
 }

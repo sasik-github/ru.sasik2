@@ -1,6 +1,7 @@
 package ru.sasik.gui.actionlisteners;
 
 import java.awt.Component;
+import java.awt.FileDialog;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.File;
@@ -39,11 +40,25 @@ public class MenuSolverActionListener extends MenuActionListenerAbstract{
 		case ConfigNames.GUI_MENU_SOLVER_LIST_ADDSOLVER_COMMAND:
 			addSolver();
 			break;
+		case ConfigNames.GUI_MENU_SOLVER_LIST_ADDSOLVER2_COMMAND:
+			addSolver2();
+			break;
 		default:
 			break;
 		}
 	}
 	
+	private void addSolver2() {
+		String solverName = invokeSwtDialog(mainFrame, "Choose a solver binary file", FileDialog.LOAD, ".exe");
+		File file = new File(solverName);
+		if (file.exists()) {
+			Solver newSolver = new Solver(file.getName());
+			newSolver.setFilePathToSolver(file.getAbsolutePath());
+			mainFrame.addSolver(newSolver);
+		}
+		
+	}
+
 	private void addSolver() {
 		Runnable runnable = new Runnable() {
 			@Override

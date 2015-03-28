@@ -83,6 +83,11 @@ public class SolverListDialog extends JDialog implements ActionListener{
 		addSolverButton.addActionListener(new MenuSolverActionListener((IMainFrame) mainFrame));
 		panel.add(addSolverButton);
 		
+		addSolverButton = new JButton("Add Solver(AWT Dialog)");
+		addSolverButton.setActionCommand(ConfigNames.GUI_MENU_SOLVER_LIST_ADDSOLVER2_COMMAND);
+		addSolverButton.addActionListener(new MenuSolverActionListener((IMainFrame) mainFrame));
+		panel.add(addSolverButton);
+		
 		panel.add(solverChoice2);
 
 		initSolversList();

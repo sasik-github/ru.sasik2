@@ -35,10 +35,12 @@ public class MenuFileActionListener extends MenuActionListenerAbstract {
 		case ConfigNames.GUI_MENU_FILE_OPEN_COMMAND:
 			openDataFile();
 			break;
+		case ConfigNames.GUI_MENU_FILE_OPEN2_COMMAND:
+			open2DataFile();
+			break;
 		case ConfigNames.GUI_MENU_FILE_SAVE_COMMAND:
 			saveDataFile();
 			break;
-		
 		case ConfigNames.GUI_MENU_FILE_CLOSE_COMMAND:
 			closeApplication();
 			break;
@@ -48,14 +50,20 @@ public class MenuFileActionListener extends MenuActionListenerAbstract {
 		
 	}
 
+	private void open2DataFile() {
+		String fileName = invokeSwtDialog(mainFrame, "Choose a dat file", FileDialog.LOAD, ".dat");
+		File file = new File(fileName);
+		if (file.exists()) {
+			DefaultDataFile dataFile = new DefaultDataFile();
+			dataFile.openFromFile(file);
+			mainFrame.getCanvas().setDataFile(dataFile);
+			mainFrame.setFilePathToInput(file.getAbsolutePath());
+			mainFrame.setFilePathToOutput(null);
+		}
+	}
+
 	private void newDataFile() {
-//		throw new UnsupportedOperationException();
 		
-		FileDialog openDialog = new FileDialog((Frame)mainFrame, "Choose a dat file", FileDialog.LOAD);
-		openDialog.setFile("*.dat");
-		openDialog.setVisible(true);
-		String filename = openDialog.getDirectory() + openDialog.getFile();
-		System.out.println("MenuFileActionListener.newDataFile() " + filename);
 	}
 
 	private void openDataFile() {
@@ -79,7 +87,7 @@ public class MenuFileActionListener extends MenuActionListenerAbstract {
 //						  "open file"
 						);
 				File file = fileopen.getSelectedFile();
-				if (file != null) {
+				if (file.exists()) {
 					System.out.println(file.getPath());
 					System.out.println(ret + " " + JFileChooser.APPROVE_OPTION);
 					if (ret == JFileChooser.APPROVE_OPTION) {

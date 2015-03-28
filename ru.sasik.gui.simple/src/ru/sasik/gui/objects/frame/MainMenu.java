@@ -54,6 +54,11 @@ public class MainMenu extends JMenuBar {
 		itm.setActionCommand(ConfigNames.GUI_MENU_FILE_OPEN_COMMAND);
 		itm.addActionListener(fileActionListener);
 		menu.add(itm);
+		
+		itm = new JMenuItem("Open (AWT Dialog)");
+		itm.setActionCommand(ConfigNames.GUI_MENU_FILE_OPEN2_COMMAND);
+		itm.addActionListener(fileActionListener);
+		menu.add(itm);
 
 		itm = new JMenuItem(ConfigNames.GUI_MENU_FILE_SAVE_NAME);
 		itm.setActionCommand(ConfigNames.GUI_MENU_FILE_SAVE_COMMAND);
