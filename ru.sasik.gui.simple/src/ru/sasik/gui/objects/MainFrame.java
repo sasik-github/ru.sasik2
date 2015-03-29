@@ -125,7 +125,7 @@ public class MainFrame extends JFrame implements IMainFrame {
 		jTabbedPane.addTab(ConfigNames.GUI_TABS_PREPROC_NAME, pane);
 		
 		
-		
+		System.out.println(System.getProperty("os.name"));
 		
 		filePathToInput = "/home/sasik/Dropbox/11111/Akord/SERG.DAT";
 //		filePathToInput = "/home/sasik/workspace/ru.sasik2/ru.sasik.solver/solverData/SERG.DAT";

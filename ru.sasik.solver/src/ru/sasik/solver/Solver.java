@@ -50,7 +50,8 @@ public class Solver {
 		
 		// пример передаваемого списка
 //			commands.add(System.getProperty("user.dir") + "/solverData/test.exe");
-		if (os_env == "linux") 
+		
+		if (System.getProperty("os.name").toLowerCase() == "linux") 
 			commands.add("wine");
 		commands.add(getFilePathToSolver());
 		commands.add(getFilePathToInput());
