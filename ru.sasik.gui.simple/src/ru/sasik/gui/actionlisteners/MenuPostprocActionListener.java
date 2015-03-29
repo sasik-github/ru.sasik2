@@ -1,5 +1,6 @@
 package ru.sasik.gui.actionlisteners;
 
+import java.awt.FileDialog;
 import java.io.File;
 
 import ru.sasik.datafile.SolutionDataFile;
@@ -16,14 +17,22 @@ public class MenuPostprocActionListener extends MenuActionListenerAbstract{
 
 	protected void getAction(String actionCommand) {
 		switch (actionCommand) {
+		case ConfigNames.GUI_MENU_POSTPROC_OPEN_COMMAND:
+			openResultFileDialog();
+			break;
 		case ConfigNames.GUI_MENU_POSTPROC_SHOW_COMMAND:
 			showResults();
 			break;
-
 		default:
-			break;
+			throw new UnsupportedOperationException(actionCommand);
 		}
 		
+	}
+
+	private void openResultFileDialog() {
+		String filename = invokeSwtDialog(mainFrame, "Open file to visualize", FileDialog.LOAD, ".rez");
+		
+		mainFrame.setFilePathToOutput(filename);
 	}
 
 	private void showResults() {

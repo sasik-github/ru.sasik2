@@ -125,7 +125,12 @@ public class MainMenu extends JMenuBar {
 	public void initPostprocMenu() {
 		JMenu menu = new JMenu(ConfigNames.GUI_MENU_POSTPROC_POSTPROC_NAME);
 		
-		JMenuItem itm = new JMenuItem(ConfigNames.GUI_MENU_POSTPROC_SHOW_NAME);
+		JMenuItem itm = new JMenuItem(ConfigNames.GUI_MENU_POSTPROC_OPEN_NAME);
+		itm.setActionCommand(ConfigNames.GUI_MENU_POSTPROC_OPEN_COMMAND);
+		itm.addActionListener(postprocActionListener);
+		menu.add(itm);
+		
+		itm = new JMenuItem(ConfigNames.GUI_MENU_POSTPROC_SHOW_NAME);
 		itm.setActionCommand(ConfigNames.GUI_MENU_POSTPROC_SHOW_COMMAND);
 		itm.addActionListener(postprocActionListener);
 		menu.add(itm);

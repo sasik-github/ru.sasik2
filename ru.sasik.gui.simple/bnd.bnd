@@ -1,12 +1,12 @@
 Bundle-Version: 0.0.0.${tstamp}
 -buildpath:  \
 	ru.sasik.gui;version=latest,\
-	org.apache.felix.dependencymanager,\
 	osgi.core,\
 	ru.sasik.datafile;version=latest,\
 	ru.sasik.helper;version=latest,\
 	ru.sasik.solver;version=latest,\
-	ru.sasik.postproc;version=latest
+	ru.sasik.postproc;version=latest,\
+	org.apache.felix.dependencymanager;version=3.1
 Private-Package:  \
 	ru.sasik.gui.starter,\
 	ru.sasik.gui.objects,\
@@ -15,4 +15,3 @@ Private-Package:  \
 	ru.sasik.gui.actionlisteners,\
 	ru.sasik.gui.names
 Bundle-Activator: ru.sasik.gui.starter.GuiStarterActivator
--runfw: org.apache.felix.framework;version='[4.0.3,4.0.3]'

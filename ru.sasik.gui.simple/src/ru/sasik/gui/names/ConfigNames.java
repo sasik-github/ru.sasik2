@@ -68,6 +68,9 @@ public class ConfigNames {
 	 */
 	public static final String GUI_MENU_POSTPROC_POSTPROC_NAME = "Post processor";
 	
+	public static final String GUI_MENU_POSTPROC_OPEN_NAME = "Open result file";
+	public static final String GUI_MENU_POSTPROC_OPEN_COMMAND = "open";
+	
 	public static final String GUI_MENU_POSTPROC_SHOW_NAME = "Show results";
 	public static final String GUI_MENU_POSTPROC_SHOW_COMMAND = "show";
 	
@@ -76,5 +79,6 @@ public class ConfigNames {
 	 */
 	public static final String GUI_TABS_PREPROC_NAME = "Pre-processor";
 	public static final String GUI_TABS_POSTPROC_NAME = "Post-processor";
+
 	
 }

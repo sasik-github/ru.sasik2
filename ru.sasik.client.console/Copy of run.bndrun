@@ -1,11 +1,25 @@
 -runfw: org.apache.felix.framework;version='[4,5)'
 -runee: JavaSE-1.8
 -runsystemcapabilities: ${native_capability}
--runsystempackages: 
+-runsystempackages: javafx.application,\
+	javafx.collections,\
+	javafx.event,\
+	javafx.scene,\
+	javafx.scene.control,\
+	javafx.scene.layout,\
+	javafx.stage,\
 	javax.swing,\
 	javax.swing.border,\
-	javax.swing.filechooser
-
+	javax.swing.filechooser,\
+	javafx.embed.swing,\
+	javafx.animation,\
+	javafx.beans.property,\
+	javafx.beans.value,\
+	javafx.geometry,\
+	javafx.scene.paint,\
+	javafx.scene.shape,\
+	javafx.scene.transform,\
+	javafx.util
 	
 
 -resolve.effective: active

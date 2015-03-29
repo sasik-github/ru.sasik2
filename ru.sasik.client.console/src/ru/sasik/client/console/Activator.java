@@ -8,7 +8,6 @@ package ru.sasik.client.console;
 import org.apache.felix.dm.DependencyActivatorBase;
 import org.apache.felix.dm.DependencyManager;
 import org.osgi.framework.BundleContext;
-import org.osgi.framework.ServiceReference;
 
 import ru.sasik.api.AgendaService;
 
