@@ -8,8 +8,16 @@ import ru.sasik.entity.Zone;
 public class DataFileTest {
 	
 	public static void main(String[] args) {
-		solutionDataFileTest();
+//		solutionDataFileTest();
 //		solutionEnergyDataFileTest();
+		defaultDataFileTest();
+	}
+	
+	public static void defaultDataFileTest() {
+		DefaultDataFile defaultDataFile = new DefaultDataFile();
+		defaultDataFile.openFromFile(new File("/home/sasik/EclipseWorkspace/ru.sasik2/ru.sasik.solver/solverData/SERG.DAT"));
+		System.out.println("DataFileTest.defaultDataFileTest()");
+		System.out.println(defaultDataFile.toString());
 	}
 	
 	public static void solutionDataFileTest() {

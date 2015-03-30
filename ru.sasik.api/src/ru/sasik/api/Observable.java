@@ -6,9 +6,12 @@ import java.util.Observer;
 
 /**
  * реализация Наблюдателя, почему то не заработала стандартная
+ * все заработала, просто я баран, забыл проинициализовать в предках конструктор парента
+ * !!можно удалить!!
  * @author sasik
  *
  */
+@Deprecated
 public class Observable {
 
 	private List<Observer> observers;
