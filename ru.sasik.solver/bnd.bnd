@@ -1,7 +1,9 @@
 Bundle-Version: 0.0.0.${tstamp}
 Export-Package:  \
-	ru.sasik.solver
+	ru.sasik.solver,\
+	ru.sasik.solver.list
 -runfw: org.apache.felix.framework;version='[4.0.3,4.0.3]'
 -runee: OSGi/Minimum-1.0
 -buildpath:  \
-	osgi.core
+	osgi.core,\
+	ru.sasik.api;version=latest

@@ -7,6 +7,7 @@ import javax.swing.JToolBar;
 import ru.sasik.gui.objects.frame.StatusBar;
 import ru.sasik.postproc.PostprocState;
 import ru.sasik.solver.Solver;
+import ru.sasik.solver.list.SolverList;
 
 public interface IMainFrame {
 
@@ -16,7 +17,7 @@ public interface IMainFrame {
 
 	public ICanvas getCanvas();
 	
-	public ArrayList<Solver> getSolvers();
+	public SolverList getSolvers();
 	
 	public void addSolver(Solver solver);
 	

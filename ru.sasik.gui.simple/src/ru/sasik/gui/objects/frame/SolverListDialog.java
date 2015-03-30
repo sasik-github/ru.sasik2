@@ -6,6 +6,9 @@ import java.awt.event.ActionListener;
 import java.awt.event.ComponentEvent;
 import java.awt.event.ComponentListener;
 import java.util.ArrayList;
+import java.util.List;
+import java.util.Observable;
+import java.util.Observer;
 
 import javax.swing.BoxLayout;
 import javax.swing.JButton;
@@ -20,16 +23,20 @@ import ru.sasik.gui.actionlisteners.MenuSolverActionListener;
 import ru.sasik.gui.names.ConfigNames;
 import ru.sasik.gui.objects.IMainFrame;
 import ru.sasik.solver.Solver;
+import ru.sasik.solver.list.SolverList;
 
-public class SolverListDialog extends JDialog implements ActionListener{
+public class SolverListDialog extends JDialog implements ActionListener, Observer{
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 3567499791687523935L;
+
 	private String selectedSolver;
-	
-	private Choice solverChoice;
 	
 	private JFrame mainFrame;
 	
-	private ArrayList<Solver> solvers;
+	private SolverList solvers;
 
 	private JPanel panel;
 
@@ -46,7 +53,6 @@ public class SolverListDialog extends JDialog implements ActionListener{
 		
 		this.setTitle("List of Solver");
 		panel = new JPanel();
-//		panel.sets
 		
 		panel.add(new JLabel("Choose the Solver:"));
 		
@@ -71,10 +77,11 @@ public class SolverListDialog extends JDialog implements ActionListener{
 		setLocationRelativeTo(this.mainFrame);
 		setVisible(true);
 		pack();
+		solvers.addObserver(this);
+//		solvers.setMyObs(this);
 	}
 
 	private void initGUI() {
-		solverChoice = new Choice();
 		solverChoice2 = new JComboBox<>();
 //		panel.add(solverChoice);
 		
@@ -103,7 +110,7 @@ public class SolverListDialog extends JDialog implements ActionListener{
 		if (ConfigNames.GUI_OK_COMMAND == e.getActionCommand()) {
 			Solver selectedSolver = null;
 			System.out.println("SolverListDialog.actionPerformed()" + solverChoice2.getSelectedItem());
-			for (Solver solver : solvers) {
+			for (Solver solver : solvers.getSolverList()) {
 				if (solverChoice2.getSelectedItem() == solver.name) {
 					selectedSolver = solver;
 					((IMainFrame) mainFrame).setSelectedSolver(selectedSolver);
@@ -122,10 +129,18 @@ public class SolverListDialog extends JDialog implements ActionListener{
 	}
 	
 	public void initSolversList() {
-		for (Solver solver : solvers) {
-			solverChoice.add(solver.name);
+		solverChoice2.removeAllItems();
+		for (Solver solver : solvers.getSolverList()) {
 			solverChoice2.addItem(solver.name);
 		}
+	}
+
+	@Override
+	public void update(Observable o, Object arg) {
+		System.out.println("SolverListDialog.update()");
+		initSolversList();
+		repaint();
+		
 	}
 
 }

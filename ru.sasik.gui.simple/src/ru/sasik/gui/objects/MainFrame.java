@@ -24,6 +24,7 @@ import ru.sasik.postproc.PostprocCanvas;
 import ru.sasik.postproc.PostprocControllerPanel;
 import ru.sasik.postproc.PostprocState;
 import ru.sasik.solver.Solver;
+import ru.sasik.solver.list.SolverList;
 
 public class MainFrame extends JFrame implements IMainFrame {
 
@@ -57,7 +58,7 @@ public class MainFrame extends JFrame implements IMainFrame {
 	private JPanel middleContent;
 	private JPanel southContent;
 
-	private ArrayList<Solver> solverList;
+	private SolverList solverList;
 
 	private SolutionDataFile solutionDataFile;
 
@@ -229,17 +230,17 @@ public class MainFrame extends JFrame implements IMainFrame {
 	}
 
 	@Override
-	public ArrayList<Solver> getSolvers() {
+	public SolverList getSolvers() {
 		if (solverList == null) {
-			solverList = new ArrayList<Solver>();
+			solverList = new SolverList();
 		}
 		return solverList;
 	}
 
 	@Override
 	public void addSolver(Solver solver) {
-		ArrayList<Solver> solvers = getSolvers();
-		solvers.add(solver);
+		SolverList solvers = getSolvers();
+		solvers.addSolver(solver);
 	}
 
 	public PostprocState getPostprocState() {
