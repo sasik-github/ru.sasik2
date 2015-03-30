@@ -5,7 +5,12 @@ import java.util.List;
 import java.util.Observable;
 
 import ru.sasik.solver.Solver;
-
+/**
+ * реализует наблюдатель, что бы при изменения списка солверов, изменялись вьюхи
+ * 
+ * @author sasik
+ *
+ */
 public class SolverList extends Observable {
 	
 	private List<Solver> solverList;
