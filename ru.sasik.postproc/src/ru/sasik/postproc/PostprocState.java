@@ -2,13 +2,14 @@ package ru.sasik.postproc;
 
 import java.util.ArrayList;
 import java.util.Iterator;
+import java.util.Observable;
 
 import ru.sasik.datafile.SolutionAbstract;
 import ru.sasik.datafile.SolutionDataFile;
 import ru.sasik.entity.RezFile;
 import ru.sasik.entity.Zone;
 
-public class PostprocState {
+public class PostprocState extends Observable{
 
 	private SolutionAbstract solutionDataFile;
 	/**
@@ -59,6 +60,8 @@ public class PostprocState {
 		
 		zones = rezFile.getZones();
 		nextState();
+		setChanged();
+		notifyObservers();
 	}
 	
 	public Zone nextState() {

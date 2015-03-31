@@ -4,13 +4,15 @@ import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.util.ArrayList;
+import java.util.Observable;
+import java.util.Observer;
 
 import javax.swing.JPanel;
 
 import ru.sasik.api.ConfigParams;
 import ru.sasik.entity.Zone;
 
-public class PostprocCanvas extends JPanel {
+public class PostprocCanvas extends JPanel implements Observer{
 	
 	private static final long serialVersionUID = 3207166039085771573L;
 
@@ -40,6 +42,8 @@ public class PostprocCanvas extends JPanel {
 	}
 	public void setPostprocState(PostprocState postprocState) {
 		this.postprocState = postprocState;
+		postprocState.addObserver(this);
+		
 	}
 	
 	@Override
@@ -60,6 +64,11 @@ public class PostprocCanvas extends JPanel {
 					ConfigParams.X_RADIUS, 
 					ConfigParams.Y_RADIUS);
 		}
+		
+	}
+	@Override
+	public void update(Observable o, Object arg) {
+		repaint();
 		
 	}
 	
