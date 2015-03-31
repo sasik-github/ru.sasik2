@@ -23,7 +23,7 @@ public class PostprocCanvas extends JPanel {
 
 	private static final Integer DX = 2 * CONVERTER_DX;
 
-	private static final Integer DY = - 2 * CONVERTER_DY;
+	private static final Integer DY = - 4 * CONVERTER_DY;
 
 	private static final int POINT_RADIUS_Y = 3;
 

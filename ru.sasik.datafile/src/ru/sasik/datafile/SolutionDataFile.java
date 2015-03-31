@@ -18,6 +18,7 @@ public class SolutionDataFile extends SolutionAbstract {
 	protected RezFile parseString(ArrayList<String> rezFileByLine) {
 		// параметры графиков
 		ArrayList<String> params = new ArrayList<String>(Arrays.asList(rezFileByLine.get(0).split("=")[1].split("\\s*,\\s*")));
+		int paramsSize = params.size();
 		
 		// удаляем линию с переменными
 		rezFileByLine.remove(0);

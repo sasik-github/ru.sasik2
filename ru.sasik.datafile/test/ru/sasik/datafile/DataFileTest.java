@@ -9,10 +9,21 @@ public class DataFileTest {
 	
 	public static void main(String[] args) {
 //		solutionDataFileTest();
+		solutionDataFile2Test();
 //		solutionEnergyDataFileTest();
-		defaultDataFileTest();
+//		defaultDataFileTest();
 	}
 	
+	private static void solutionDataFile2Test() {
+		SolutionDataFile2 sol = new SolutionDataFile2();
+		
+		sol.open(new File(
+				"/home/sasik/Projects/Programming/java/workspace/ru.sasik2/ru.sasik.solver/solverData/SERG.DAT.output.rez"));
+		
+		System.out.println(sol.getRezFile());
+		
+	}
+
 	public static void defaultDataFileTest() {
 		DefaultDataFile defaultDataFile = new DefaultDataFile();
 		defaultDataFile.openFromFile(new File("/home/sasik/EclipseWorkspace/ru.sasik2/ru.sasik.solver/solverData/SERG.DAT"));
@@ -24,7 +35,7 @@ public class DataFileTest {
 		SolutionDataFile sol = new SolutionDataFile();
 		
 		sol.open(new File(
-				"/home/sasik/EclipseWorkspace/ru.sasik2/ru.sasik.solver/solverData/SERG.REZ"));
+				"/home/sasik/workspace/ru.sasik2/ru.sasik.solver/solverData/SERG.REZ"));
 		
 		System.out.println(sol.getRezFile());
 //		RezFile rezFile = sol.getRezFile();

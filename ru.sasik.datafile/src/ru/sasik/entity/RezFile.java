@@ -41,6 +41,7 @@ public class RezFile {
 			
 			for (ArrayList<Double> lineofValues : zone.getAll()) {
 				for (Double val : lineofValues) {
+					System.out.println(val);
 					stringBuffer.append(val + " ");
 				}
 				stringBuffer.append(ls);

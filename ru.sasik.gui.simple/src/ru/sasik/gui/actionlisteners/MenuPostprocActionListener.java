@@ -3,7 +3,9 @@ package ru.sasik.gui.actionlisteners;
 import java.awt.FileDialog;
 import java.io.File;
 
+import ru.sasik.datafile.SolutionAbstract;
 import ru.sasik.datafile.SolutionDataFile;
+import ru.sasik.datafile.SolutionDataFile2;
 import ru.sasik.gui.names.ConfigNames;
 import ru.sasik.gui.objects.IMainFrame;
 import ru.sasik.gui.objects.frame.DebugInfoDialog;
@@ -37,7 +39,7 @@ public class MenuPostprocActionListener extends MenuActionListenerAbstract{
 
 	private void showResults() {
 		String filePathToOutput = mainFrame.getFilePathToOutput();
-		SolutionDataFile results = new SolutionDataFile();
+		SolutionAbstract results = new SolutionDataFile2();
 		results.open(new File(filePathToOutput));
 		
 		mainFrame.getPostprocState().setSolutionDataFile(results);

@@ -3,13 +3,14 @@ package ru.sasik.postproc;
 import java.util.ArrayList;
 import java.util.Iterator;
 
+import ru.sasik.datafile.SolutionAbstract;
 import ru.sasik.datafile.SolutionDataFile;
 import ru.sasik.entity.RezFile;
 import ru.sasik.entity.Zone;
 
 public class PostprocState {
 
-	private SolutionDataFile solutionDataFile;
+	private SolutionAbstract solutionDataFile;
 	/**
 	 * текущий кадр для отображения
 	 */
@@ -43,16 +44,16 @@ public class PostprocState {
 		zoneIterator = null;
 	}
 
-	public SolutionDataFile getSolutionDataFile() {
+	public SolutionAbstract getSolutionDataFile() {
 		return solutionDataFile;
 	}
 
-	public void setSolutionDataFile(SolutionDataFile solutionDataFile) {
-		if (solutionDataFile == null)
+	public void setSolutionDataFile(SolutionAbstract results) {
+		if (results == null)
 			return;
 		
-		this.solutionDataFile = solutionDataFile;
-		RezFile rezFile = solutionDataFile.getRezFile();
+		this.solutionDataFile = results;
+		RezFile rezFile = results.getRezFile();
 		if (rezFile == null)
 			return;
 		
