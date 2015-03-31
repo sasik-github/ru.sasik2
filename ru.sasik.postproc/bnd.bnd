@@ -1,5 +1,6 @@
 Bundle-Version: 0.0.0.${tstamp}
 -buildpath:  \
-	ru.sasik.datafile;version=latest
+	ru.sasik.datafile;version=latest,\
+	ru.sasik.api;version=latest
 Export-Package:  \
 	ru.sasik.postproc

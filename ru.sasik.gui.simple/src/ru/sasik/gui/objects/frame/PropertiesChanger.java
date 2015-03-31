@@ -16,9 +16,9 @@ import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.SpringLayout;
 
+import ru.sasik.api.ConfigParams;
 import ru.sasik.gui.objects.ICanvas;
 import ru.sasik.gui.objects.IMainFrame;
-import ru.sasik.gui.objects.OriginObject;
 
 public class PropertiesChanger extends JDialog implements ActionListener {
 
@@ -50,9 +50,9 @@ public class PropertiesChanger extends JDialog implements ActionListener {
 
 	private JTextField CONVERTER;
 
-	private static Color DATA_COLOR = OriginObject.DATA_COLOR;
+	private static Color DATA_COLOR = ConfigParams.DATA_COLOR;
 
-	private static Color ORIGIN_COLOR = OriginObject.ORIGIN_COLOR;
+	private static Color ORIGIN_COLOR = ConfigParams.ORIGIN_COLOR;
 
 	public PropertiesChanger(IMainFrame frame) {
 		super();
@@ -97,38 +97,38 @@ public class PropertiesChanger extends JDialog implements ActionListener {
 
 	public void initGUI() {
 		JLabel lbl = new JLabel("X begin");
-		X_ORIGIN = new JTextField(String.valueOf(OriginObject.X_ORIGIN));
+		X_ORIGIN = new JTextField(String.valueOf(ConfigParams.X_ORIGIN));
 		panel.add(lbl);
 		panel.add(X_ORIGIN);
 
-		Y_ORIGIN = new JTextField(String.valueOf(OriginObject.Y_ORIGIN));
+		Y_ORIGIN = new JTextField(String.valueOf(ConfigParams.Y_ORIGIN));
 		panel.add(new JLabel("Y begin"));
 		panel.add(Y_ORIGIN);
 
-		X_RADIUS = new JTextField(String.valueOf(OriginObject.X_RADIUS));
+		X_RADIUS = new JTextField(String.valueOf(ConfigParams.X_RADIUS));
 		panel.add(new JLabel("X radius"));
 		panel.add(X_RADIUS);
 
-		Y_RADIUS = new JTextField(String.valueOf(OriginObject.Y_RADIUS));
+		Y_RADIUS = new JTextField(String.valueOf(ConfigParams.Y_RADIUS));
 		panel.add(new JLabel("Y radius"));
 		panel.add(Y_RADIUS);
 
 		ORIGIN_LENGTH = new JTextField(
-				String.valueOf(OriginObject.ORIGIN_LENGTH));
+				String.valueOf(ConfigParams.ORIGIN_LENGTH));
 		panel.add(new JLabel("Origin length"));
 		panel.add(ORIGIN_LENGTH);
 
 		ORIGIN_ARROW_10 = new JTextField(
-				String.valueOf(OriginObject.ORIGIN_ARROW_10));
+				String.valueOf(ConfigParams.ORIGIN_ARROW_10));
 		panel.add(new JLabel("Origin length of arrow10"));
 		panel.add(ORIGIN_ARROW_10);
 
 		ORIGIN_ARROW_5 = new JTextField(
-				String.valueOf(OriginObject.ORIGIN_ARROW_5));
+				String.valueOf(ConfigParams.ORIGIN_ARROW_5));
 		panel.add(new JLabel("Origin length of arrow5"));
 		panel.add(ORIGIN_ARROW_5);
 
-		Y_REVERSE = new JTextField(String.valueOf(OriginObject.Y_REVERSE));
+		Y_REVERSE = new JTextField(String.valueOf(ConfigParams.Y_REVERSE));
 		panel.add(new JLabel("Reverse of oY"));
 		panel.add(Y_REVERSE);
 
@@ -136,7 +136,7 @@ public class PropertiesChanger extends JDialog implements ActionListener {
 		//
 		// DY
 
-		CONVERTER = new JTextField(String.valueOf(OriginObject.CONVERTER));
+		CONVERTER = new JTextField(String.valueOf(ConfigParams.CONVERTER));
 		panel.add(new JLabel("Converter"));
 		panel.add(CONVERTER);
 
@@ -153,19 +153,19 @@ public class PropertiesChanger extends JDialog implements ActionListener {
 	}
 
 	public void saveChange() {
-		OriginObject.X_ORIGIN = Integer.parseInt(X_ORIGIN.getText());
-		OriginObject.Y_ORIGIN = Integer.parseInt(Y_ORIGIN.getText());
-		OriginObject.X_RADIUS = Integer.parseInt(X_RADIUS.getText());
-		OriginObject.Y_RADIUS = Integer.parseInt(Y_RADIUS.getText());
-		OriginObject.ORIGIN_LENGTH = Integer.parseInt(ORIGIN_LENGTH.getText());
-		OriginObject.ORIGIN_ARROW_10 = Integer.parseInt(ORIGIN_ARROW_10
+		ConfigParams.X_ORIGIN = Integer.parseInt(X_ORIGIN.getText());
+		ConfigParams.Y_ORIGIN = Integer.parseInt(Y_ORIGIN.getText());
+		ConfigParams.X_RADIUS = Integer.parseInt(X_RADIUS.getText());
+		ConfigParams.Y_RADIUS = Integer.parseInt(Y_RADIUS.getText());
+		ConfigParams.ORIGIN_LENGTH = Integer.parseInt(ORIGIN_LENGTH.getText());
+		ConfigParams.ORIGIN_ARROW_10 = Integer.parseInt(ORIGIN_ARROW_10
 				.getText());
-		OriginObject.ORIGIN_ARROW_5 = Integer
+		ConfigParams.ORIGIN_ARROW_5 = Integer
 				.parseInt(ORIGIN_ARROW_5.getText());
-		OriginObject.Y_REVERSE = Integer.parseInt(Y_REVERSE.getText());
-		OriginObject.CONVERTER = Integer.parseInt(CONVERTER.getText());
-		OriginObject.DATA_COLOR = DATA_COLOR;
-		OriginObject.ORIGIN_COLOR = ORIGIN_COLOR;
+		ConfigParams.Y_REVERSE = Integer.parseInt(Y_REVERSE.getText());
+		ConfigParams.CONVERTER = Integer.parseInt(CONVERTER.getText());
+		ConfigParams.DATA_COLOR = DATA_COLOR;
+		ConfigParams.ORIGIN_COLOR = ORIGIN_COLOR;
 	}
 
 	public class ColorActionListener implements ActionListener {

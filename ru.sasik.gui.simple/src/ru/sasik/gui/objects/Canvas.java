@@ -17,6 +17,7 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
+import ru.sasik.api.ConfigParams;
 import ru.sasik.datafile.DefaultDataFile;
 import ru.sasik.datafile.Point;
 import ru.sasik.gui.simpleshapes.PointShape;
@@ -133,19 +134,19 @@ public class Canvas extends JPanel implements ICanvas {
 		if (dataFile != null) {
 			if (dataFile.nodes != null) {
 				g2d.setStroke(new BasicStroke());
-				g2d.setColor(OriginObject.DATA_COLOR);
+				g2d.setColor(ConfigParams.DATA_COLOR);
 				if (shapeComponentList.isEmpty()) {
 					for (Point node : dataFile.nodes) {
 						String m_selected = "Point";
 						ShapeComponent sc = new ShapeComponent(this, m_selected);
 						sc.setBounds(
-								(int) ((node.getX() + OriginObject.DX)
-										* OriginObject.CONVERTER + OriginObject.X_ORIGIN),// BOX
+								(int) ((node.getX() + ConfigParams.DX)
+										* ConfigParams.CONVERTER + ConfigParams.X_ORIGIN),// BOX
 																							// /
 																							// 2
-								(int) ((node.getY() + OriginObject.DY)
-										* OriginObject.CONVERTER
-										* OriginObject.Y_REVERSE + OriginObject.Y_ORIGIN), // -
+								(int) ((node.getY() + ConfigParams.DY)
+										* ConfigParams.CONVERTER
+										* ConfigParams.Y_REVERSE + ConfigParams.Y_ORIGIN), // -
 																							// sc.displacmentX
 								BOX, BOX);
 						add(sc, 0);
@@ -163,13 +164,13 @@ public class Canvas extends JPanel implements ICanvas {
 						Point p = iterator.next();
 						shapeComponent
 								.setBounds(
-										(int) ((p.getX() + OriginObject.DX)
-												* OriginObject.CONVERTER + OriginObject.X_ORIGIN),
-										(int) ((p.getY() + OriginObject.DY)
-												* OriginObject.CONVERTER
-												* OriginObject.Y_REVERSE + OriginObject.Y_ORIGIN),
+										(int) ((p.getX() + ConfigParams.DX)
+												* ConfigParams.CONVERTER + ConfigParams.X_ORIGIN),
+										(int) ((p.getY() + ConfigParams.DY)
+												* ConfigParams.CONVERTER
+												* ConfigParams.Y_REVERSE + ConfigParams.Y_ORIGIN),
 										BOX, BOX);
-						shapeComponent.setColor(OriginObject.DATA_COLOR);
+						shapeComponent.setColor(ConfigParams.DATA_COLOR);
 
 					}
 					validate();
@@ -184,15 +185,15 @@ public class Canvas extends JPanel implements ICanvas {
 		if (dataFile != null) {
 			if (dataFile.nodes != null) {
 				g2d.setStroke(new BasicStroke());
-				g2d.setColor(OriginObject.DATA_COLOR);
+				g2d.setColor(ConfigParams.DATA_COLOR);
 				for (Point node : dataFile.nodes) {
 					g2d.fillOval(
-							(int) ((node.getX() + OriginObject.DX)
-									* OriginObject.CONVERTER + OriginObject.X_ORIGIN),
-							(int) ((node.getY() + OriginObject.DY)
-									* OriginObject.CONVERTER
-									* OriginObject.Y_REVERSE + OriginObject.Y_ORIGIN),
-							OriginObject.X_RADIUS, OriginObject.Y_RADIUS);
+							(int) ((node.getX() + ConfigParams.DX)
+									* ConfigParams.CONVERTER + ConfigParams.X_ORIGIN),
+							(int) ((node.getY() + ConfigParams.DY)
+									* ConfigParams.CONVERTER
+									* ConfigParams.Y_REVERSE + ConfigParams.Y_ORIGIN),
+							ConfigParams.X_RADIUS, ConfigParams.Y_RADIUS);
 				}
 				System.out.println("Nodes size" + dataFile.nodes.size());
 			}

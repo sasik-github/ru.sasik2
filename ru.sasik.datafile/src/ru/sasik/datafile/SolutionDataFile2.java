@@ -36,7 +36,7 @@ public class SolutionDataFile2 extends SolutionAbstract{
 		            st.next();
 		        }
 		        Double t = st.nextDouble();
-		        System.out.println("ZONE " + t);
+//		        System.out.println("ZONE " + t);
 		        st.close();
 		        
 		        zone = new Zone(t);
